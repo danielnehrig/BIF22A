@@ -25,26 +25,36 @@ class Tree {
     }
   }
 
+  public void getAllLeafs() {
+    foreach (Leaf leaf in _leaf) {
+      Console.WriteLine("Leaf Color: " + leaf.color);
+    }
+  }
+
   public void spring() {
     foreach (Leaf leaf in _leaf) {
       leaf.color = "light green";
     }
+    Console.WriteLine("We have now Spring");
   }
 
   public void autmn() {
     foreach (Leaf leaf in _leaf) {
       leaf.color = "brown";
     }
+    Console.WriteLine("We have now Autmn");
   }
 
-  public void sommer() {
+  public void summer() {
     foreach (Leaf leaf in _leaf) {
       leaf.color = "green";
     }
+    Console.WriteLine("We have now Summer");
   }
 
   public void winter() {
     _leaf.Clear();
+    Console.WriteLine("We have now Winter all leafs are gone :(");
   }
 }
 
@@ -55,25 +65,30 @@ class Leaf {
     get { return _color; }
   }
 
-  public Leaf(string gSeason) {
-    season(gSeason);
+  public Leaf(string season) {
+    setSeason(season);
   }
 
-  private void season(string season) {
-    if (season == "autmn")
-      _color = "light green";
-    if (season == "spring")
-      _color = "brown";
-    if (season == "summer")
-      _color = "green";
-    if (season == null)
-      _color = "error";
+  private void setSeason(string season) {
+    switch(season) {
+      case "autmn": _color = "brown"; break;
+      case "spring": _color = "light green"; break;
+      case "summer": _color = "green"; break;
+      default: _color = "error"; break;
+    }
   }
 }
 
 class Program {
   static void Main() {
     Tree tree = new Tree(5, 10, "autmn");
-    Console.WriteLine(tree.size);
+    Console.WriteLine("Tree Size: " + tree.size + "m");
+    tree.getAllLeafs();
+    tree.spring();
+    tree.getAllLeafs();
+    tree.summer();
+    tree.getAllLeafs();
+    tree.winter();
+    tree.getAllLeafs();
   }
 }
