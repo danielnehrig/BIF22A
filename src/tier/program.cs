@@ -2,61 +2,61 @@ using System;
 using System.Collections.Generic;
 
 namespace Program {
-  abstract class Tier {
+  abstract class Animal {
     private double _size;
     public double size {
       set { _size = value; }
       get { return _size; }
     }
 
-    private Herz _herz;
-    public Herz herz {
-      set { _herz = value; }
-      get { return _herz; }
+    private Heart _heart;
+    public Heart heart {
+      set { _heart = value; }
+      get { return _heart; }
     }
 
-    public Tier() {
-      _herz = new Herz();
+    public Animal() {
+      _heart = new Heart();
     }
   }
 
   class Organ {
-    private double _blut;
-    public double blut {
-      set { _blut = value; }
-      get { return _blut; }
+    private double _blood;
+    public double blood {
+      set { _blood = value; }
+      get { return _blood; }
     }
   }
 
-  class Herz : Organ {
-    public void schlaegt() {
-      Console.WriteLine("Herz Pumpt");
+  class Heart : Organ {
+    public void beat() {
+      Console.WriteLine("Heart Pumpt");
     }
   }
 
-  class Saeugetier : Tier {
+  class Saeugetier : Animal {
     public Saeugetier(double gSize) {
       size = gSize;
     }
-    public void ichBin() {
+    public void iAm() {
       Console.WriteLine("Saeugetier");
     }
   }
 
-  class Reptil : Tier {
+  class Reptil : Animal {
     public Reptil(double gSize) {
       size = gSize;
     }
-    public void ichBin() {
+    public void iAm() {
       Console.WriteLine("Retpil");
     }
   }
   
-  class Fisch : Tier {
+  class Fisch : Animal {
     public Fisch(double gSize) {
       size = gSize;
     }
-    public void ichBin() {
+    public void iAm() {
       Console.WriteLine("Fisch");
     }
   }
@@ -64,16 +64,16 @@ namespace Program {
   class Program {
     public static void Main() {
       Saeugetier hund = new Saeugetier(10);
-      hund.ichBin();
-      hund.herz.schlaegt();
+      hund.iAm();
+      hund.heart.beat();
       Console.WriteLine(hund.size);
       Reptil vogel = new Reptil(10);
-      vogel.ichBin();
-      vogel.herz.schlaegt();
+      vogel.iAm();
+      vogel.heart.beat();
       Console.WriteLine(vogel.size);
       Fisch karpfen = new Fisch(10);
-      karpfen.ichBin();
-      karpfen.herz.schlaegt();
+      karpfen.iAm();
+      karpfen.heart.beat();
       Console.WriteLine(karpfen.size);
     }
   }
