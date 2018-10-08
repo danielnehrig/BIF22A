@@ -30,7 +30,7 @@ namespace Program {
 
   class Heart : Organ {
     public void beat() {
-      Console.WriteLine("Heart Pumpt");
+      Console.WriteLine("Heart Beats");
     }
   }
 
