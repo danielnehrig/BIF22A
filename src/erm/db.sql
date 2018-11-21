@@ -1,0 +1,262 @@
+USE [master]
+GO
+/****** Object:  Database [Iventarisierung]    Script Date: 16.11.2018 12:49:14 ******/
+CREATE DATABASE [Iventarisierung]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'Iventarisierung', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\DATA\Iventarisierung.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'Iventarisierung_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\DATA\Iventarisierung_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [Iventarisierung].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [Iventarisierung] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [Iventarisierung] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [Iventarisierung] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [Iventarisierung] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [Iventarisierung] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [Iventarisierung] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [Iventarisierung] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [Iventarisierung] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [Iventarisierung] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [Iventarisierung] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [Iventarisierung] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [Iventarisierung] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [Iventarisierung] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [Iventarisierung] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [Iventarisierung] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [Iventarisierung] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [Iventarisierung] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [Iventarisierung] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [Iventarisierung] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [Iventarisierung] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [Iventarisierung] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [Iventarisierung] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [Iventarisierung] SET RECOVERY FULL 
+GO
+ALTER DATABASE [Iventarisierung] SET  MULTI_USER 
+GO
+ALTER DATABASE [Iventarisierung] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [Iventarisierung] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [Iventarisierung] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [Iventarisierung] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [Iventarisierung] SET DELAYED_DURABILITY = DISABLED 
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'Iventarisierung', N'ON'
+GO
+ALTER DATABASE [Iventarisierung] SET QUERY_STORE = OFF
+GO
+USE [Iventarisierung]
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET MAXDOP = 0;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET MAXDOP = PRIMARY;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET LEGACY_CARDINALITY_ESTIMATION = OFF;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET LEGACY_CARDINALITY_ESTIMATION = PRIMARY;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET PARAMETER_SNIFFING = ON;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET PARAMETER_SNIFFING = PRIMARY;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET QUERY_OPTIMIZER_HOTFIXES = OFF;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES = PRIMARY;
+GO
+USE [Iventarisierung]
+GO
+/****** Object:  Table [dbo].[Geräte]    Script Date: 16.11.2018 12:49:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Geräte](
+	[id] [int] NOT NULL,
+	[datumAnschaffung] [date] NOT NULL,
+	[kategorieId] [int] NOT NULL,
+	[inventarNr] [int] NOT NULL,
+	[verkäufterId] [int] NOT NULL,
+	[preis] [float] NOT NULL,
+ CONSTRAINT [PK_Geräte] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[GeräteVerkäufter]    Script Date: 16.11.2018 12:49:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[GeräteVerkäufter](
+	[id] [int] NOT NULL,
+	[standort] [nvarchar](255) NOT NULL,
+	[name] [nvarchar](255) NOT NULL,
+ CONSTRAINT [PK_GeräteVerkäufter] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Hardware]    Script Date: 16.11.2018 12:49:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Hardware](
+	[id] [int] NOT NULL,
+	[kategorieId] [nvarchar](255) NOT NULL,
+	[austausch] [tinyint] NOT NULL,
+	[name] [nvarchar](255) NOT NULL,
+ CONSTRAINT [PK_Hardware] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[HardwareGeräte]    Script Date: 16.11.2018 12:49:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[HardwareGeräte](
+	[hardwareId] [int] NOT NULL,
+	[geräteId] [int] NOT NULL,
+	[austauschDatum] [date] NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Kategorie]    Script Date: 16.11.2018 12:49:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Kategorie](
+	[id] [int] NOT NULL,
+	[name] [nvarchar](255) NOT NULL,
+ CONSTRAINT [PK_Kategorie] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Lehrer]    Script Date: 16.11.2018 12:49:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Lehrer](
+	[id] [int] NOT NULL,
+	[vorname] [nvarchar](255) NOT NULL,
+	[name] [nvarchar](255) NOT NULL,
+	[email] [nvarchar](255) NOT NULL,
+	[raumId] [nvarchar](255) NOT NULL,
+	[raumbetreuer] [tinyint] NOT NULL,
+ CONSTRAINT [PK_Lehrer] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Mangel]    Script Date: 16.11.2018 12:49:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Mangel](
+	[id] [int] NOT NULL,
+	[datum] [date] NOT NULL,
+	[beschreibung] [nvarchar](255) NOT NULL,
+	[geräteId] [int] NOT NULL,
+ CONSTRAINT [PK_Mangel] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Räume]    Script Date: 16.11.2018 12:49:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Räume](
+	[id] [int] NOT NULL,
+	[raumNr] [int] NOT NULL,
+ CONSTRAINT [PK_Räume] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[RäumeLehrer]    Script Date: 16.11.2018 12:49:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[RäumeLehrer](
+	[lehrerId] [int] NOT NULL,
+	[raumId] [int] NOT NULL
+) ON [PRIMARY]
+
+GO
+ALTER TABLE [dbo].[HardwareGeräte]  WITH CHECK ADD  CONSTRAINT [FK_HardwareGeräte_Geräte] FOREIGN KEY([geräteId])
+REFERENCES [dbo].[Geräte] ([id])
+GO
+ALTER TABLE [dbo].[HardwareGeräte] CHECK CONSTRAINT [FK_HardwareGeräte_Geräte]
+GO
+ALTER TABLE [dbo].[HardwareGeräte]  WITH CHECK ADD  CONSTRAINT [FK_HardwareGeräte_Hardware] FOREIGN KEY([hardwareId])
+REFERENCES [dbo].[Hardware] ([id])
+GO
+ALTER TABLE [dbo].[HardwareGeräte] CHECK CONSTRAINT [FK_HardwareGeräte_Hardware]
+GO
+ALTER TABLE [dbo].[RäumeLehrer]  WITH CHECK ADD  CONSTRAINT [FK_RäumeLehrer_Lehrer] FOREIGN KEY([lehrerId])
+REFERENCES [dbo].[Lehrer] ([id])
+GO
+ALTER TABLE [dbo].[RäumeLehrer] CHECK CONSTRAINT [FK_RäumeLehrer_Lehrer]
+GO
+ALTER TABLE [dbo].[RäumeLehrer]  WITH CHECK ADD  CONSTRAINT [FK_RäumeLehrer_Räume] FOREIGN KEY([raumId])
+REFERENCES [dbo].[Räume] ([id])
+GO
+ALTER TABLE [dbo].[RäumeLehrer] CHECK CONSTRAINT [FK_RäumeLehrer_Räume]
+GO
+USE [master]
+GO
+ALTER DATABASE [Iventarisierung] SET  READ_WRITE 
+GO
