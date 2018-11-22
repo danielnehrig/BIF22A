@@ -244,6 +244,21 @@ GO
 ALTER TABLE [dbo].[HardwareGeräte]  WITH CHECK ADD  CONSTRAINT [FK_HardwareGeräte_Hardware] FOREIGN KEY([hardwareId])
 REFERENCES [dbo].[Hardware] ([id])
 GO
+ALTER TABLE [dbo].[Mangel]  WITH CHECK ADD  CONSTRAINT [FK_Mangel_Geräte] FOREIGN KEY([geräteId])
+REFERENCES [dbo].[Geräte] ([id])
+GO
+ALTER TABLE [dbo].[Lehrer]  WITH CHECK ADD  CONSTRAINT [FK_Lehrer_Räume] FOREIGN KEY([raumId])
+REFERENCES [dbo].[Räume] ([id])
+GO
+ALTER TABLE [dbo].[Geräte]  WITH CHECK ADD  CONSTRAINT [FK_Geräte_Kategorie] FOREIGN KEY([kategorieId])
+REFERENCES [dbo].[Kategorie] ([id])
+GO
+ALTER TABLE [dbo].[Hardware]  WITH CHECK ADD  CONSTRAINT [FK_Hardware_Kategorie] FOREIGN KEY([kategorieId])
+REFERENCES [dbo].[Kategorie] ([id])
+GO
+ALTER TABLE [dbo].[Geräte]  WITH CHECK ADD  CONSTRAINT [FK_Geräte_Kategorie] FOREIGN KEY([verkäufterId])
+REFERENCES [dbo].[GeräteVerkäufter] ([id])
+GO
 ALTER TABLE [dbo].[HardwareGeräte] CHECK CONSTRAINT [FK_HardwareGeräte_Hardware]
 GO
 ALTER TABLE [dbo].[RäumeLehrer]  WITH CHECK ADD  CONSTRAINT [FK_RäumeLehrer_Lehrer] FOREIGN KEY([lehrerId])
