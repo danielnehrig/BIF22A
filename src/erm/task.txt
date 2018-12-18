@@ -1,0 +1,8 @@
+ituationsbeschreibung: Für die Inventarisierung der elektronischen Endgeräte  inklusive aller wichtigen Hardwarebauteile an unserer Schule soll eine Verwaltungssoftware entwickelt werden.
+ 
+Jedes elektronische Endgerät hat eine von der Stadt Mönchengladbach zugewiesene Inventarisierungsnummer. Jedes elektronische Endgerät ist genau einem Raum zugeordnet.
+Jeder Rechner (PC) enthält genau definierte Hardwarebausteine. Den Hardwarebausteinen sind keine Inventarisierungsnummern zugeordnet. Des Weiteren gibt es in verschiedenen Räumen weitere elektronische Geräte. Diese Geräte sind Beamer, Elmo, Tablett, Drucker, oder … (?). Jedes dieser Geräte hat ebenfalls eine Inventarisierungsnummer. Von den Geräten bzw. Hardwarebausteinen soll neben einer eindeutigen Kennung und Typbezeichnung auch gespeichert werden wann die Geräte angeschafft wurden und was sie zu diesem Zeitpunkt gekostet haben. Des Weiteren muss dokumentiert werden wann ein Gerät oder Hardwarebaustein ausgetauscht wurde. Für die Wartung der Geräte ist es wichtig, dass nach gehalten wird wo, wann und bei wem die Geräte gekauft wurden. Für die Wartung der Räume ist ein Raumbetreuer verantwortlich. Als Raumbetreuer werden Lehrer der Schule eingesetzt. Ein Lehrer kann mehr als einen Raum betreuen. Ein Raum kann von mehr als einer Person betreut werden. Es gibt Lehrer die keinen Raum betreuen.
+ 
+Jeder Lehrer soll über das später zu entwickelnde Frontend die Möglichkeit erhalten einen Mangel an einem Gerät zu melden. Wird ein Mangel gemeldet, so wird automatisch eine E-Mail an den Raumbetreuer und den meldenden Lehrer versendet.
+ 
+Auftrag: Modellieren Sie das entsprechende ERM für die oben beschriebene Datenbank.

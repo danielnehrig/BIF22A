@@ -1,107 +1,14 @@
 USE [master]
 GO
-/****** Object:  Database [Iventarisierung]    Script Date: 16.11.2018 12:49:14 ******/
-CREATE DATABASE [Iventarisierung]
- CONTAINMENT = NONE
- ON  PRIMARY 
-( NAME = N'Iventarisierung', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\DATA\Iventarisierung.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
- LOG ON 
-( NAME = N'Iventarisierung_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\DATA\Iventarisierung_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+DROP DATABASE [master2]
 GO
-IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
-begin
-EXEC [Iventarisierung].[dbo].[sp_fulltext_database] @action = 'enable'
-end
+CREATE DATABASE [master2]
 GO
-ALTER DATABASE [Iventarisierung] SET ANSI_NULL_DEFAULT OFF 
-GO
-ALTER DATABASE [Iventarisierung] SET ANSI_NULLS OFF 
-GO
-ALTER DATABASE [Iventarisierung] SET ANSI_PADDING OFF 
-GO
-ALTER DATABASE [Iventarisierung] SET ANSI_WARNINGS OFF 
-GO
-ALTER DATABASE [Iventarisierung] SET ARITHABORT OFF 
-GO
-ALTER DATABASE [Iventarisierung] SET AUTO_CLOSE OFF 
-GO
-ALTER DATABASE [Iventarisierung] SET AUTO_SHRINK OFF 
-GO
-ALTER DATABASE [Iventarisierung] SET AUTO_UPDATE_STATISTICS ON 
-GO
-ALTER DATABASE [Iventarisierung] SET CURSOR_CLOSE_ON_COMMIT OFF 
-GO
-ALTER DATABASE [Iventarisierung] SET CURSOR_DEFAULT  GLOBAL 
-GO
-ALTER DATABASE [Iventarisierung] SET CONCAT_NULL_YIELDS_NULL OFF 
-GO
-ALTER DATABASE [Iventarisierung] SET NUMERIC_ROUNDABORT OFF 
-GO
-ALTER DATABASE [Iventarisierung] SET QUOTED_IDENTIFIER OFF 
-GO
-ALTER DATABASE [Iventarisierung] SET RECURSIVE_TRIGGERS OFF 
-GO
-ALTER DATABASE [Iventarisierung] SET  DISABLE_BROKER 
-GO
-ALTER DATABASE [Iventarisierung] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
-GO
-ALTER DATABASE [Iventarisierung] SET DATE_CORRELATION_OPTIMIZATION OFF 
-GO
-ALTER DATABASE [Iventarisierung] SET TRUSTWORTHY OFF 
-GO
-ALTER DATABASE [Iventarisierung] SET ALLOW_SNAPSHOT_ISOLATION OFF 
-GO
-ALTER DATABASE [Iventarisierung] SET PARAMETERIZATION SIMPLE 
-GO
-ALTER DATABASE [Iventarisierung] SET READ_COMMITTED_SNAPSHOT OFF 
-GO
-ALTER DATABASE [Iventarisierung] SET HONOR_BROKER_PRIORITY OFF 
-GO
-ALTER DATABASE [Iventarisierung] SET RECOVERY FULL 
-GO
-ALTER DATABASE [Iventarisierung] SET  MULTI_USER 
-GO
-ALTER DATABASE [Iventarisierung] SET PAGE_VERIFY CHECKSUM  
-GO
-ALTER DATABASE [Iventarisierung] SET DB_CHAINING OFF 
-GO
-ALTER DATABASE [Iventarisierung] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
-GO
-ALTER DATABASE [Iventarisierung] SET TARGET_RECOVERY_TIME = 60 SECONDS 
-GO
-ALTER DATABASE [Iventarisierung] SET DELAYED_DURABILITY = DISABLED 
-GO
-EXEC sys.sp_db_vardecimal_storage_format N'Iventarisierung', N'ON'
-GO
-ALTER DATABASE [Iventarisierung] SET QUERY_STORE = OFF
-GO
-USE [Iventarisierung]
-GO
-ALTER DATABASE SCOPED CONFIGURATION SET MAXDOP = 0;
-GO
-ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET MAXDOP = PRIMARY;
-GO
-ALTER DATABASE SCOPED CONFIGURATION SET LEGACY_CARDINALITY_ESTIMATION = OFF;
-GO
-ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET LEGACY_CARDINALITY_ESTIMATION = PRIMARY;
-GO
-ALTER DATABASE SCOPED CONFIGURATION SET PARAMETER_SNIFFING = ON;
-GO
-ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET PARAMETER_SNIFFING = PRIMARY;
-GO
-ALTER DATABASE SCOPED CONFIGURATION SET QUERY_OPTIMIZER_HOTFIXES = OFF;
-GO
-ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES = PRIMARY;
-GO
-USE [Iventarisierung]
+USE [master2]
 GO
 /****** Object:  Table [dbo].[Geräte]    Script Date: 16.11.2018 12:49:14 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[Geräte](
-	[id] [int] NOT NULL,
+	[id] [int] NOT NULL IDENTITY(1,1),
 	[datumAnschaffung] [date] NOT NULL,
 	[kategorieId] [int] NOT NULL,
 	[inventarNr] [int] NOT NULL,
@@ -115,12 +22,8 @@ CREATE TABLE [dbo].[Geräte](
 
 GO
 /****** Object:  Table [dbo].[GeräteVerkäufter]    Script Date: 16.11.2018 12:49:14 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[GeräteVerkäufter](
-	[id] [int] NOT NULL,
+	[id] [int] NOT NULL IDENTITY(1,1),
 	[standort] [nvarchar](255) NOT NULL,
 	[name] [nvarchar](255) NOT NULL,
  CONSTRAINT [PK_GeräteVerkäufter] PRIMARY KEY CLUSTERED 
@@ -131,13 +34,9 @@ CREATE TABLE [dbo].[GeräteVerkäufter](
 
 GO
 /****** Object:  Table [dbo].[Hardware]    Script Date: 16.11.2018 12:49:14 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[Hardware](
-	[id] [int] NOT NULL,
-	[kategorieId] [nvarchar](255) NOT NULL,
+	[id] [int] NOT NULL IDENTITY(1,1),
+	[kategorieId] [int] NOT NULL,
 	[austausch] [tinyint] NOT NULL,
 	[name] [nvarchar](255) NOT NULL,
  CONSTRAINT [PK_Hardware] PRIMARY KEY CLUSTERED 
@@ -148,10 +47,6 @@ CREATE TABLE [dbo].[Hardware](
 
 GO
 /****** Object:  Table [dbo].[HardwareGeräte]    Script Date: 16.11.2018 12:49:14 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[HardwareGeräte](
 	[hardwareId] [int] NOT NULL,
 	[geräteId] [int] NOT NULL,
@@ -160,12 +55,8 @@ CREATE TABLE [dbo].[HardwareGeräte](
 
 GO
 /****** Object:  Table [dbo].[Kategorie]    Script Date: 16.11.2018 12:49:14 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[Kategorie](
-	[id] [int] NOT NULL,
+	[id] [int] NOT NULL IDENTITY(1,1),
 	[name] [nvarchar](255) NOT NULL,
  CONSTRAINT [PK_Kategorie] PRIMARY KEY CLUSTERED 
 (
@@ -174,17 +65,27 @@ CREATE TABLE [dbo].[Kategorie](
 ) ON [PRIMARY]
 
 GO
+/****** Object:  Table [dbo].[User]    Script Date: 16.11.2018 12:49:14 ******/
+CREATE TABLE [dbo].[User](
+	[id] [int] NOT NULL IDENTITY(1,1),
+	[username] [nvarchar](255) NOT NULL,
+	[password] [nvarchar](255) NOT NULL,
+	[email] [nvarchar](255) NOT NULL,
+	[admin] [tinyint] NOT NULL,
+ CONSTRAINT [PK_Lehrer] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
 /****** Object:  Table [dbo].[Lehrer]    Script Date: 16.11.2018 12:49:14 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[Lehrer](
-	[id] [int] NOT NULL,
+	[id] [int] NOT NULL IDENTITY(1,1),
 	[vorname] [nvarchar](255) NOT NULL,
 	[name] [nvarchar](255) NOT NULL,
 	[email] [nvarchar](255) NOT NULL,
-	[raumId] [nvarchar](255) NOT NULL,
+	[raumId] [int] NOT NULL,
 	[raumbetreuer] [tinyint] NOT NULL,
  CONSTRAINT [PK_Lehrer] PRIMARY KEY CLUSTERED 
 (
@@ -194,12 +95,8 @@ CREATE TABLE [dbo].[Lehrer](
 
 GO
 /****** Object:  Table [dbo].[Mangel]    Script Date: 16.11.2018 12:49:14 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[Mangel](
-	[id] [int] NOT NULL,
+	[id] [int] NOT NULL IDENTITY(1,1),
 	[datum] [date] NOT NULL,
 	[beschreibung] [nvarchar](255) NOT NULL,
 	[geräteId] [int] NOT NULL,
@@ -211,13 +108,9 @@ CREATE TABLE [dbo].[Mangel](
 
 GO
 /****** Object:  Table [dbo].[Räume]    Script Date: 16.11.2018 12:49:14 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[Räume](
-	[id] [int] NOT NULL,
-	[raumNr] [int] NOT NULL,
+	[id] [int] NOT NULL IDENTITY(1,1),
+	[raumNr] [nvarchar](255) NOT NULL,
  CONSTRAINT [PK_Räume] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -226,15 +119,12 @@ CREATE TABLE [dbo].[Räume](
 
 GO
 /****** Object:  Table [dbo].[RäumeLehrer]    Script Date: 16.11.2018 12:49:14 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[RäumeLehrer](
 	[lehrerId] [int] NOT NULL,
 	[raumId] [int] NOT NULL
 ) ON [PRIMARY]
 
+/** Adding Key Relations to Tables **/
 GO
 ALTER TABLE [dbo].[HardwareGeräte]  WITH CHECK ADD  CONSTRAINT [FK_HardwareGeräte_Geräte] FOREIGN KEY([geräteId])
 REFERENCES [dbo].[Geräte] ([id])
@@ -244,19 +134,29 @@ GO
 ALTER TABLE [dbo].[HardwareGeräte]  WITH CHECK ADD  CONSTRAINT [FK_HardwareGeräte_Hardware] FOREIGN KEY([hardwareId])
 REFERENCES [dbo].[Hardware] ([id])
 GO
+ALTER TABLE [dbo].[HardwareGeräte] CHECK CONSTRAINT [FK_HardwareGeräte_Hardware]
+GO
 ALTER TABLE [dbo].[Mangel]  WITH CHECK ADD  CONSTRAINT [FK_Mangel_Geräte] FOREIGN KEY([geräteId])
 REFERENCES [dbo].[Geräte] ([id])
+GO
+ALTER TABLE [dbo].[Mangel] CHECK CONSTRAINT [FK_Mangel_Geräte]
 GO
 ALTER TABLE [dbo].[Lehrer]  WITH CHECK ADD  CONSTRAINT [FK_Lehrer_Räume] FOREIGN KEY([raumId])
 REFERENCES [dbo].[Räume] ([id])
 GO
+ALTER TABLE [dbo].[Lehrer] CHECK CONSTRAINT [FK_Lehrer_Räume]
+GO
 ALTER TABLE [dbo].[Geräte]  WITH CHECK ADD  CONSTRAINT [FK_Geräte_Kategorie] FOREIGN KEY([kategorieId])
 REFERENCES [dbo].[Kategorie] ([id])
+GO
+ALTER TABLE [dbo].[Geräte] CHECK CONSTRAINT [FK_Geräte_Kategorie]
 GO
 ALTER TABLE [dbo].[Hardware]  WITH CHECK ADD  CONSTRAINT [FK_Hardware_Kategorie] FOREIGN KEY([kategorieId])
 REFERENCES [dbo].[Kategorie] ([id])
 GO
-ALTER TABLE [dbo].[Geräte]  WITH CHECK ADD  CONSTRAINT [FK_Geräte_Kategorie] FOREIGN KEY([verkäufterId])
+ALTER TABLE [dbo].[Hardware] CHECK CONSTRAINT [FK_Hardware_Kategorie]
+GO
+ALTER TABLE [dbo].[Geräte]  WITH CHECK ADD  CONSTRAINT [FK_Geräte_Verkäufer] FOREIGN KEY([verkäufterId])
 REFERENCES [dbo].[GeräteVerkäufter] ([id])
 GO
 ALTER TABLE [dbo].[HardwareGeräte] CHECK CONSTRAINT [FK_HardwareGeräte_Hardware]
@@ -271,7 +171,70 @@ REFERENCES [dbo].[Räume] ([id])
 GO
 ALTER TABLE [dbo].[RäumeLehrer] CHECK CONSTRAINT [FK_RäumeLehrer_Räume]
 GO
-USE [master]
+USE [master2]
 GO
-ALTER DATABASE [Iventarisierung] SET  READ_WRITE 
+ALTER DATABASE [master2] SET  READ_WRITE 
+GO
+
+/** Test Data **/
+
+INSERT INTO [dbo].[Räume] (raumNr) VALUES
+('C102'),
+('C103'),
+('C104'),
+('C105'),
+('C105'),
+('C106'),
+('C212'),
+('C213'),
+('C214'),
+('C215'),
+('C216')
+GO
+
+INSERT INTO [dbo].[Kategorie] (name) VALUES
+('PC'),
+('Printer'),
+('CPU'),
+('Motherboard'),
+('PSU'),
+('HDD'),
+('RAM'),
+('Mouse'),
+('Keyboard')
+GO
+
+INSERT INTO [dbo].[GeräteVerkäufter] (name, standort) VALUES
+('Müller CO KG', 'OptenBurg 23 41442 Germany'),
+('Kaktus GmbH', 'OptenBurg 22 41442 Germany'),
+('FranzJosef KG', 'OptenBurg 21 41442 Germany')
+GO
+
+INSERT INTO [dbo].[Geräte] (datumAnschaffung, inventarNr, kategorieId, verkäufterId, preis) VALUES
+(GETDATE(), 1, 1, 1, '300.10'),
+(GETDATE(), 2, 1, 1, '290.10'),
+(GETDATE(), 3, 2, 2, '50.10'),
+(GETDATE(), 4, 2, 3, '48.10')
+GO
+
+
+INSERT INTO [dbo].[Lehrer] (name, vorname, email, raumId, raumbetreuer) VALUES
+('Franz', 'Kostas', 'fKostas@bk-tm.de', 1, 1),
+('Heinz', 'Badu', 'hBadu@bk-tm.de', 2, 0),
+('Peter', 'Kakau', 'pKakau@bk-tm.de', 3, 0)
+GO
+
+INSERT INTO [dbo].[Hardware] (name, austausch, kategorieId) VALUES
+('Intel i7 K4700', 1, 3),
+('Intel i9 K9990', 0, 3),
+('Intel i7 K6770', 0, 3)
+GO
+
+INSERT INTO [dbo].[Mangel] (beschreibung, datum, geräteId) VALUES
+('Broken', GETDATE(), 1),
+('Broken', GETDATE(), 2),
+('Broken', GETDATE(), 3)
+GO
+
+USE [master]
 GO
