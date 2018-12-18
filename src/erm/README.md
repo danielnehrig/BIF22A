@@ -1,7 +1,7 @@
 # School IT Devices/Components Managment System
 
 ## Synopsis
-Createing a system that has a overview of devices the School owns
+Createing a system that has a overview of devices the School owns and its properties
 - Device Belongs or is in Room X
 - Device / Component is broken and has to be rapaired
 - Device / Component got repaired and is dated
