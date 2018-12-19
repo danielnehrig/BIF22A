@@ -11,12 +11,12 @@ namespace BKTMManager {
         Config config = new Config("config.cfg");
         // Load DeviceAdmin manager
         DeviceAdministration inventory = new DeviceAdministration(config.cnnInfo["ip"], config.cnnInfo["db"], config.cnnInfo["user"], config.cnnInfo["pw"]);
-        inventory.getRoomById("1");
+        new Utils().loopListOutput(inventory.getAllRooms());
       } catch (Exception ex) {
         Console.WriteLine(ex);
-        return 0;
+        return 1;
       }
-      return 1;
+      return 0;
     }
   }
 }

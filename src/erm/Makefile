@@ -1,18 +1,15 @@
 LIB = -r:System.data
 PKG = -pkg:dotnet
 COMP = mcs
-FILENAME = Program.exe
+SRCPATH = ./src/server/
+COMPILEPATH = ./dist/server/
+FILENAME = BKTMManager.exe
 
-Server:
-	make clean
+Build:
 	$(COMP) -recurse:*.cs $(LIB) -out:$(FILENAME)
-	mv ./$(FILENAME) ./dist/server/$(FILENAME)
-	cp ./src/server/config.cfg ./dist/server/config.cfg
+	mv ./$(FILENAME) $(COMPILEPATH)$(FILENAME)
+	cp $(SRCPATH)config.cfg $(COMPILEPATH)config.cfg
 
-
-test:
-	echo 'todo'
-
-clean:
+Clean:
 	rm ./dist/server/*.exe
 	rm ./dist/server/config.cfg
