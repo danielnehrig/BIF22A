@@ -3,8 +3,9 @@ using System.Collections.Generic;
 
 namespace BKTMManager.Types {
   class Device {
-    private string _id;
-    public string id {
+    private int _id;
+    public int id {
+      set { _id = value; }
       get { return _id; }
     }
 
@@ -14,7 +15,11 @@ namespace BKTMManager.Types {
       get { return _name; }
     }
 
-    public Device(string name) {
+    public Device() {
+    }
+
+    public Device(int id, string name) {
+      this._id = id;
       this._name = name;
     }
   }

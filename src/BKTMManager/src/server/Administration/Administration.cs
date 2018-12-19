@@ -6,31 +6,33 @@ using BKTMManager.Controller;
 using BKTMManager.Types;
 
 namespace BKTMManager.Administration {
-  class DeviceAdministration : IOController {
+  class AdministrationManager : IOController {
 
-    // extend the DeviceAdministration Constructor from inherited class IOController
-    public DeviceAdministration(string ip, string db, string user, string pw):base(ip, db, user, pw) {
+    // extend the AdministrationManager Constructor from inherited class IOController
+    public AdministrationManager(string ip, string db, string user, string pw):base(ip, db, user, pw) {
       // Todo
     }
 
     /*
      * Description - get the Device object from the given ID
      * @param <string> id - Device id from DB
-     * @return void
+     * @return Device
      */
-    public void getDeviceById(string id) {
+    public Device getDeviceById(string id) {
+      Device device = new Device();
       SqlCommand command = this._cnn.CreateCommand();
       try {
         command.CommandText = "SELECT * FROM [dbo].[Geräte] WHERE id LIKE " + id;
         SqlDataReader reader = command.ExecuteReader();
         while(reader.Read()) {
-          Console.WriteLine(String.Format("{0}, {1}", reader[0], reader[1]));
+          device.id = Convert.ToInt32(reader[0]);
+          device.name = Convert.ToString(reader[1]);
         }
       } catch (Exception ex) {
         Console.WriteLine(ex);
-      } finally {
-        this._cnn.Close();
       }
+      this._cnn.Close();
+      return device;
     }
 
     /*
@@ -49,6 +51,7 @@ namespace BKTMManager.Administration {
       } catch (Exception ex) {
         Console.WriteLine(ex);
       }
+      this._cnn.Close();
       return rooms;
     }
 
@@ -70,6 +73,7 @@ namespace BKTMManager.Administration {
       } catch (Exception ex) {
         Console.WriteLine(ex);
       }
+      this._cnn.Close();
       return room;
     }
   }

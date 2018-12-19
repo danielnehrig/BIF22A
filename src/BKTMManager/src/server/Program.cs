@@ -9,9 +9,9 @@ namespace BKTMManager {
       try {
         // Read the Config
         Config config = new Config("config.cfg");
-        // Load DeviceAdmin manager
-        DeviceAdministration inventory = new DeviceAdministration(config.cnnInfo["ip"], config.cnnInfo["db"], config.cnnInfo["user"], config.cnnInfo["pw"]);
-        new Utils().loopListOutput(inventory.getAllRooms());
+        // Load Administration manager
+        AdministrationManager inventory = new AdministrationManager(config.cnnInfo["ip"], config.cnnInfo["db"], config.cnnInfo["user"], config.cnnInfo["pw"]);
+        Utils.LoopListOutput(inventory.getAllRooms());
       } catch (Exception ex) {
         Console.WriteLine(ex);
         return 1;
