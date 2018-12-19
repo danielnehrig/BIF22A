@@ -1,9 +1,11 @@
 LIB = -r:System.data
+PKG = -pkg:dotnet
 COMP = mcs
 FILENAME = Program.exe
 
 Server:
-	$(COMP) ./src/server/inventar.cs $(LIB) -o $(FILENAME)
+	make clean
+	$(COMP) -recurse:*.cs $(LIB) -out:$(FILENAME)
 	mv ./$(FILENAME) ./dist/server/$(FILENAME)
 	cp ./src/server/config.cfg ./dist/server/config.cfg
 

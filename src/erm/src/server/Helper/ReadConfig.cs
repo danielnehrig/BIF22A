@@ -1,7 +1,9 @@
 using System;
 using System.IO;
+using System.Linq;
+using System.Collections.Generic;
 
-namespace BKTMManger.Helper {
+namespace BKTMManager.Helper {
   class Config {
     public Dictionary<string, string> cnnInfo = new Dictionary<string, string>();
 

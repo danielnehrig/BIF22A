@@ -1,5 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using BKTMManager.Controller;
+using BKTMManager.Types;
 
 namespace BKTMManager.Administration {
     class DeviceAdministration : IOController {

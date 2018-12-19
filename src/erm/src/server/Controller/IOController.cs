@@ -1,6 +1,6 @@
 using System;
-using System.data;
-using System.data.SqlConnection;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace BKTMManager.Controller {
   abstract class IOController {
