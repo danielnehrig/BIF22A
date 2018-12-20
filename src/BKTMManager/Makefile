@@ -1,4 +1,4 @@
-LIB = -r:System.data
+LIB = 
 PKG = -pkg:dotnet
 COMP = mcs
 SRCPATH = ./src/server/
@@ -6,8 +6,9 @@ COMPILEPATH = ./dist/server/
 FILENAME = BKTMManager.exe
 
 Build:
-	$(COMP) -recurse:*.cs $(LIB) -out:$(FILENAME)
-	mv ./$(FILENAME) $(COMPILEPATH)$(FILENAME)
+	cd $(SRCPATH); \
+	$(COMP) -recurse:*.cs $(PKG) $(LIB) -out:$(FILENAME)
+	mv $(SRCPATH)$(FILENAME) $(COMPILEPATH)$(FILENAME)
 	cp $(SRCPATH)config.cfg $(COMPILEPATH)config.cfg
 
 Clean:

@@ -1,0 +1,11 @@
+/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/obj/Debug/netcoreapp2.1/BKTMManager.csprojAssemblyReference.cache
+/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/obj/Debug/netcoreapp2.1/BKTMManager.csproj.CoreCompileInputs.cache
+/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/obj/Debug/netcoreapp2.1/BKTMManager.AssemblyInfoInputs.cache
+/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/obj/Debug/netcoreapp2.1/BKTMManager.AssemblyInfo.cs
+/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/bin/Debug/netcoreapp2.1/BKTMManager.deps.json
+/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/bin/Debug/netcoreapp2.1/BKTMManager.runtimeconfig.json
+/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/bin/Debug/netcoreapp2.1/BKTMManager.runtimeconfig.dev.json
+/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/bin/Debug/netcoreapp2.1/BKTMManager.dll
+/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/bin/Debug/netcoreapp2.1/BKTMManager.pdb
+/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/obj/Debug/netcoreapp2.1/BKTMManager.dll
+/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/obj/Debug/netcoreapp2.1/BKTMManager.pdb

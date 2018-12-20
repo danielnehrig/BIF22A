@@ -27,12 +27,11 @@ namespace BKTMManager.Controller {
      * @return bool
      */
     protected bool initConnection() {
-      string connetionString = null;
-      connetionString = "Data Source=" + this._ip + ";Initial Catalog=" + this._db + ";User ID=" + this._user + ";Password=" + this._pw;
-      this._cnn = new SqlConnection(connetionString);
       try {
-        _cnn.Open();
-        Console.WriteLine("Connection Open!");
+        string connetionString = null;
+        connetionString = "Data Source=" + this._ip + ";Initial Catalog=" + this._db + ";User ID=" + this._user + ";Password=" + this._pw;
+        this._cnn = new SqlConnection(connetionString);
+        Console.WriteLine("Connection Established!");
         return true;
       }
       catch (Exception ex) {
@@ -47,6 +46,7 @@ namespace BKTMManager.Controller {
     protected bool openConnection() {
       try {
         _cnn.Open();
+        Console.WriteLine("Connection Open!");
         return true;
       } catch (Exception ex) {
         Console.WriteLine(ex);

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 
 namespace BKTMManager.Types {
   class HardwareComponent {
-    private string _id;
-    public string id {
+    private int _id;
+    public int id {
       get { return _id; }
+      set { _id = value; }
     }
 
     private string _name;
@@ -29,6 +30,14 @@ namespace BKTMManager.Types {
     public HardwareComponent(string name, float price) {
       this._name = name;
       this._price = price;
+    }
+
+    public HardwareComponent(int id, string name, float price) {
+      this._name = name;
+      this._price = price;
+    }
+
+    public HardwareComponent() {
     }
   }
 }
