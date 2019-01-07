@@ -37,8 +37,10 @@ GO
 CREATE TABLE [dbo].[Hardware](
 	[id] [int] NOT NULL IDENTITY(1,1),
 	[categoryId] [int] NOT NULL,
-	[exchange] [tinyint] NOT NULL,
+	[isExchangend] [tinyint] NOT NULL,
 	[name] [nvarchar](255) NOT NULL,
+  [price] [float](255) NOT NULL,
+  [description] [nvarchar](255) NOT NULL,
  CONSTRAINT [PK_Hardware] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC

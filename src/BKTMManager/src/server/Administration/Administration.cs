@@ -4,11 +4,14 @@ using System.Data;
 using System.Data.SqlClient;
 using BKTMManager.Controller;
 using BKTMManager.Types;
+using System.Globalization;
 
 namespace BKTMManager.Administration {
   interface IAdministrationManager {
     List<HardwareComponent> GetAllHardwareComponents();
     HardwareComponent GetHardwareComponentsById(int id);
+    HardwareComponent CreateHardwareComponent(int id, string name, float price, bool isExchanged, string description);
+    HardwareComponent UpdateHardwareComponentById(int id, string name);
     List<Room> GetAllRooms();
     Room GetRoomById(int id);
     Room CreateRoom(string name);
@@ -60,7 +63,12 @@ namespace BKTMManager.Administration {
         command.CommandText = "SELECT * FROM [dbo].[HardwareComponent]";
         SqlDataReader reader = command.ExecuteReader();
         while (reader.Read()) {
-          components.Add(new HardwareComponent(Convert.ToInt32(reader[0]), Convert.ToString(reader[1]), Convert.ToInt32(reader[2])));
+          HardwareComponent temp = new HardwareComponent();
+          temp.id = Convert.ToInt32(reader[0]);
+          temp.name = Convert.ToString(reader[1]);
+          temp.price = (float)reader[2];
+          temp.isExchanged = Convert.ToBoolean(reader[3]);
+          temp.description = Convert.ToString(reader[4]);
         }
       } catch (Exception ex) {
         Console.WriteLine(ex);
@@ -68,6 +76,46 @@ namespace BKTMManager.Administration {
       }
 
       return components;
+    }
+
+    /*
+     * Description - Create Component
+     * @return HardwareComponenet
+     */
+    public HardwareComponent CreateHardwareComponent(int id, string name, float price, bool isExchanged, string description) {
+      HardwareComponent component = new HardwareComponent(id, name, price, isExchanged, description);
+      this.openConnection();
+      SqlCommand command = this._cnn.CreateCommand();
+      try {
+        command.CommandText = String.Format("INSERT INTO [dbo].[HardwareComponent] (name, price, isExchanged, description) VALUES ({0},{1},{2},{3})", name, price, isExchanged, description);
+        SqlDataReader reader = command.ExecuteReader();
+        this.closeConnection();
+      } catch (Exception ex) {
+        Console.WriteLine(ex);
+        return null;
+      }
+
+      return component;
+    }
+
+    /*
+     * Description - Update Component
+     * @return HardwareComponenet
+     */
+    public HardwareComponent UpdateHardwareComponentById(int id, string name) {
+      HardwareComponent component = new HardwareComponent();
+      this.openConnection();
+      SqlCommand command = this._cnn.CreateCommand();
+      try {
+        command.CommandText = String.Format("UPDATE [dbo].[HardwareComponent] SET name = {1} WHERE id = {0}", id, name);
+        SqlDataReader reader = command.ExecuteReader();
+        this.closeConnection();
+      } catch (Exception ex) {
+        Console.WriteLine(ex);
+        return null;
+      }
+
+      return component;
     }
 
     /*

@@ -2,6 +2,18 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 
+/*
+ * Database Tables
+ *
+ * Device
+ * Teacher
+ * User
+ * Hardware
+ * Damaged
+ * Room
+ * Category
+ */
+
 namespace BKTMManager.Controller {
   abstract class IOController {
     protected string _ip;
@@ -24,6 +36,7 @@ namespace BKTMManager.Controller {
     }
 
     /*
+     * open Connection
      * @return bool
      */
     protected bool initConnection() {
@@ -41,6 +54,7 @@ namespace BKTMManager.Controller {
     }
     
     /*
+     * close Connection
      * @return bool
      */
     protected bool openConnection() {

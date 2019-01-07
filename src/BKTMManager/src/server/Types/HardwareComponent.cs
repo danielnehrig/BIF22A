@@ -9,6 +9,12 @@ namespace BKTMManager.Types {
       set { _id = value; }
     }
 
+    private bool _isExchanged = false;
+    public bool isExchanged {
+      get { return _isExchanged; }
+      set { _isExchanged = value; }
+    }
+
     private string _name;
     public string name {
       set { _name = value; }
@@ -32,8 +38,11 @@ namespace BKTMManager.Types {
       this._price = price;
     }
 
-    public HardwareComponent(int id, string name, float price) {
+    public HardwareComponent(int id, string name, float price, bool isExchanged, string description) {
+      this._id = id;
       this._name = name;
+      this._description = description;
+      this._isExchanged = isExchanged;
       this._price = price;
     }
 
