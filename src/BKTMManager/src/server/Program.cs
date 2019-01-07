@@ -10,10 +10,10 @@ namespace BKTMManager {
         Config config = new Config("config.cfg");
 
         // Load Administration manager
-        AdministrationManager inventory = new AdministrationManager(config.cnnInfo["ip"], config.cnnInfo["db"], config.cnnInfo["user"], config.cnnInfo["pw"]);
+        AdministrationManager manager = new AdministrationManager(config.cnnInfo["ip"], config.cnnInfo["db"], config.cnnInfo["user"], config.cnnInfo["pw"]);
 
         // Output Table
-        Utils.LoopListOutput(inventory.GetAllRooms());
+        Utils.LoopListOutput(manager.GetAllRooms());
       } catch (Exception ex) {
         Console.WriteLine(ex);
         return 1;
