@@ -75,6 +75,7 @@ CREATE TABLE [dbo].[User](
 	[password] [nvarchar](255) NOT NULL,
 	[email] [nvarchar](255) NOT NULL,
 	[admin] [tinyint] NOT NULL,
+  [teacherId] [int] NOT NULL,
  CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -114,6 +115,7 @@ GO
 CREATE TABLE [dbo].[Room](
 	[id] [int] NOT NULL IDENTITY(1,1),
 	[roomNr] [nvarchar](255) NOT NULL,
+	[description] [nvarchar](255) NOT NULL,
  CONSTRAINT [PK_Room] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -143,6 +145,9 @@ ALTER TABLE [dbo].[Damaged]  WITH CHECK ADD  CONSTRAINT [FK_Damaged_Device] FORE
 REFERENCES [dbo].[Device] ([id])
 GO
 ALTER TABLE [dbo].[Damaged] CHECK CONSTRAINT [FK_Damaged_Device]
+GO
+ALTER TABLE [dbo].[User]  WITH CHECK ADD  CONSTRAINT [FK_User_Teacher] FOREIGN KEY([roomId])
+REFERENCES [dbo].[Room] ([id])
 GO
 ALTER TABLE [dbo].[Teacher]  WITH CHECK ADD  CONSTRAINT [FK_Teacher_room] FOREIGN KEY([roomId])
 REFERENCES [dbo].[Room] ([id])
@@ -181,18 +186,18 @@ GO
 
 /** Test Data **/
 
-INSERT INTO [dbo].[Room] (roomId) VALUES
-('C102'),
-('C103'),
-('C104'),
-('C105'),
-('C105'),
-('C106'),
-('C212'),
-('C213'),
-('C214'),
-('C215'),
-('C216')
+INSERT INTO [dbo].[Room] (roomId, description) VALUES
+('C102', 'PC Room'),
+('C103', 'PC Room'),
+('C104', 'PC Room'),
+('C105', 'PC Room'),
+('C105', 'PC Room'),
+('C106', 'PC Room'),
+('C212', 'PC Room'),
+('C213', 'PC Room'),
+('C214', 'PC Room'),
+('C215', 'PC Room'),
+('C216', 'PC Room')
 GO
 
 INSERT INTO [dbo].[Category] (name) VALUES
@@ -204,7 +209,9 @@ INSERT INTO [dbo].[Category] (name) VALUES
 ('HDD'),
 ('RAM'),
 ('Mouse'),
-('Keyboard')
+('Keyboard'),
+('Router'),
+('Switch')
 GO
 
 INSERT INTO [dbo].[DeviceReseller] (name, location) VALUES
@@ -221,7 +228,12 @@ INSERT INTO [dbo].[Device] (dateBuy, inventoryNr, categoryId, resellerId, price)
 GO
 
 
+INSERT INTO [dbo].[User] (username, password, email, admin, teacherId) VALUES
+('root', 'root', 'root@localhost', 1, 1)
+GO
+
 INSERT INTO [dbo].[Teacher] (firstname, lastname, email, roomId, roomOwner) VALUES
+('root', 'root', 'root@localhost', 0, 0),
 ('Franz', 'Kostas', 'fKostas@bk-tm.de', 1, 1),
 ('Heinz', 'Badu', 'hBadu@bk-tm.de', 2, 0),
 ('Peter', 'Kakau', 'pKakau@bk-tm.de', 3, 0)
