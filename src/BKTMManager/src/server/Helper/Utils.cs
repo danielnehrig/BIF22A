@@ -1,14 +1,19 @@
 using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Data.Entity;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using BKTMManager.Types;
 
 namespace BKTMManager.Helper {
-  static class Utils {
-    public static void LoopListOutput(List<Room> rooms) {
+  public static class Utils {
+    public static void LoopListOutput(List<Room> items) {
       try {
-        Console.WriteLine("ID ; ROOM NAME");
-        foreach (Room room in rooms) {
-          Console.WriteLine(room.id + " " + room.name);
+        Console.WriteLine("ID ; ROOM");
+        foreach (Room item in items) {
+          Console.WriteLine(item.id + " " + item.name);
         }
       } catch(Exception ex) {
         Console.WriteLine(ex);

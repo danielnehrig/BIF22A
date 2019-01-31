@@ -1,5 +1,10 @@
 namespace BKTMManager.Types {
-  class Room {
+  interface IRoom {
+    int id { get; set; }
+    string name { get; set; }
+  }
+
+  public class Room : IRoom {
     private int _id;
     public int id {
       get { return _id; }

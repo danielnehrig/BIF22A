@@ -15,7 +15,7 @@ using System.Data.SqlClient;
  */
 
 namespace BKTMManager.Controller {
-  abstract class IOController {
+  public abstract class IOController {
     protected string _ip;
     protected string _db;
     protected string _user;

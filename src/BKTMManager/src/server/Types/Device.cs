@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 namespace BKTMManager.Types {
-  class Device {
+  public class Device {
     private int _id;
     public int id {
       set { _id = value; }

@@ -2,6 +2,17 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.1": {
+      "EntityFramework/6.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
+        },
+        "runtime": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
+        }
+      },
       "Google.Protobuf/3.5.1": {
         "type": "package",
         "dependencies": {
@@ -329,6 +340,18 @@
           "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll": {}
         }
       },
+      "System.Data.Entity.Repository/2.0.0.1": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework": "5.0.0"
+        },
+        "compile": {
+          "lib/net45/System.Data.Entity.Repository.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Data.Entity.Repository.dll": {}
+        }
+      },
       "System.Data.SqlClient/4.6.0": {
         "type": "package",
         "dependencies": {
@@ -453,11 +476,42 @@
     }
   },
   "libraries": {
+    "EntityFramework/6.2.0": {
+      "sha512": "+aB/cnEAr9KqVMjmZwu+Fzy3EOPjCIzNsPAUyn19WbB2u3LFHd2OB3X56ohAj7EBf2hppl9M27nlRnkQxOhoAA==",
+      "type": "package",
+      "path": "entityframework/6.2.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/net40/App.config.transform",
+        "content/net40/Web.config.transform",
+        "entityframework.6.2.0.nupkg.sha512",
+        "entityframework.nuspec",
+        "lib/net40/EntityFramework.SqlServer.dll",
+        "lib/net40/EntityFramework.SqlServer.xml",
+        "lib/net40/EntityFramework.dll",
+        "lib/net40/EntityFramework.xml",
+        "lib/net45/EntityFramework.SqlServer.dll",
+        "lib/net45/EntityFramework.SqlServer.xml",
+        "lib/net45/EntityFramework.dll",
+        "lib/net45/EntityFramework.xml",
+        "tools/EntityFramework.PowerShell.Utility.dll",
+        "tools/EntityFramework.PowerShell.dll",
+        "tools/EntityFramework.psd1",
+        "tools/EntityFramework.psm1",
+        "tools/about_EntityFramework.help.txt",
+        "tools/init.ps1",
+        "tools/install.ps1",
+        "tools/migrate.exe"
+      ]
+    },
     "Google.Protobuf/3.5.1": {
-      "sha512": "j/gbpRZ68sgvdi/vXI39Cj/jWG4d1dtDqfWbkjC9dErNWu/dFcIlq1LIgLscea+llZ6nzm06wz/JGziOegAL7Q==",
+      "sha512": "f2k1VNaB9bfvEsvARzzEL1TZiIpL33KKK3JMH7UANlPlJVptuvsk4qpBZEnz0pORWZOdUHlVwMQuUzFqjJYCxA==",
       "type": "package",
       "path": "google.protobuf/3.5.1",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "google.protobuf.3.5.1.nupkg.sha512",
         "google.protobuf.nuspec",
@@ -468,10 +522,11 @@
       ]
     },
     "Microsoft.NETCore.App/2.1.0": {
-      "sha512": "AvT774nTFgU8cYcGO9j1EMwuayKslxqYTurg32HGpWa2hEYNuW2+XgYVVNcZe6Ndbr84QX6fwaOZfd5n+1m2OA==",
+      "sha512": "2DtRTpAhUdaPDnBM1R4Tbl1hxLW+3L4/byMonI+7aAQPFRmVeKc1epmM4wpxA4h1E7uK6tSPOBOU7f+MDcY5Bg==",
       "type": "package",
       "path": "microsoft.netcore.app/2.1.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "Microsoft.NETCore.App.versions.txt",
@@ -733,10 +788,11 @@
       ]
     },
     "Microsoft.NETCore.DotNetAppHost/2.1.0": {
-      "sha512": "f/47I60Wg3SrveTvnecCQhCZCAMYlUujWF15EQ/AZTqF/54qeEJjbCIAxKcZI8ToUYzSg6JdfrHggsgjCyCE9Q==",
+      "sha512": "cZiASE81rksPJsGJ04hd/uEn6guNGAoqNsrzE/DP6AaNRPCHwTe6nZvHd4uAPj3MaVRQ3U0c6cRycMaHCYLPUQ==",
       "type": "package",
       "path": "microsoft.netcore.dotnetapphost/2.1.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -746,10 +802,11 @@
       ]
     },
     "Microsoft.NETCore.DotNetHostPolicy/2.1.0": {
-      "sha512": "p50yZYKzhH64lmArJgoKjtvsNehECa+/sAuOQzZh5uDNBTbRKxjN8IXP1e517xdVsgrFcSNxSEVDKZIOWVjGcQ==",
+      "sha512": "LdhSWUEZmFalhz6fLBE5WDmCdO9jqvW5q3CUOTk9n/hdmmwnTu7KowPPIw5p2t1vn7ozStLG3RZMJbf48f7WtA==",
       "type": "package",
       "path": "microsoft.netcore.dotnethostpolicy/2.1.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -759,10 +816,11 @@
       ]
     },
     "Microsoft.NETCore.DotNetHostResolver/2.1.0": {
-      "sha512": "fS9D8a+y55n6mHMbNqgHXaPGkjmpVH9h97OyrBxsCuo3Z8aQaFMJ5xIfmzji2ntUd/3truhMbSgSfIelHOkQpg==",
+      "sha512": "+9D7G59Fz1H2ZO87Hlgl7Zv44BrAmWnyRfqrofrHW4gQTu573xQP6cuYiNUeqr189eH6hZuh5MKUhOoUGJjqiQ==",
       "type": "package",
       "path": "microsoft.netcore.dotnethostresolver/2.1.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -772,10 +830,11 @@
       ]
     },
     "Microsoft.NETCore.Platforms/2.1.0": {
-      "sha512": "TT+QCi9LcxGTjBssH7S7n5+8DVcwfG4DYgXX7Dk7+BfZ4oVHj8Q0CbYk9glzAlHLsSt3bYzol+fOdra2iu6GOw==",
+      "sha512": "GmkKfoyerqmsHMn7OZj0AKpcBabD+GaafqphvX2Mw406IwiJRy1pKcKqdCfKJfYmkRyJ6+e+RaUylgdJoDa1jQ==",
       "type": "package",
       "path": "microsoft.netcore.platforms/2.1.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -788,10 +847,11 @@
       ]
     },
     "Microsoft.NETCore.Targets/2.1.0": {
-      "sha512": "etaYwrLZQUS+b3UWTpCnUggd6SQ/ZIkZ5pHnoR7+dIWt/wp2Rv3CvMKOZISsrt7FYCHKwCxfcepuuyEWkQxADg==",
+      "sha512": "I2NAAePyfAzSLl/AWmgNs493xJQDDql2Ldpx3PRl7fE+FrsgdGmVHyyWlfd3doMkxHPstOkqYVGvSLbIBhyzsg==",
       "type": "package",
       "path": "microsoft.netcore.targets/2.1.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -844,10 +904,11 @@
       ]
     },
     "MySql.Data/8.0.13": {
-      "sha512": "mXfjg2pOdzpyd4wkXZPKYcNluzV68ggAO/LPcT7iuzU5kDS7livUDR8IsKkarEhBmRxBy0XmBnUOkEWJvfOW9Q==",
+      "sha512": "lj/0OSRrs4VwsGDSjU0w24fwLxIU1fwesohzg+UfoDfqiSAu+fykeFF9y+fCmip8ZlkHegYNdEAHdhLfmZbSIw==",
       "type": "package",
       "path": "mysql.data/8.0.13",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "lib/net452/MySql.Data.dll",
         "lib/net452/MySql.Data.xml",
@@ -990,10 +1051,11 @@
       ]
     },
     "Newtonsoft.Json/12.0.1": {
-      "sha512": "jmVyoEyk0In8r+AObYQyFKVFm7uSRzE0XSHSbEtBJcZDMV6DqJoyB4FLcHwprPVhAh826so0db3DIKXVnpGoPA==",
+      "sha512": "pBR3wCgYWZGiaZDYP+HHYnalVnPJlpP1q55qvVb+adrDHmFMDc1NAKio61xTwftK3Pw5h7TZJPJEEVMd6ty8rg==",
       "type": "package",
       "path": "newtonsoft.json/12.0.1",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.md",
         "lib/net20/Newtonsoft.Json.dll",
@@ -1028,10 +1090,11 @@
       ]
     },
     "NUnit/3.11.0": {
-      "sha512": "zecrYxUA5p5w8AZ2bvbBbiUIcrQnZAVPrziNMSWMdcOi0D2Oe7yKUNivWPIQMcUwQDHmWtS/ijnD48ubU/eHZQ==",
+      "sha512": "BzGk+u02RCrysmLlSzD+okxzMQ8JRF4eFC/qijDJ8Y/FBdTrTkxkQyTFsYkG1o++pr7QpFAE4VDXDqIfZ/gBAg==",
       "type": "package",
       "path": "nunit/3.11.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "CHANGES.md",
         "LICENSE.txt",
@@ -1121,10 +1184,11 @@
       ]
     },
     "System.Configuration.ConfigurationManager/4.4.1": {
-      "sha512": "LoSjM/kLDpyLyoGsmwS5oVMRzHf/0XHkRpr3QZu/HuAv6Sfk919usTMLqD9N9VK3S4Q2+bd3tKJ0ko4MYFfq4Q==",
+      "sha512": "jz3TWKMAeuDEyrPCK5Jyt4bzQcmzUIMcY9Ud6PkElFxTfnsihV+9N/UCqvxe1z5gc7jMYAnj7V1COMS9QKIuHQ==",
       "type": "package",
       "path": "system.configuration.configurationmanager/4.4.1",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -1140,8 +1204,20 @@
         "version.txt"
       ]
     },
+    "System.Data.Entity.Repository/2.0.0.1": {
+      "sha512": "MnYUvHPcOAUGIyOzKR4A6Kd918VkCjKpfFCQoNdjY6LO4y1QwrwWZtdmOs2B3wozTYfJgPWKpIeW3ZHn+ylgrA==",
+      "type": "package",
+      "path": "system.data.entity.repository/2.0.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/System.Data.Entity.Repository.dll",
+        "system.data.entity.repository.2.0.0.1.nupkg.sha512",
+        "system.data.entity.repository.nuspec"
+      ]
+    },
     "System.Data.SqlClient/4.6.0": {
-      "sha512": "cppLAiY36su7Hr9dOaeDXRkndLKtnh7HgQgOfAgV0oN764BQXShll7yBZ8OwPtdYUSuwTT0re7eDQPGhwnojVQ==",
+      "sha512": "gwItUWW1BMCckicFO85c8frFaMK8SGqYn5IeA3GSX4Lmid+CjXETfoHz7Uv+Vx6L0No7iRc/7cBL8gd6o9k9/g==",
       "type": "package",
       "path": "system.data.sqlclient/4.6.0",
       "files": [
@@ -1284,10 +1360,11 @@
       ]
     },
     "System.Security.Cryptography.ProtectedData/4.4.0": {
-      "sha512": "WwEexvBd+17yfY7fcS+fBGl+HADEfCJuKeDJqBT7D6j6vKwYvfLyGuq2y/MmrKORC6mbYwth7kjinO1mPhTL3g==",
+      "sha512": "cJV7ScGW7EhatRsjehfvvYVBvtiSMKgN8bOVI0bQhnF5bU7vnHVIsH49Kva7i7GWaWYvmEzkYVk1TC+gZYBEog==",
       "type": "package",
       "path": "system.security.cryptography.protecteddata/4.4.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -1324,10 +1401,11 @@
       ]
     },
     "System.Security.Permissions/4.4.1": {
-      "sha512": "tXBMO8OJEuw9c4KjLj4fwxJusely90azF24Uktz/evgvowAtU963HYl+G93gaRZr6pvYvsSPrjkN4+2pdVUbgw==",
+      "sha512": "l8IxQ9mEAkKv85uoEcjcYhrh+yTLZtLgNqb2T7QChTdKXh45EUnmKd+Ckdt1D+VYW2dk2Pb5MT+0zwQ74Jd2Xg==",
       "type": "package",
       "path": "system.security.permissions/4.4.1",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -1436,10 +1514,12 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
+      "EntityFramework >= 6.2.0",
       "Microsoft.NETCore.App >= 2.1.0",
       "MySql.Data >= 8.0.13",
       "NUnit >= 3.11.0",
       "Newtonsoft.Json >= 12.0.1",
+      "System.Data.Entity.Repository >= 2.0.0.1",
       "System.Data.SqlClient >= 4.6.0"
     ]
   },
@@ -1454,13 +1534,13 @@
       "projectName": "BKTMManager",
       "projectPath": "/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/BKTMManager.csproj",
       "packagesPath": "/Users/dnehrig/.nuget/packages/",
-      "outputPath": "/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/obj",
+      "outputPath": "/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/dnehrig/.config/NuGet/NuGet.Config"
+        "/Users/dnehrig/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
@@ -1482,6 +1562,10 @@
     "frameworks": {
       "netcoreapp2.1": {
         "dependencies": {
+          "EntityFramework": {
+            "target": "Package",
+            "version": "[6.2.0, )"
+          },
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
             "target": "Package",
@@ -1500,6 +1584,10 @@
             "target": "Package",
             "version": "[12.0.1, )"
           },
+          "System.Data.Entity.Repository": {
+            "target": "Package",
+            "version": "[2.0.0.1, )"
+          },
           "System.Data.SqlClient": {
             "target": "Package",
             "version": "[4.6.0, )"
@@ -1512,5 +1600,27 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'EntityFramework 6.2.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
+      "libraryId": "EntityFramework",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Data.Entity.Repository 2.0.0.1' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
+      "libraryId": "System.Data.Entity.Repository",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.1"
+      ]
+    }
+  ]
 }

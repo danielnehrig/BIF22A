@@ -1,4 +1,4 @@
 namespace BKTMManager.Types {
-  class Teacher : User {
+  public class Teacher : User {
   }
 }

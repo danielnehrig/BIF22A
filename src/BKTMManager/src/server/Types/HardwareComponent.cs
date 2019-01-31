@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 namespace BKTMManager.Types {
-  class HardwareComponent {
+  public class HardwareComponent {
     private int _id;
     public int id {
       get { return _id; }

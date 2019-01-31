@@ -39,7 +39,7 @@ CREATE TABLE [dbo].[Hardware](
 	[categoryId] [int] NOT NULL,
 	[isExchangend] [tinyint] NOT NULL,
 	[name] [nvarchar](255) NOT NULL,
-  [price] [float](255) NOT NULL,
+  [price] [float](53) NOT NULL,
   [description] [nvarchar](255) NOT NULL,
  CONSTRAINT [PK_Hardware] PRIMARY KEY CLUSTERED 
 (
@@ -146,8 +146,8 @@ REFERENCES [dbo].[Device] ([id])
 GO
 ALTER TABLE [dbo].[Damaged] CHECK CONSTRAINT [FK_Damaged_Device]
 GO
-ALTER TABLE [dbo].[User]  WITH CHECK ADD  CONSTRAINT [FK_User_Teacher] FOREIGN KEY([roomId])
-REFERENCES [dbo].[Room] ([id])
+ALTER TABLE [dbo].[User]  WITH CHECK ADD  CONSTRAINT [FK_User_Teacher] FOREIGN KEY([teacherId])
+REFERENCES [dbo].[Teacher] ([id])
 GO
 ALTER TABLE [dbo].[Teacher]  WITH CHECK ADD  CONSTRAINT [FK_Teacher_room] FOREIGN KEY([roomId])
 REFERENCES [dbo].[Room] ([id])
@@ -186,7 +186,7 @@ GO
 
 /** Test Data **/
 
-INSERT INTO [dbo].[Room] (roomId, description) VALUES
+INSERT INTO [dbo].[Room] (roomNr, description) VALUES
 ('C102', 'PC Room'),
 ('C103', 'PC Room'),
 ('C104', 'PC Room'),
@@ -227,25 +227,22 @@ INSERT INTO [dbo].[Device] (dateBuy, inventoryNr, categoryId, resellerId, price)
 (GETDATE(), 4, 2, 3, '48.10')
 GO
 
-
-INSERT INTO [dbo].[User] (username, password, email, admin, teacherId) VALUES
-('root', 'root', 'root@localhost', 1, 1)
-GO
-
 INSERT INTO [dbo].[Teacher] (firstname, lastname, email, roomId, roomOwner) VALUES
-('root', 'root', 'root@localhost', 0, 0),
 ('Franz', 'Kostas', 'fKostas@bk-tm.de', 1, 1),
 ('Heinz', 'Badu', 'hBadu@bk-tm.de', 2, 0),
 ('Peter', 'Kakau', 'pKakau@bk-tm.de', 3, 0)
 GO
 
-INSERT INTO [dbo].[Hardware] (name, exchange, categoryId) VALUES
-('Intel i7 K4700', 1, 3),
-('Intel i9 K9990', 0, 3),
-('Intel i7 K6770', 0, 3)
+INSERT INTO [dbo].[User] (username, password, email, admin, teacherId) VALUES
+('root', 'root', 'root@localhost', 1, 1)
 GO
 
-INSERT INTO [dbo].[Damaged] (description, dateExchange, deviceId) VALUES
+INSERT INTO [dbo].[Hardware] (description, name, isExchangend, categoryId, price) VALUES
+('abc', 'Intel i7 K4700', 1, 3, 10),
+('abc', 'Intel i9 K9990', 0, 3, 10)
+GO
+
+INSERT INTO [dbo].[Damaged] (description, date, deviceId) VALUES
 ('Broken', GETDATE(), 1),
 ('Broken', GETDATE(), 2),
 ('Broken', GETDATE(), 3)

@@ -1,7 +1,7 @@
-using System.ComponentModel.DataAnnotations;
+using System;
 
 namespace BKTMManager.Types {
-  abstract class User {
+  public abstract class User {
     private string _username;
     public string username {
       get { return _username; }
@@ -12,7 +12,7 @@ namespace BKTMManager.Types {
     public string email {
       get { return _email; }
       set { 
-        if (this.validateEmail(value)) {
+        if (true) {
           _email = value;
         } else {
           Console.WriteLine("Error Bad Email");
@@ -34,7 +34,7 @@ namespace BKTMManager.Types {
 
     private bool validateEmail(string email) {
       try {
-        if (new EmailAddressAttribute().IsValid(email)) {
+        if (true) {
           return true;
         }
       }

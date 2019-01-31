@@ -2,9 +2,35 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using BKTMManager.Controller;
 using BKTMManager.Types;
 using System.Globalization;
+using System.Data.Entity;
+
+
+/**
+ * What is my Problem with this Code? :
+ *
+ * I have one problem with this
+ * I don't want to generate redundant code
+ * means that my class composition and aggragation
+ * should act in a way that it helps me to not get in a habit of duplicating code functions that basically do the same with minor differences
+ * for example i want to make a CREATE,UPDATE,DELETE,GET (CRUD) function for a certain item from a database
+ * the probleme is that the different tables i want this schema to apply
+ * are in different object types one might be a Room the other one a Device but i want all these functions to apply to both objects
+ */
+
+/**
+ * How can i solve the Problem?
+ *
+ * Using the administrationmanager and create a composition between various types means
+ * i would do something like 
+ * AdministrationManager().Device.Create();
+ * AdministrationManager().Room.Update();
+ * mean the user would interact with the administrationmanager backend
+ * i would create a interface for the functions i want in my derivated database types like Device and Room
+ */
 
 namespace BKTMManager.Administration {
   interface IAdministrationManager {
@@ -20,8 +46,7 @@ namespace BKTMManager.Administration {
     Device GetDeviceById(int id);
   }
 
-  class AdministrationManager : IOController, IAdministrationManager {
-
+  class AdministrationManager : IOController {
     // extend the AdministrationManager Constructor from inherited class IOController
     public AdministrationManager(string ip, string db, string user, string pw):base(ip, db, user, pw) {
       // Todo
@@ -218,7 +243,7 @@ namespace BKTMManager.Administration {
         command.CommandText = "SELECT * FROM [dbo].[Room]";
         SqlDataReader reader = command.ExecuteReader();
         while(reader.Read()) {
-          rooms.Add(new Room(Convert.ToInt32(reader[0]), Convert.ToString(reader[1])));
+          rooms.Add(new Room(reader.GetInt32(0), reader.GetString(1)));
         }
       } catch (Exception ex) {
         Console.WriteLine(ex);
@@ -234,7 +259,7 @@ namespace BKTMManager.Administration {
      * @param <string> id - room id from DB
      * @return Room
      */
-    public Room GetRoomById(int id) {
+    public void GetRoomById(int id) {
       Room room = new Room();
       this.openConnection();
       SqlCommand command = this._cnn.CreateCommand();
@@ -242,16 +267,14 @@ namespace BKTMManager.Administration {
         command.CommandText = "SELECT * FROM [dbo].[Room] WHERE id LIKE " + id;
         SqlDataReader reader = command.ExecuteReader();
         while(reader.Read()) {
-          room.id = Convert.ToInt32(reader[0]);
-          room.name = Convert.ToString(reader[1]);
+          Console.WriteLine(Convert.ToInt32(reader[0]));
+          Console.WriteLine(Convert.ToString(reader[1]));
         }
       } catch (Exception ex) {
         Console.WriteLine(ex);
-        return null;
       }
 
       this._cnn.Close();
-      return room;
     }
   }
 }
