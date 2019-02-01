@@ -1,4 +1,4 @@
-LIB = -r:../../EntityFramework.dll
+LIB = -r:../../dep/EntityFramework.dll
 PKG = -pkg:dotnet
 COMP = mcs
 SRCPATH = ./src/server/

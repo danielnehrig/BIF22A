@@ -34,6 +34,7 @@ namespace BKTMManager.Administration {
         SqlDataReader reader = command.ExecuteReader();
         this.openConnection();
         while(reader.Read()) {
+          // genericly getting db info
           object[] args = new Object[] { reader.GetInt32(0) };
           entitys.Add((TEntity)Activator.CreateInstance(typeof(TEntity), args));
           // GetName
