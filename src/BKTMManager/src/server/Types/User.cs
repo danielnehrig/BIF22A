@@ -1,7 +1,8 @@
 using System;
 
 namespace BKTMManager.Types {
-  public abstract class User {
+  public class User {
+    public User() { }
     private string _username;
     public string username {
       get { return _username; }
@@ -11,13 +12,7 @@ namespace BKTMManager.Types {
     private string _email;
     public string email {
       get { return _email; }
-      set { 
-        if (true) {
-          _email = value;
-        } else {
-          Console.WriteLine("Error Bad Email");
-        }
-      }
+      set { _email = value; }
     }
 
     private string _password;

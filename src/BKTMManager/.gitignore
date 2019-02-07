@@ -3,3 +3,6 @@
 config.cfg
 dist
 dep
+req
+bin
+obj

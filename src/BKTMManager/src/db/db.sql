@@ -132,50 +132,50 @@ CREATE TABLE [dbo].[RoomTeacher](
 /** Adding Key Relations to Tables **/
 GO
 ALTER TABLE [dbo].[HardwareDevice]  WITH CHECK ADD  CONSTRAINT [FK_HardwareDevice_Device] FOREIGN KEY([deviceId])
-REFERENCES [dbo].[Device] ([id])
+REFERENCES [dbo].[Device] ([id]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[HardwareDevice] CHECK CONSTRAINT [FK_HardwareDevice_Device]
 GO
 ALTER TABLE [dbo].[HardwareDevice]  WITH CHECK ADD  CONSTRAINT [FK_HardwareDevice_Hardware] FOREIGN KEY([hardwareId])
-REFERENCES [dbo].[Hardware] ([id])
+REFERENCES [dbo].[Hardware] ([id]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[HardwareDevice] CHECK CONSTRAINT [FK_HardwareDevice_Hardware]
 GO
 ALTER TABLE [dbo].[Damaged]  WITH CHECK ADD  CONSTRAINT [FK_Damaged_Device] FOREIGN KEY([deviceId])
-REFERENCES [dbo].[Device] ([id])
+REFERENCES [dbo].[Device] ([id]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[Damaged] CHECK CONSTRAINT [FK_Damaged_Device]
 GO
 ALTER TABLE [dbo].[User]  WITH CHECK ADD  CONSTRAINT [FK_User_Teacher] FOREIGN KEY([teacherId])
-REFERENCES [dbo].[Teacher] ([id])
+REFERENCES [dbo].[Teacher] ([id]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[Teacher]  WITH CHECK ADD  CONSTRAINT [FK_Teacher_room] FOREIGN KEY([roomId])
-REFERENCES [dbo].[Room] ([id])
+REFERENCES [dbo].[Room] ([id]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[Teacher] CHECK CONSTRAINT [FK_Teacher_room]
 GO
 ALTER TABLE [dbo].[Device]  WITH CHECK ADD  CONSTRAINT [FK_Device_Category] FOREIGN KEY([categoryId])
-REFERENCES [dbo].[Category] ([id])
+REFERENCES [dbo].[Category] ([id]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[Device] CHECK CONSTRAINT [FK_Device_Category]
 GO
 ALTER TABLE [dbo].[Hardware]  WITH CHECK ADD  CONSTRAINT [FK_Hardware_Category] FOREIGN KEY([categoryId])
-REFERENCES [dbo].[Category] ([id])
+REFERENCES [dbo].[Category] ([id]) ON DELETE NO ACTION
 GO
 ALTER TABLE [dbo].[Hardware] CHECK CONSTRAINT [FK_Hardware_Category]
 GO
 ALTER TABLE [dbo].[Device]  WITH CHECK ADD  CONSTRAINT [FK_Device_DeviceReseller] FOREIGN KEY([resellerId])
-REFERENCES [dbo].[DeviceReseller] ([id])
+REFERENCES [dbo].[DeviceReseller] ([id]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[HardwareDevice] CHECK CONSTRAINT [FK_HardwareDevice_Hardware]
 GO
 ALTER TABLE [dbo].[RoomTeacher]  WITH CHECK ADD  CONSTRAINT [FK_RoomTeacher_Teacher] FOREIGN KEY([teacherId])
-REFERENCES [dbo].[Teacher] ([id])
+REFERENCES [dbo].[Teacher] ([id]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[RoomTeacher] CHECK CONSTRAINT [FK_RoomTeacher_Teacher]
 GO
 ALTER TABLE [dbo].[RoomTeacher]  WITH CHECK ADD  CONSTRAINT [FK_RoomTeacher_Room] FOREIGN KEY([roomId])
-REFERENCES [dbo].[Room] ([id])
+REFERENCES [dbo].[Room] ([id]) ON DELETE NO ACTION
 GO
 ALTER TABLE [dbo].[RoomTeacher] CHECK CONSTRAINT [FK_RoomTeacher_Room]
 GO

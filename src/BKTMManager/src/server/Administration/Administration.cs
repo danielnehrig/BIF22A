@@ -8,7 +8,6 @@ using BKTMManager.Types;
 using System.Globalization;
 using System.Data.Entity;
 
-
 /**
  * What is my Problem with this Code? :
  *
@@ -32,18 +31,27 @@ using System.Data.Entity;
  * i would create a interface for the functions i want in my derivated database types like Device and Room
  */
 
+/**
+ * Solution :
+ * The RepoAdmin.cs
+ * should solve the problem with a Generic Repository design pattern
+ */
+
 namespace BKTMManager.Administration {
   interface IAdministrationManager {
     List<HardwareComponent> GetAllHardwareComponents();
     HardwareComponent GetHardwareComponentsById(int id);
-    HardwareComponent CreateHardwareComponent(int id, string name, float price, bool isExchanged, string description);
-    HardwareComponent UpdateHardwareComponentById(int id, string name);
+    void CreateHardwareComponent(int id, string name, float price, bool isExchanged, string description);
+    void UpdateHardwareComponentById(int id, string name);
+    void DeleteHardwareComponentById(int id);
     List<Room> GetAllRooms();
     Room GetRoomById(int id);
-    Room CreateRoom(string name);
-    Room UpdateRoomByName(string oldName, string newName);
+    void CreateRoom(string name);
+    void DeleteRoom(string name);
+    void UpdateRoomByName(string oldName, string newName);
     List<Device> GetAllDevices();
     Device GetDeviceById(int id);
+    void DeleteDevice(int id);
   }
 
   class AdministrationManager : IOController {
@@ -62,11 +70,12 @@ namespace BKTMManager.Administration {
       this.openConnection();
       SqlCommand command = this._cnn.CreateCommand();
       try {
-        command.CommandText = "SELECT * FROM [dbo].[HardwareComponent] WHERE id LIKE " + id;
+        command.CommandText = "SELECT * FROM [dbo].[HardwareComponent] WHERE id LIKE @id";
+        command.Parameters.AddWithValue("@id", id);
         SqlDataReader reader = command.ExecuteReader();
         while (reader.Read()) {
-          component.id = Convert.ToInt32(reader[0]);
-          component.name = Convert.ToString(reader[1]);
+          component.id = reader.GetInt32(0);
+          component.name = reader.GetString(1);
         }
       } catch (Exception ex) {
         Console.WriteLine(ex);
@@ -89,11 +98,11 @@ namespace BKTMManager.Administration {
         SqlDataReader reader = command.ExecuteReader();
         while (reader.Read()) {
           HardwareComponent temp = new HardwareComponent();
-          temp.id = Convert.ToInt32(reader[0]);
-          temp.name = Convert.ToString(reader[1]);
-          temp.price = (float)reader[2];
-          temp.isExchanged = Convert.ToBoolean(reader[3]);
-          temp.description = Convert.ToString(reader[4]);
+          temp.id = reader.GetInt32(0);
+          temp.name = reader.GetString(1);
+          temp.price = reader.GetFloat(2);
+          temp.isExchanged = reader.GetBoolean(3);
+          temp.description = reader.GetString(4);
         }
       } catch (Exception ex) {
         Console.WriteLine(ex);
@@ -107,40 +116,53 @@ namespace BKTMManager.Administration {
      * Description - Create Component
      * @return HardwareComponenet
      */
-    public HardwareComponent CreateHardwareComponent(int id, string name, float price, bool isExchanged, string description) {
-      HardwareComponent component = new HardwareComponent(id, name, price, isExchanged, description);
+    public void CreateHardwareComponent(string name, float price, bool isExchanged, string description) {
       this.openConnection();
       SqlCommand command = this._cnn.CreateCommand();
       try {
-        command.CommandText = String.Format("INSERT INTO [dbo].[HardwareComponent] (name, price, isExchanged, description) VALUES ({0},{1},{2},{3})", name, price, isExchanged, description);
-        SqlDataReader reader = command.ExecuteReader();
+        command.CommandText = String.Format("INSERT INTO [dbo].[HardwareComponent] (name, price, isExchanged, description) VALUES (@name, @price, @isExchanged, @description)");
+        command.Parameters.AddWithValue("@name", name);
+        command.Parameters.AddWithValue("@price", price);
+        command.Parameters.AddWithValue("@isExchanged", isExchanged);
+        command.Parameters.AddWithValue("@description", description);
+        command.ExecuteNonQuery();
         this.closeConnection();
       } catch (Exception ex) {
         Console.WriteLine(ex);
-        return null;
       }
-
-      return component;
     }
 
     /*
      * Description - Update Component
-     * @return HardwareComponenet
      */
-    public HardwareComponent UpdateHardwareComponentById(int id, string name) {
-      HardwareComponent component = new HardwareComponent();
+    public void UpdateHardwareComponentById(int id, string name) {
       this.openConnection();
       SqlCommand command = this._cnn.CreateCommand();
       try {
-        command.CommandText = String.Format("UPDATE [dbo].[HardwareComponent] SET name = {1} WHERE id = {0}", id, name);
-        SqlDataReader reader = command.ExecuteReader();
+        command.CommandText = String.Format("UPDATE [dbo].[HardwareComponent] SET name = @name WHERE id = @id");
+        command.Parameters.AddWithValue("@id", id);
+        command.Parameters.AddWithValue("@name", name);
+        command.ExecuteNonQuery();
         this.closeConnection();
       } catch (Exception ex) {
         Console.WriteLine(ex);
-        return null;
       }
+    }
 
-      return component;
+    /*
+     * Description - Delete Component
+     */
+    public void DeleteHardwareComponentById(int id) {
+      this.openConnection();
+      SqlCommand command = this._cnn.CreateCommand();
+      try {
+        command.CommandText = String.Format("DELETE FROM [dbo].[HardwareComponent] WHERE id = @id");
+        command.Parameters.AddWithValue("@id", id);
+        command.ExecuteNonQuery();
+        this.closeConnection();
+      } catch (Exception ex) {
+        Console.WriteLine(ex);
+      }
     }
 
     /*
@@ -155,7 +177,7 @@ namespace BKTMManager.Administration {
         command.CommandText = "SELECT * FROM [dbo].[Device]";
         SqlDataReader reader = command.ExecuteReader();
         while (reader.Read()) {
-          devices.Add(new Device(Convert.ToInt32(reader[0]), Convert.ToString(reader[1])));
+          devices.Add(new Device(reader.GetInt32(0), reader.GetString(1)));
         }
       } catch (Exception ex) {
         Console.WriteLine(ex);
@@ -175,11 +197,12 @@ namespace BKTMManager.Administration {
       this.openConnection();
       SqlCommand command = this._cnn.CreateCommand();
       try {
-        command.CommandText = "SELECT * FROM [dbo].[Device] WHERE id LIKE " + id;
+        command.CommandText = "SELECT * FROM [dbo].[Device] WHERE id LIKE @id";
+        command.Parameters.AddWithValue("@id", id);
         SqlDataReader reader = command.ExecuteReader();
         while(reader.Read()) {
-          device.id = Convert.ToInt32(reader[0]);
-          device.name = Convert.ToString(reader[1]);
+          device.id = reader.GetInt32(0);
+          device.name = reader.GetString(1);
         }
       } catch (Exception ex) {
         Console.WriteLine(ex);
@@ -190,45 +213,76 @@ namespace BKTMManager.Administration {
     }
 
     /*
-     * Description - Create a New Room
-     * @return - Room
+     * Description - Delete a Room
      */
-    public Room CreateRoom(string name) {
-      Room room = new Room();
+    public void DeleteDevice(string id) {
       this.openConnection();
       SqlCommand command = this._cnn.CreateCommand();
       try {
-        command.CommandText = "INSERT INTO [dbo].[Room] (name) VALUES (" + name + ")";
-        SqlDataReader reader = command.ExecuteReader();
+        command.CommandText = "DELETE FROM [dbo].[Device] WHERE id = @id";
+        command.Parameters.AddWithValue("@id", id);
+        int recordsAffected = command.ExecuteNonQuery();
       } catch (Exception ex) {
         Console.WriteLine(ex);
-        return null;
       }
 
       this._cnn.Close();
-      return room;
+    }
+
+    /*
+     * Description - Create a New Room
+     */
+    public void CreateRoom(string name, string description) {
+      this.openConnection();
+      SqlCommand command = this._cnn.CreateCommand();
+      try {
+        command.CommandText = "INSERT INTO [dbo].[Room] (roomNr, description) VALUES (@name, @description)";
+        command.Parameters.AddWithValue("@name", name);
+        command.Parameters.AddWithValue("@description", description);
+        int recordsAffected = command.ExecuteNonQuery();
+      } catch (Exception ex) {
+        Console.WriteLine(ex);
+      }
+
+      this._cnn.Close();
+    }
+
+    /*
+     * Description - Delete a Room
+     */
+    public void DeleteRoom(string name) {
+      this.openConnection();
+      SqlCommand command = this._cnn.CreateCommand();
+      try {
+        command.CommandText = "DELETE FROM [dbo].[Room] WHERE roomNr = @name";
+        command.Parameters.AddWithValue("@name", name);
+        int recordsAffected = command.ExecuteNonQuery();
+      } catch (Exception ex) {
+        Console.WriteLine(ex);
+      }
+
+      this._cnn.Close();
     }
 
     /*
      * Description - Update a New Room
      * @param string oldName
      * @param string newName
-     * @return - Room
      */
-    public Room UpdateRoomByName(string oldName, string newName) {
-      Room room = new Room();
+    public void UpdateRoomByName(string oldName, string newName) {
       this.openConnection();
       SqlCommand command = this._cnn.CreateCommand();
       try {
-        command.CommandText = "UPDATE [dbo].[Room] SET name = '" + newName + "' WHERE name = '" + oldName + "'";
-        SqlDataReader reader = command.ExecuteReader();
+        command.CommandText = "UPDATE [dbo].[Room] SET roomNr = @newName WHERE roomNr = @oldName";
+
+        command.Parameters.AddWithValue("@oldName", oldName);
+        command.Parameters.AddWithValue("@newName", newName);
+        int recordsAffected = command.ExecuteNonQuery();
       } catch (Exception ex) {
         Console.WriteLine(ex);
-        return null;
       }
 
       this._cnn.Close();
-      return room;
     }
 
     /*

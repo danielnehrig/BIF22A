@@ -7,7 +7,7 @@ namespace BKTMManager {
   class Program {
     public static int Main(string[] args) {
       try {
-        // Read the Config
+        // Read the Config which holds Database connection information
         Config config = new Config("config.cfg");
         Dictionary<string, string> cnnInfo = config.cnnInfo;
 
@@ -16,13 +16,37 @@ namespace BKTMManager {
 
         // Load Administration manager v2 with repo design pattern
         Manager manager2 = new Manager(cnnInfo);
-        manager2.room.GetAll();
+        // manager2.room.GetAll();
 
         // Output Table
-         Utils.LoopListOutput(manager.GetAllRooms());
+        // Room Testing
+        // Output all Rooms
+        Console.WriteLine("Outputing all Rooms from the Database");
+        Utils.LoopListOutput(manager.GetAllRooms());
+        // Insert a new Room
+        Console.WriteLine("Creating a new Room");
+        manager.CreateRoom("C401", "PC Room");
+        // Modify a Room
+        Console.WriteLine("Update a Room");
+        manager.UpdateRoomByName("C105", "C666");
+        // Output all Rooms with new added and Updated stuff
+        Console.WriteLine("Outputing all Rooms from the Database");
+        Utils.LoopListOutput(manager.GetAllRooms());
+        // Delete a Room
+        Console.WriteLine("Delete a Room");
+        manager.DeleteRoom("C401");
+        // Output all Rooms with new added and Updated stuff
+        Console.WriteLine("Outputing all Rooms without the Deleted one");
+        Utils.LoopListOutput(manager.GetAllRooms());
+        // Reset updated Room
+        manager.UpdateRoomByName("C666", "C105");
 
+        // HardwareComponent Testing
 
-         // Main Programm Logic
+        // Category Testing
+
+        // Device Testing
+
       } catch (Exception ex) {
         Console.WriteLine(ex);
         return 1;

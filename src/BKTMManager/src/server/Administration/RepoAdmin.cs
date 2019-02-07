@@ -7,32 +7,52 @@ using System.Linq;
 using System.Linq.Expressions;
 using BKTMManager.Controller;
 
+/*
+ * A Generic Repository to Manage the CRUD pattern among all the Managers(Tables)
+ */
 namespace BKTMManager.Administration {
-  public interface IRepoAdmin<TEntity> where TEntity : class {
-    // non generic 18 28
-    IEnumerable<TEntity> GetAll() where TEntity : new();
-    TEntity GetById(int id) where TEntity : new();
-    // void Update(int id);
-    // void Delete(int id);
-    // void Create(TEntity entity);
+  public interface IRepoAdmin<TEntity> where TEntity : class, new() {
+    IEnumerable<TEntity> GetAll();
+    TEntity GetById(int id);
+    //void Update(int id);
+    void Delete(int id);
+    void Create(object[] arg);
   }
 
-  public abstract class RepoAdmin<TEntity> : IOController, IRepoAdmin<TEntity> where TEntity : class {
+  public class RepoAdmin<TEntity> : IRepoAdmin<TEntity> where TEntity : class, new() {
     private string _tableName;
     public string tableName {
       get { return _tableName; }
       set { _tableName = value; }
     }
 
-    public RepoAdmin(string ip, string db, string user, string pw):base(ip, db, user, pw) { }
+    private SqlConnection _cnn;
 
-    public IEnumerable<TEntity> GetAll() where TEntity : new() {
+    private List<string> _columNames;
+
+    public RepoAdmin(SqlConnection cnn) { 
+      _cnn = cnn;
+    }
+
+    /*
+     * This will get the Column names for use in Create and Update
+     */
+    private void GetColNames() {
+      string[] restrictions = new string[4] { null, null, "<TableName>", null };
+      this._cnn.Open();
+      // _columNames = this._cnn.GetSchema("Columns", restrictions).AsEnumerable().Select(s => s.Field<String>("Column_Name")).ToList()
+    }
+
+    /**
+     * Get All Entries from the given Repos Table
+     */
+    public IEnumerable<TEntity> GetAll() {
       List<TEntity> entitys = new List<TEntity>();
       try {
         SqlCommand command = this._cnn.CreateCommand();
         command.CommandText = "SELECT * FROM [dbo]." + this.tableName;
         SqlDataReader reader = command.ExecuteReader();
-        this.openConnection();
+        this._cnn.Open();
         while(reader.Read()) {
           // genericly getting db info
           object[] args = new Object[] { reader.GetInt32(0) };
@@ -46,7 +66,7 @@ namespace BKTMManager.Administration {
           // entitys.Add(entity);
         }
         Console.WriteLine("abc " + entitys[0]);
-      this.closeConnection();
+        this._cnn.Close();
       } catch(Exception ex) {
         Console.WriteLine(ex);
         return entitys;
@@ -54,22 +74,48 @@ namespace BKTMManager.Administration {
       return entitys;
     }
 
-    public TEntity GetById<TEntity>(int id) where TEntity : new() {
+    /**
+     * Get one entry by ID
+     */
+    public TEntity GetById(int id){
       TEntity entity = new TEntity();
       try {
         SqlCommand command = this._cnn.CreateCommand();
         command.CommandText = "SELECT * FROM [dbo]." + this.tableName + "WHERE id LIKE " + id;
         SqlDataReader reader = command.ExecuteReader();
-        this.openConnection();
-
-        while(reader.Read()) {
-        }
-      this.closeConnection();
+        this._cnn.Open();
+        this._cnn.Close();
       } catch(Exception ex) {
         Console.WriteLine(ex);
         return entity;
       }
       return entity;
+    }
+
+    public void Delete(int id) {
+      try {
+        this._cnn.Open();
+        SqlCommand command = this._cnn.CreateCommand();
+        command.CommandText = String.Format("DELETE FROM [dbo]." + this.tableName + " WHERE id = @id");
+        command.Parameters.AddWithValue("@id", id);
+        command.ExecuteNonQuery();
+        this._cnn.Close();
+      } catch (Exception ex) {
+        Console.WriteLine(ex);
+      }
+    }
+
+    public void Create(object[] arg) {
+      this._cnn.Open();
+      SqlCommand command = this._cnn.CreateCommand();
+      try {
+        // command.CommandText = String.Format("INSERT INTO [dbo].[Room] ({0}) VALUES ({1})", list(fields.Keys), list(fields.Values));
+        int recordsAffected = command.ExecuteNonQuery();
+      } catch (Exception ex) {
+        Console.WriteLine(ex);
+      }
+
+      this._cnn.Close();
     }
   }
 }
