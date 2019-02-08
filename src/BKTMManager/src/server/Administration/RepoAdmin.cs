@@ -14,9 +14,9 @@ namespace BKTMManager.Administration {
   public interface IRepoAdmin<TEntity> where TEntity : class, new() {
     List<TEntity> GetAll();
     TEntity GetById(int id);
-    //void Update(int id);
+    void Update(int id, string old, string change);
     void Delete(int id);
-    void Create(object[] arg);
+    void Create(string values);
   }
 
   public class RepoAdmin<TEntity> : IRepoAdmin<TEntity> where TEntity : class, new() {
@@ -28,8 +28,8 @@ namespace BKTMManager.Administration {
 
     private SqlConnection _cnn;
 
-    private List<string> _columNames;
-    public List<string> columNames {
+    private string _columNames;
+    public string columNames {
       get { return _columNames; }
       set { _columNames = value; }
     }
@@ -41,10 +41,21 @@ namespace BKTMManager.Administration {
     /*
      * This will get the Column names for use in Create and Update
      */
-    private void GetColNames() {
-      string[] restrictions = new string[4] { null, null, "<TableName>", null };
-      this._cnn.Open();
-      // _columNames = this._cnn.GetSchema("Columns", restrictions).AsEnumerable().Select(s => s.Field<String>("Column_Name")).ToList()
+    public string getColumnsName() {
+      List<string> listacolumnas=new List<string>();
+      using (SqlCommand command = this._cnn.CreateCommand()) {
+        command.CommandText = String.Format("select c.name from sys.columns c inner join sys.tables t on t.object_id = c.object_id and t.name = '{0}' and t.type = 'U'", this.tableName);
+        this._cnn.Open();
+
+        using (var reader = command.ExecuteReader()) {
+          while (reader.Read()) {
+            listacolumnas.Add(reader.GetString(0));
+          }
+        }
+      }
+      string[] result = listacolumnas.ToArray();
+      this._cnn.Close();
+      return String.Join(", ", result);
     }
 
     /**
@@ -89,11 +100,14 @@ namespace BKTMManager.Administration {
       return entity;
     }
 
+    /**
+     * Delete one entry by ID
+     */
     public void Delete(int id) {
       try {
         this._cnn.Open();
         SqlCommand command = this._cnn.CreateCommand();
-        command.CommandText = String.Format("DELETE FROM [dbo]." + this.tableName + " WHERE id = @id");
+        command.CommandText = String.Format("DELETE FROM [dbo].[{0}] WHERE id = @id", this.tableName);
         command.Parameters.AddWithValue("@id", id);
         command.ExecuteNonQuery();
         this._cnn.Close();
@@ -102,16 +116,34 @@ namespace BKTMManager.Administration {
       }
     }
 
-    public void Create(object[] arg) {
-      this._cnn.Open();
-      SqlCommand command = this._cnn.CreateCommand();
+    /**
+     * Create one entry
+     */
+    public void Create(string values) {
       try {
-        // command.CommandText = String.Format("INSERT INTO [dbo].[Room] ({0}) VALUES ({1})", list(fields.Keys), list(fields.Values));
+        this._cnn.Open();
+        SqlCommand command = this._cnn.CreateCommand();
+        command.CommandText = String.Format("INSERT INTO [dbo].[{0}] ({1}) VALUES ({2})", this.tableName, this.columNames, values);
         int recordsAffected = command.ExecuteNonQuery();
       } catch (Exception ex) {
         Console.WriteLine(ex);
       }
+      this._cnn.Close();
+    }
 
+    /**
+     * Update one entry by ID
+     */
+    public void Update(int id, string old, string change) {
+      try {
+        this._cnn.Open();
+        SqlCommand command = this._cnn.CreateCommand();
+        command.CommandText = String.Format("UPDATE [dbo].[{0}] SET {1} = change WHERE id = @id", this.tableName, old, change);
+        command.Parameters.AddWithValue("@id", id);
+        command.ExecuteNonQuery();
+      } catch (Exception ex) {
+        Console.WriteLine(ex);
+      }
       this._cnn.Close();
     }
   }
