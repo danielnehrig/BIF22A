@@ -18,5 +18,13 @@ namespace BKTMManager.Helper {
         Console.WriteLine(ex);
       }
     }
+
+    public static void Output<T>(T item) where T : IGlobalType {
+      try {
+        Console.WriteLine(item.WhatAmI());
+      } catch(Exception ex) {
+        Console.WriteLine(ex);
+      }
+    }
   }
 }

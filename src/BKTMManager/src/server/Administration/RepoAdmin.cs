@@ -55,7 +55,7 @@ namespace BKTMManager.Administration {
       }
       string[] result = listacolumnas.ToArray();
       this._cnn.Close();
-      return String.Join(", ", result);
+      return String.Join(", ", result).Substring(4);
     }
 
     /**
@@ -86,10 +86,11 @@ namespace BKTMManager.Administration {
     public TEntity GetById(int id){
       TEntity entity;
       try {
-        SqlCommand command = this._cnn.CreateCommand();
-        command.CommandText = "SELECT * FROM [dbo]." + this.tableName + "WHERE id LIKE " + id;
-        SqlDataReader reader = command.ExecuteReader();
         this._cnn.Open();
+        SqlCommand command = this._cnn.CreateCommand();
+        command.CommandText = String.Format("SELECT * FROM [dbo].[{0}] WHERE id = {1}", this.tableName, id);
+        SqlDataReader reader = command.ExecuteReader();
+        reader.Read();
         object[] args = new Object[] { reader };
         entity = (TEntity)Activator.CreateInstance(typeof(TEntity), args);
         this._cnn.Close();
@@ -134,11 +135,11 @@ namespace BKTMManager.Administration {
     /**
      * Update one entry by ID
      */
-    public void Update(int id, string old, string change) {
+    public void Update(int id, string col, string change) {
       try {
         this._cnn.Open();
         SqlCommand command = this._cnn.CreateCommand();
-        command.CommandText = String.Format("UPDATE [dbo].[{0}] SET {1} = change WHERE id = @id", this.tableName, old, change);
+        command.CommandText = String.Format("UPDATE [dbo].[{0}] SET {1} = {2} WHERE id = @id", this.tableName, col, change);
         command.Parameters.AddWithValue("@id", id);
         command.ExecuteNonQuery();
       } catch (Exception ex) {

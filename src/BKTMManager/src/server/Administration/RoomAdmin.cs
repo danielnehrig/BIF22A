@@ -8,7 +8,6 @@ namespace BKTMManager.Administration {
     public RoomAdministration(SqlConnection cnn):base(cnn) { 
       tableName = "Room";
       columNames = this.getColumnsName();
-      Console.WriteLine("TEST : " + columNames);
     }
   }
 }

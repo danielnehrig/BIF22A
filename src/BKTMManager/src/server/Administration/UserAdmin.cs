@@ -7,6 +7,7 @@ namespace BKTMManager.Administration {
   public class UserAdministration : RepoAdmin<User> {
     public UserAdministration(SqlConnection cnn):base(cnn) { 
       tableName = "User";
+      columNames = this.getColumnsName();
     }
   }
 }
