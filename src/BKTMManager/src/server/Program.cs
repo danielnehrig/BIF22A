@@ -12,10 +12,6 @@ namespace BKTMManager {
         Config config = new Config("config.cfg");
         Dictionary<string, string> cnnInfo = config.cnnInfo;
 
-        // Load Administration manager
-        // Deprecated but still in use for inserting and updating data if i can't get the new design done by the deadline
-        // AdministrationManager manager = new AdministrationManager(cnnInfo["ip"], cnnInfo["db"], cnnInfo["user"], cnnInfo["pw"]);
-
         // Load Administration manager v2 with repo design pattern
         Manager manager2 = new Manager(cnnInfo);
 
