@@ -1,16 +1,23 @@
 using System;
+using System.Data.SqlClient;
 using System.Collections.Generic;
 
 namespace BKTMManager.Types {
-  class HardwareComponent {
+  public class HardwareComponent : IGlobalType {
     private int _id;
     public int id {
       get { return _id; }
       set { _id = value; }
     }
 
-    private bool _isExchanged = false;
-    public bool isExchanged {
+    private int _categoryId;
+    public int categoryId {
+      get { return _categoryId; }
+      set { _categoryId = value; }
+    }
+
+    private byte _isExchanged = 0;
+    public byte isExchanged {
       get { return _isExchanged; }
       set { _isExchanged = value; }
     }
@@ -21,16 +28,16 @@ namespace BKTMManager.Types {
       get { return _name; }
     }
 
+    private double _price;
+    public double price {
+      set { _price = value; }
+      get { return _price; }
+    }
+
     private string _description;
     public string description {
       set { _description = value; }
       get { return _description; }
-    }
-
-    private float _price;
-    public float price {
-      set { _price = value; }
-      get { return _price; }
     }
 
     public HardwareComponent(string name, float price) {
@@ -38,7 +45,16 @@ namespace BKTMManager.Types {
       this._price = price;
     }
 
-    public HardwareComponent(int id, string name, float price, bool isExchanged, string description) {
+    public HardwareComponent(SqlDataReader reader) {
+      this._id = reader.GetInt32(0);
+      this._categoryId = reader.GetInt32(1);
+      this._isExchanged = reader.GetByte(2);
+      this._name = reader.GetString(3);
+      this._price = reader.GetDouble(4);
+      this._description = reader.GetString(5);
+    }
+
+    public HardwareComponent(int id, string name, float price, byte isExchanged, string description) {
       this._id = id;
       this._name = name;
       this._description = description;
@@ -47,6 +63,10 @@ namespace BKTMManager.Types {
     }
 
     public HardwareComponent() {
+    }
+
+    public string WhatAmI() {
+      return String.Format("ID: {0} ; NAME: {1} ; DESC: {2} ; isEx: {3} ; PRICE: {4}", _id, _name, _description, _isExchanged, _price);
     }
   }
 }

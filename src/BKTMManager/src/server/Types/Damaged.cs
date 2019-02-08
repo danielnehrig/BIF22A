@@ -1,4 +1,32 @@
+using System;
+using System.Data.SqlClient;
+
 namespace BKTMManager.Types {
-  class Damaged {
+  public class Damaged : IGlobalType {
+    public Damaged(SqlDataReader reader) {
+      this._id = reader.GetInt32(0);
+      this._date = reader.GetDateTime(1);
+      this._description = reader.GetString(2);
+    }
+
+    private int _id;
+    public int id {
+      get { return _id; }
+      set { _id = value; }
+    }
+    private DateTime _date;
+    public DateTime date {
+      get { return _date; }
+      set { _date = value; }
+    }
+    private string _description;
+    public string description {
+      get { return _description; }
+      set { _description = value; }
+    }
+
+    public string WhatAmI() {
+      return String.Format("ID: {0} ; DATE: {1} ; DESC: {2}", _id, _date, _description);
+    }
   }
 }

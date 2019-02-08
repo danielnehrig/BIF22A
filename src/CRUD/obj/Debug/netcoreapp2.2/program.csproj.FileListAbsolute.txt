@@ -1,0 +1,11 @@
+/Users/dnehrig/code/c#/BIF22A/src/CRUD/bin/Debug/netcoreapp2.2/program.deps.json
+/Users/dnehrig/code/c#/BIF22A/src/CRUD/bin/Debug/netcoreapp2.2/program.runtimeconfig.json
+/Users/dnehrig/code/c#/BIF22A/src/CRUD/bin/Debug/netcoreapp2.2/program.runtimeconfig.dev.json
+/Users/dnehrig/code/c#/BIF22A/src/CRUD/bin/Debug/netcoreapp2.2/program.dll
+/Users/dnehrig/code/c#/BIF22A/src/CRUD/bin/Debug/netcoreapp2.2/program.pdb
+/Users/dnehrig/code/c#/BIF22A/src/CRUD/obj/Debug/netcoreapp2.2/program.csprojAssemblyReference.cache
+/Users/dnehrig/code/c#/BIF22A/src/CRUD/obj/Debug/netcoreapp2.2/program.csproj.CoreCompileInputs.cache
+/Users/dnehrig/code/c#/BIF22A/src/CRUD/obj/Debug/netcoreapp2.2/program.AssemblyInfoInputs.cache
+/Users/dnehrig/code/c#/BIF22A/src/CRUD/obj/Debug/netcoreapp2.2/program.AssemblyInfo.cs
+/Users/dnehrig/code/c#/BIF22A/src/CRUD/obj/Debug/netcoreapp2.2/program.dll
+/Users/dnehrig/code/c#/BIF22A/src/CRUD/obj/Debug/netcoreapp2.2/program.pdb

@@ -39,7 +39,7 @@ CREATE TABLE [dbo].[Hardware](
 	[categoryId] [int] NOT NULL,
 	[isExchangend] [tinyint] NOT NULL,
 	[name] [nvarchar](255) NOT NULL,
-  [price] [float](255) NOT NULL,
+  [price] [float](53) NOT NULL,
   [description] [nvarchar](255) NOT NULL,
  CONSTRAINT [PK_Hardware] PRIMARY KEY CLUSTERED 
 (
@@ -132,50 +132,50 @@ CREATE TABLE [dbo].[RoomTeacher](
 /** Adding Key Relations to Tables **/
 GO
 ALTER TABLE [dbo].[HardwareDevice]  WITH CHECK ADD  CONSTRAINT [FK_HardwareDevice_Device] FOREIGN KEY([deviceId])
-REFERENCES [dbo].[Device] ([id])
+REFERENCES [dbo].[Device] ([id]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[HardwareDevice] CHECK CONSTRAINT [FK_HardwareDevice_Device]
 GO
 ALTER TABLE [dbo].[HardwareDevice]  WITH CHECK ADD  CONSTRAINT [FK_HardwareDevice_Hardware] FOREIGN KEY([hardwareId])
-REFERENCES [dbo].[Hardware] ([id])
+REFERENCES [dbo].[Hardware] ([id]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[HardwareDevice] CHECK CONSTRAINT [FK_HardwareDevice_Hardware]
 GO
 ALTER TABLE [dbo].[Damaged]  WITH CHECK ADD  CONSTRAINT [FK_Damaged_Device] FOREIGN KEY([deviceId])
-REFERENCES [dbo].[Device] ([id])
+REFERENCES [dbo].[Device] ([id]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[Damaged] CHECK CONSTRAINT [FK_Damaged_Device]
 GO
-ALTER TABLE [dbo].[User]  WITH CHECK ADD  CONSTRAINT [FK_User_Teacher] FOREIGN KEY([roomId])
-REFERENCES [dbo].[Room] ([id])
+ALTER TABLE [dbo].[User]  WITH CHECK ADD  CONSTRAINT [FK_User_Teacher] FOREIGN KEY([teacherId])
+REFERENCES [dbo].[Teacher] ([id]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[Teacher]  WITH CHECK ADD  CONSTRAINT [FK_Teacher_room] FOREIGN KEY([roomId])
-REFERENCES [dbo].[Room] ([id])
+REFERENCES [dbo].[Room] ([id]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[Teacher] CHECK CONSTRAINT [FK_Teacher_room]
 GO
 ALTER TABLE [dbo].[Device]  WITH CHECK ADD  CONSTRAINT [FK_Device_Category] FOREIGN KEY([categoryId])
-REFERENCES [dbo].[Category] ([id])
+REFERENCES [dbo].[Category] ([id]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[Device] CHECK CONSTRAINT [FK_Device_Category]
 GO
 ALTER TABLE [dbo].[Hardware]  WITH CHECK ADD  CONSTRAINT [FK_Hardware_Category] FOREIGN KEY([categoryId])
-REFERENCES [dbo].[Category] ([id])
+REFERENCES [dbo].[Category] ([id]) ON DELETE NO ACTION
 GO
 ALTER TABLE [dbo].[Hardware] CHECK CONSTRAINT [FK_Hardware_Category]
 GO
 ALTER TABLE [dbo].[Device]  WITH CHECK ADD  CONSTRAINT [FK_Device_DeviceReseller] FOREIGN KEY([resellerId])
-REFERENCES [dbo].[DeviceReseller] ([id])
+REFERENCES [dbo].[DeviceReseller] ([id]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[HardwareDevice] CHECK CONSTRAINT [FK_HardwareDevice_Hardware]
 GO
 ALTER TABLE [dbo].[RoomTeacher]  WITH CHECK ADD  CONSTRAINT [FK_RoomTeacher_Teacher] FOREIGN KEY([teacherId])
-REFERENCES [dbo].[Teacher] ([id])
+REFERENCES [dbo].[Teacher] ([id]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[RoomTeacher] CHECK CONSTRAINT [FK_RoomTeacher_Teacher]
 GO
 ALTER TABLE [dbo].[RoomTeacher]  WITH CHECK ADD  CONSTRAINT [FK_RoomTeacher_Room] FOREIGN KEY([roomId])
-REFERENCES [dbo].[Room] ([id])
+REFERENCES [dbo].[Room] ([id]) ON DELETE NO ACTION
 GO
 ALTER TABLE [dbo].[RoomTeacher] CHECK CONSTRAINT [FK_RoomTeacher_Room]
 GO
@@ -186,7 +186,7 @@ GO
 
 /** Test Data **/
 
-INSERT INTO [dbo].[Room] (roomId, description) VALUES
+INSERT INTO [dbo].[Room] (roomNr, description) VALUES
 ('C102', 'PC Room'),
 ('C103', 'PC Room'),
 ('C104', 'PC Room'),
@@ -227,25 +227,22 @@ INSERT INTO [dbo].[Device] (dateBuy, inventoryNr, categoryId, resellerId, price)
 (GETDATE(), 4, 2, 3, '48.10')
 GO
 
-
-INSERT INTO [dbo].[User] (username, password, email, admin, teacherId) VALUES
-('root', 'root', 'root@localhost', 1, 1)
-GO
-
 INSERT INTO [dbo].[Teacher] (firstname, lastname, email, roomId, roomOwner) VALUES
-('root', 'root', 'root@localhost', 0, 0),
 ('Franz', 'Kostas', 'fKostas@bk-tm.de', 1, 1),
 ('Heinz', 'Badu', 'hBadu@bk-tm.de', 2, 0),
 ('Peter', 'Kakau', 'pKakau@bk-tm.de', 3, 0)
 GO
 
-INSERT INTO [dbo].[Hardware] (name, exchange, categoryId) VALUES
-('Intel i7 K4700', 1, 3),
-('Intel i9 K9990', 0, 3),
-('Intel i7 K6770', 0, 3)
+INSERT INTO [dbo].[User] (username, password, email, admin, teacherId) VALUES
+('root', 'root', 'root@localhost', 1, 1)
 GO
 
-INSERT INTO [dbo].[Damaged] (description, dateExchange, deviceId) VALUES
+INSERT INTO [dbo].[Hardware] (description, name, isExchangend, categoryId, price) VALUES
+('abc', 'Intel i7 K4700', 1, 3, 10),
+('abc', 'Intel i9 K9990', 0, 3, 10)
+GO
+
+INSERT INTO [dbo].[Damaged] (description, date, deviceId) VALUES
 ('Broken', GETDATE(), 1),
 ('Broken', GETDATE(), 2),
 ('Broken', GETDATE(), 3)

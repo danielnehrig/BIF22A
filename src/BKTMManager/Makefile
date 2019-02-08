@@ -1,4 +1,4 @@
-LIB = 
+LIB = -r:../../dep/EntityFramework.dll
 PKG = -pkg:dotnet
 COMP = mcs
 SRCPATH = ./src/server/
@@ -14,3 +14,7 @@ Build:
 Clean:
 	rm ./dist/server/*.exe
 	rm ./dist/server/config.cfg
+
+Start:
+	cd $(COMPILEPATH); \
+	mono ./$(FILENAME)
