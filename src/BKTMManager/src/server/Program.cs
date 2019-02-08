@@ -14,7 +14,7 @@ namespace BKTMManager {
 
         // Load Administration manager
         // Deprecated but still in use for inserting and updating data if i can't get the new design done by the deadline
-        AdministrationManager manager = new AdministrationManager(cnnInfo["ip"], cnnInfo["db"], cnnInfo["user"], cnnInfo["pw"]);
+        // AdministrationManager manager = new AdministrationManager(cnnInfo["ip"], cnnInfo["db"], cnnInfo["user"], cnnInfo["pw"]);
 
         // Load Administration manager v2 with repo design pattern
         Manager manager2 = new Manager(cnnInfo);
@@ -178,54 +178,54 @@ namespace BKTMManager {
           }
         }
 
-        if (false) {
-          // Output Table
-          // Room Testing
-          // Output all Rooms
-          Console.WriteLine("Outputing all Rooms from the Database");
-          Utils.LoopListOutput(manager2.room.GetAll());
-          // Insert a new Room
-          Console.WriteLine("Creating a new Room");
-          manager.CreateRoom("C401", "PC Room");
-          // Modify a Room
-          Console.WriteLine("Update a Room C105 to C666");
-          manager.UpdateRoomByName("C105", "C666");
-          // Output all Rooms with new added and Updated stuff
-          Console.WriteLine("Outputing all Rooms from the Database");
-          Utils.LoopListOutput(manager2.room.GetAll());
-          // Delete a Room
-          Console.WriteLine("Delete a Room called C401");
-          manager.DeleteRoom("C401");
-          // Output all Rooms with new added and Updated stuff
-          Console.WriteLine("Outputing all Rooms without the Deleted one");
-          Utils.LoopListOutput(manager2.room.GetAll());
-          // Reset updated Room
-          manager.UpdateRoomByName("C666", "C105");
+      //  // Deprecated Program Run structure
 
-          // HardwareComponent Testing
-          // Output all Components
-          Console.WriteLine("Hardware Table");
-          Utils.LoopListOutput(manager2.hardware.GetAll());
+      //  // Output Table
+      //  // Room Testing
+      //  // Output all Rooms
+      //  Console.WriteLine("Outputing all Rooms from the Database");
+      //  Utils.LoopListOutput(manager2.room.GetAll());
+      //  // Insert a new Room
+      //  Console.WriteLine("Creating a new Room");
+      //  manager.CreateRoom("C401", "PC Room");
+      //  // Modify a Room
+      //  Console.WriteLine("Update a Room C105 to C666");
+      //  manager.UpdateRoomByName("C105", "C666");
+      //  // Output all Rooms with new added and Updated stuff
+      //  Console.WriteLine("Outputing all Rooms from the Database");
+      //  Utils.LoopListOutput(manager2.room.GetAll());
+      //  // Delete a Room
+      //  Console.WriteLine("Delete a Room called C401");
+      //  manager.DeleteRoom("C401");
+      //  // Output all Rooms with new added and Updated stuff
+      //  Console.WriteLine("Outputing all Rooms without the Deleted one");
+      //  Utils.LoopListOutput(manager2.room.GetAll());
+      //  // Reset updated Room
+      //  manager.UpdateRoomByName("C666", "C105");
 
-          // Category Testing
-          // Output all Categorys
-          Console.WriteLine("Category Table");
-          Utils.LoopListOutput(manager2.category.GetAll());
+      //  // HardwareComponent Testing
+      //  // Output all Components
+      //  Console.WriteLine("Hardware Table");
+      //  Utils.LoopListOutput(manager2.hardware.GetAll());
 
-          // Device Testing
-          // Output all Devices
-          Console.WriteLine("Device Table");
-          Utils.LoopListOutput(manager2.device.GetAll());
+      //  // Category Testing
+      //  // Output all Categorys
+      //  Console.WriteLine("Category Table");
+      //  Utils.LoopListOutput(manager2.category.GetAll());
 
-          // User Testing
-          // Output all Users
-          Console.WriteLine("User Table");
-          Utils.LoopListOutput(manager2.user.GetAll());
-          Console.WriteLine("Updateing User Table root to test");
-          manager2.user.Update(1, "username", "'test'");
-          Utils.LoopListOutput(manager2.user.GetAll());
-          manager2.user.Update(1, "username", "'root'");
-        }
+      //  // Device Testing
+      //  // Output all Devices
+      //  Console.WriteLine("Device Table");
+      //  Utils.LoopListOutput(manager2.device.GetAll());
+
+      //  // User Testing
+      //  // Output all Users
+      //  Console.WriteLine("User Table");
+      //  Utils.LoopListOutput(manager2.user.GetAll());
+      //  Console.WriteLine("Updateing User Table root to test");
+      //  manager2.user.Update(1, "username", "'test'");
+      //  Utils.LoopListOutput(manager2.user.GetAll());
+      //  manager2.user.Update(1, "username", "'root'");
 
       } catch (Exception ex) {
         Console.WriteLine(ex);

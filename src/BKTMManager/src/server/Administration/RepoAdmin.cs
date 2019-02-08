@@ -125,7 +125,7 @@ namespace BKTMManager.Administration {
         this._cnn.Open();
         SqlCommand command = this._cnn.CreateCommand();
         command.CommandText = String.Format("INSERT INTO [dbo].[{0}] ({1}) VALUES ({2})", this.tableName, this.columNames, values);
-        int recordsAffected = command.ExecuteNonQuery();
+        command.ExecuteNonQuery();
       } catch (Exception ex) {
         Console.WriteLine(ex);
       }

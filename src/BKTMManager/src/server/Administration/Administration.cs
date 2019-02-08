@@ -221,7 +221,7 @@ namespace BKTMManager.Administration {
       try {
         command.CommandText = "DELETE FROM [dbo].[Device] WHERE id = @id";
         command.Parameters.AddWithValue("@id", id);
-        int recordsAffected = command.ExecuteNonQuery();
+        command.ExecuteNonQuery();
       } catch (Exception ex) {
         Console.WriteLine(ex);
       }
@@ -239,7 +239,7 @@ namespace BKTMManager.Administration {
         command.CommandText = "INSERT INTO [dbo].[Room] (roomNr, description) VALUES (@name, @description)";
         command.Parameters.AddWithValue("@name", name);
         command.Parameters.AddWithValue("@description", description);
-        int recordsAffected = command.ExecuteNonQuery();
+        command.ExecuteNonQuery();
       } catch (Exception ex) {
         Console.WriteLine(ex);
       }
@@ -256,7 +256,7 @@ namespace BKTMManager.Administration {
       try {
         command.CommandText = "DELETE FROM [dbo].[Room] WHERE roomNr = @name";
         command.Parameters.AddWithValue("@name", name);
-        int recordsAffected = command.ExecuteNonQuery();
+        command.ExecuteNonQuery();
       } catch (Exception ex) {
         Console.WriteLine(ex);
       }
@@ -277,7 +277,7 @@ namespace BKTMManager.Administration {
 
         command.Parameters.AddWithValue("@oldName", oldName);
         command.Parameters.AddWithValue("@newName", newName);
-        int recordsAffected = command.ExecuteNonQuery();
+        command.ExecuteNonQuery();
       } catch (Exception ex) {
         Console.WriteLine(ex);
       }
@@ -314,7 +314,6 @@ namespace BKTMManager.Administration {
      * @return Room
      */
     public void GetRoomById(int id) {
-      Room room = new Room();
       this.openConnection();
       SqlCommand command = this._cnn.CreateCommand();
       try {
