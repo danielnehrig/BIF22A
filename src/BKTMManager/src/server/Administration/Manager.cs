@@ -11,6 +11,7 @@ namespace BKTMManager.Administration {
     public UserAdministration user;
     public CategoryAdministration category;
     public HardwareAdministration hardware;
+    public DamagedAdministration damaged;
 
     public Manager(Dictionary<string, string> cnnInfo):base(cnnInfo["ip"], cnnInfo["db"], cnnInfo["user"], cnnInfo["pw"]) {
       device = new DeviceAdministration(this._cnn);
@@ -18,6 +19,7 @@ namespace BKTMManager.Administration {
       user = new UserAdministration(this._cnn);
       hardware = new HardwareAdministration(this._cnn);
       category = new CategoryAdministration(this._cnn);
+      damaged = new DamagedAdministration(this._cnn);
     }
   }
 }

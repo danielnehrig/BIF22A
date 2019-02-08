@@ -27,6 +27,9 @@ namespace BKTMManager.Administration {
     }
 
     private SqlConnection _cnn;
+    public SqlConnection cnn {
+      get { return _cnn; }
+    }
 
     private string _columNames;
     public string columNames {

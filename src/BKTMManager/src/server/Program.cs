@@ -20,10 +20,20 @@ namespace BKTMManager {
         Manager manager2 = new Manager(cnnInfo);
 
         Console.Clear();
+        Console.Write("Login: ");
+        string username = Console.ReadLine();
+        Console.Write("PW: ");
+        string password = Console.ReadLine();
+
+        User user = manager2.user.Login(username, password);
+        if(user == null) {
+          return 0;
+        }
+
         string x = "";
         while(x != "x") {
           Console.WriteLine("BKTMManager\nWelcome\n\n");
-          Console.WriteLine("Your Options:\n1.User Manager\n2.Device Manager\n3.Room Manager\n4.Category Manager\n5.Hardware manager\nx.Exit\n");
+          Console.WriteLine("Your Options:\n1.User Manager\n2.Device Manager\n3.Room Manager\n4.Category Manager\n5.Hardware Manager\n6.Damaged Manager\nx.Exit\n");
 
           Console.Write("Awaiting input : ");
           x = Console.ReadLine();
@@ -173,6 +183,34 @@ namespace BKTMManager {
                   manager2.hardware.Update(Convert.ToInt32(id), col, change);
                   break;
                 case "5": Console.Write("Awaiting input ID: "); id = Console.ReadLine(); Console.Clear(); manager2.hardware.Delete(Convert.ToInt32(id)); Console.WriteLine("ID "+id+" deleted"); break;
+              }
+              break;
+            case "6":
+              Console.Clear();
+              Console.WriteLine("Welcome to the Damaged Manager");
+              Console.WriteLine(options);
+              Console.Write("Awaiting input : ");
+              a = Console.ReadLine();
+              switch(a) {
+                case "1": Console.Clear(); Utils.LoopListOutput(manager2.damaged.GetAll()); break;
+                case "2": id = Console.ReadLine(); Console.Clear(); Utils.Output(manager2.damaged.GetById(Convert.ToInt32(id))); break;
+                case "3": 
+                  Console.WriteLine(String.Format("Format: {0}", manager2.damaged.columNames));
+                  Console.Write("Awaiting value input: ");
+                  values = Console.ReadLine();
+                  manager2.damaged.Create(values);
+                  break;
+                case "4": 
+                  Console.WriteLine(String.Format("Format: {0}", manager2.damaged.columNames));
+                  Console.Write("Awaiting Input ID: ");
+                  id = Console.ReadLine();
+                  Console.Write("Awaiting Input Colum Name: ");
+                  col = Console.ReadLine();
+                  Console.Write("Awaiting Input to change TO: ");
+                  change = Console.ReadLine(); 
+                  manager2.damaged.Update(Convert.ToInt32(id), col, change);
+                  break;
+                case "5": Console.Write("Awaiting input ID: "); id = Console.ReadLine(); Console.Clear(); manager2.damaged.Delete(Convert.ToInt32(id)); Console.WriteLine("ID "+id+" deleted"); break;
               }
               break;
           }
