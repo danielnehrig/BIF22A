@@ -5,6 +5,8 @@ using BKTMManager.Types;
 
 namespace BKTMManager.Administration {
   public class HardwareAdministration : RepoAdmin<HardwareComponent> {
-    public HardwareAdministration(SqlConnection cnn):base(cnn) { }
+    public HardwareAdministration(SqlConnection cnn):base(cnn) {
+      tableName = "Hardware";
+    }
   }
 }

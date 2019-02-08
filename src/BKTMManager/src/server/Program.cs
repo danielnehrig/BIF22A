@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using BKTMManager.Helper;
+using BKTMManager.Types;
 using BKTMManager.Administration;
 
 namespace BKTMManager {
@@ -16,7 +17,15 @@ namespace BKTMManager {
 
         // Load Administration manager v2 with repo design pattern
         Manager manager2 = new Manager(cnnInfo);
-        // manager2.room.GetAll();
+        List<Room> l = manager2.room.GetAll();
+        foreach(Room room in l) {
+          Console.WriteLine(String.Format("Room {0} {1} {2}", room.id, room.name, room.description));
+        }
+
+        List<Device> l2 = manager2.device.GetAll();
+        foreach(Device device in l2) {
+          Console.WriteLine(String.Format("Room {0} {1}", device.id, device.price));
+        }
 
         // Output Table
         // Room Testing

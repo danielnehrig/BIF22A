@@ -12,7 +12,7 @@ using BKTMManager.Controller;
  */
 namespace BKTMManager.Administration {
   public interface IRepoAdmin<TEntity> where TEntity : class, new() {
-    IEnumerable<TEntity> GetAll();
+    List<TEntity> GetAll();
     TEntity GetById(int id);
     //void Update(int id);
     void Delete(int id);
@@ -29,6 +29,10 @@ namespace BKTMManager.Administration {
     private SqlConnection _cnn;
 
     private List<string> _columNames;
+    public List<string> columNames {
+      get { return _columNames; }
+      set { _columNames = value; }
+    }
 
     public RepoAdmin(SqlConnection cnn) { 
       _cnn = cnn;
@@ -46,30 +50,21 @@ namespace BKTMManager.Administration {
     /**
      * Get All Entries from the given Repos Table
      */
-    public IEnumerable<TEntity> GetAll() {
+    public List<TEntity> GetAll() {
       List<TEntity> entitys = new List<TEntity>();
       try {
-        SqlCommand command = this._cnn.CreateCommand();
-        command.CommandText = "SELECT * FROM [dbo]." + this.tableName;
-        SqlDataReader reader = command.ExecuteReader();
         this._cnn.Open();
+        SqlCommand command = this._cnn.CreateCommand();
+        command.CommandText = String.Format("SELECT * FROM [dbo].[{0}]", this.tableName);
+        SqlDataReader reader = command.ExecuteReader();
         while(reader.Read()) {
-          // genericly getting db info
-          object[] args = new Object[] { reader.GetInt32(0) };
+          object[] args = new Object[] { reader };
           entitys.Add((TEntity)Activator.CreateInstance(typeof(TEntity), args));
-          // GetName
-          // GetValues
-          // TEntity entity = new TEntity();
-          // reader.GetValues(entity);
-          // entity.id = reader.GetInt32(0);
-          // entity.description = reader.GetString(1);
-          // entitys.Add(entity);
         }
-        Console.WriteLine("abc " + entitys[0]);
         this._cnn.Close();
       } catch(Exception ex) {
-        Console.WriteLine(ex);
-        return entitys;
+        Console.WriteLine("Error : " + ex);
+        return null;
       }
       return entitys;
     }
@@ -78,16 +73,18 @@ namespace BKTMManager.Administration {
      * Get one entry by ID
      */
     public TEntity GetById(int id){
-      TEntity entity = new TEntity();
+      TEntity entity;
       try {
         SqlCommand command = this._cnn.CreateCommand();
         command.CommandText = "SELECT * FROM [dbo]." + this.tableName + "WHERE id LIKE " + id;
         SqlDataReader reader = command.ExecuteReader();
         this._cnn.Open();
+        object[] args = new Object[] { reader };
+        entity = (TEntity)Activator.CreateInstance(typeof(TEntity), args);
         this._cnn.Close();
       } catch(Exception ex) {
         Console.WriteLine(ex);
-        return entity;
+        return null;
       }
       return entity;
     }

@@ -1,4 +1,5 @@
 using System;
+using System.Data.SqlClient;
 using System.Collections.Generic;
 
 namespace BKTMManager.Types {
@@ -7,6 +8,12 @@ namespace BKTMManager.Types {
     public int id {
       get { return _id; }
       set { _id = value; }
+    }
+
+    private int _categoryId;
+    public int categoryId {
+      get { return _categoryId; }
+      set { _categoryId = value; }
     }
 
     private bool _isExchanged = false;
@@ -21,21 +28,30 @@ namespace BKTMManager.Types {
       get { return _name; }
     }
 
-    private string _description;
-    public string description {
-      set { _description = value; }
-      get { return _description; }
-    }
-
     private float _price;
     public float price {
       set { _price = value; }
       get { return _price; }
     }
 
+    private string _description;
+    public string description {
+      set { _description = value; }
+      get { return _description; }
+    }
+
     public HardwareComponent(string name, float price) {
       this._name = name;
       this._price = price;
+    }
+
+    public HardwareComponent(SqlDataReader reader) {
+      this._id = reader.GetInt32(0);
+      this._categoryId = reader.GetInt32(1);
+      this._isExchanged = reader.GetBoolean(2);
+      this._name = reader.GetString(3);
+      this._price = reader.GetFloat(4);
+      this._description = reader.GetString(5);
     }
 
     public HardwareComponent(int id, string name, float price, bool isExchanged, string description) {
