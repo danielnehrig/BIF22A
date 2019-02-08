@@ -2,7 +2,7 @@ using System;
 using System.Data.SqlClient;
 
 namespace BKTMManager.Types {
-  public class Category {
+  public class Category : IGlobalType {
     public Category() {}
 
     public Category(SqlDataReader reader) {
@@ -20,6 +20,10 @@ namespace BKTMManager.Types {
     public string name {
       get { return _name; }
       set { _name = value; }
+    }
+
+    public string WhatAmI() {
+      return String.Format("ID: {0} ; NAME: {1}", _id, _name);
     }
   }
 }

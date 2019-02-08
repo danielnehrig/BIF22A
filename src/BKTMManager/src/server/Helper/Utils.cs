@@ -9,11 +9,10 @@ using BKTMManager.Types;
 
 namespace BKTMManager.Helper {
   public static class Utils {
-    public static void LoopListOutput(List<Room> items) {
+    public static void LoopListOutput<T>(List<T> items) where T : IGlobalType {
       try {
-        Console.WriteLine("ID ; ROOM");
-        foreach (Room item in items) {
-          Console.WriteLine(item.id + " " + item.name);
+        foreach (var item in items) {
+          Console.WriteLine(item.WhatAmI());
         }
       } catch(Exception ex) {
         Console.WriteLine(ex);

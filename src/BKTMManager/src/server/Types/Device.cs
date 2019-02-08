@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 using System.Collections.Generic;
 
 namespace BKTMManager.Types {
-  public class Device {
+  public class Device : IGlobalType {
     private int _id;
     public int id {
       set { _id = value; }
@@ -61,6 +61,10 @@ namespace BKTMManager.Types {
     public Device(int id, string name) {
       this._id = id;
       this._name = name;
+    }
+
+    public string WhatAmI() {
+      return String.Format("ID: {0} ; BUYDATE: {1} ; CATID: {2} ; INVID: {3} ; RESID: {4} ; PRICE: {5} ", _id, _dateBuy, _categoryId, _inventoryId, _resellerId, _price);
     }
   }
 }

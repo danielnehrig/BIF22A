@@ -1,12 +1,13 @@
+using System;
 using System.Data.SqlClient;
 
 namespace BKTMManager.Types {
-  interface IRoom {
+  public interface IRoom {
     int id { get; set; }
     string name { get; set; }
   }
 
-  public class Room : IRoom {
+  public class Room : IGlobalType, IRoom {
     private int _id;
     public int id {
       get { return _id; }
@@ -41,6 +42,10 @@ namespace BKTMManager.Types {
     public Room(int id, string name) {
       this._id = id;
       this._name = name;
+    }
+
+    public string WhatAmI() {
+      return String.Format("ID: {0} ; NAME: {1} ; DESC: {2} ", _id, _name, _description);
     }
   }
 }

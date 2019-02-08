@@ -2,7 +2,7 @@ using System;
 using System.Data.SqlClient;
 
 namespace BKTMManager.Types {
-  public class Damaged {
+  public class Damaged : IGlobalType {
     public Damaged(SqlDataReader reader) {
       this._id = reader.GetInt32(0);
       this._date = reader.GetDateTime(1);
@@ -23,6 +23,10 @@ namespace BKTMManager.Types {
     public string description {
       get { return _description; }
       set { _description = value; }
+    }
+
+    public string WhatAmI() {
+      return String.Format("ID: {0} ; DATE: {1} ; DESC: {2}", _id, _date, _description);
     }
   }
 }

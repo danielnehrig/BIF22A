@@ -1,5 +1,8 @@
+using System;
+using System.Data.SqlClient;
+
 namespace BKTMManager.Types {
-  public class Reseller {
+  public class Reseller : IGlobalType {
     public Reseller() { }
 
     public Reseller(SqlDataReader reader) {
@@ -24,6 +27,10 @@ namespace BKTMManager.Types {
     public string name {
       get { return _name; }
       set { _name = value; }
+    }
+
+    public string WhatAmI() {
+      return String.Format("ID: {0} ; LOC: {1} ; NAME: {2}", _id, _location, _name);
     }
   }
 }

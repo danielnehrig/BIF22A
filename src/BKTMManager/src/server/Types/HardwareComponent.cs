@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 using System.Collections.Generic;
 
 namespace BKTMManager.Types {
-  public class HardwareComponent {
+  public class HardwareComponent : IGlobalType {
     private int _id;
     public int id {
       get { return _id; }
@@ -28,8 +28,8 @@ namespace BKTMManager.Types {
       get { return _name; }
     }
 
-    private float _price;
-    public float price {
+    private double _price;
+    public double price {
       set { _price = value; }
       get { return _price; }
     }
@@ -48,9 +48,9 @@ namespace BKTMManager.Types {
     public HardwareComponent(SqlDataReader reader) {
       this._id = reader.GetInt32(0);
       this._categoryId = reader.GetInt32(1);
-      this._isExchanged = reader.GetBoolean(2);
+      // this._isExchanged = reader.GetBoolean(2);
       this._name = reader.GetString(3);
-      this._price = reader.GetFloat(4);
+      this._price = reader.GetDouble(4);
       this._description = reader.GetString(5);
     }
 
@@ -63,6 +63,10 @@ namespace BKTMManager.Types {
     }
 
     public HardwareComponent() {
+    }
+
+    public string WhatAmI() {
+      return String.Format("ID: {0} ; NAME: {1} ; DESC: {2} ; isEx: {3} ; PRICE: {4}", _id, _name, _description, _isExchanged, _price);
     }
   }
 }
