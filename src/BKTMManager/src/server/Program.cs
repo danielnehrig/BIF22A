@@ -26,6 +26,7 @@ namespace BKTMManager {
         string password = Console.ReadLine();
 
         User user = manager2.user.Login(username, password);
+
         if(user == null) {
           return 0;
         }
