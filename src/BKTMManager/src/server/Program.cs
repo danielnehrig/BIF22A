@@ -13,6 +13,7 @@ namespace BKTMManager {
         Dictionary<string, string> cnnInfo = config.cnnInfo;
 
         // Load Administration manager
+        // Deprecated but still in use for inserting and updating data if i can't get the new design done by the deadline
         AdministrationManager manager = new AdministrationManager(cnnInfo["ip"], cnnInfo["db"], cnnInfo["user"], cnnInfo["pw"]);
 
         // Load Administration manager v2 with repo design pattern
@@ -55,6 +56,11 @@ namespace BKTMManager {
         // Output all Devices
         Console.WriteLine("Device Table");
         Utils.LoopListOutput(manager2.device.GetAll());
+
+        // User Testing
+        // Output all Users
+        Console.WriteLine("User Table");
+        Utils.LoopListOutput(manager2.user.GetAll());
 
       } catch (Exception ex) {
         Console.WriteLine(ex);

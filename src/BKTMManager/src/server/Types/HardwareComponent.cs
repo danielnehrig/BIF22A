@@ -16,8 +16,8 @@ namespace BKTMManager.Types {
       set { _categoryId = value; }
     }
 
-    private bool _isExchanged = false;
-    public bool isExchanged {
+    private byte _isExchanged = 0;
+    public byte isExchanged {
       get { return _isExchanged; }
       set { _isExchanged = value; }
     }
@@ -48,13 +48,13 @@ namespace BKTMManager.Types {
     public HardwareComponent(SqlDataReader reader) {
       this._id = reader.GetInt32(0);
       this._categoryId = reader.GetInt32(1);
-      // this._isExchanged = reader.GetBoolean(2);
+      this._isExchanged = reader.GetByte(2);
       this._name = reader.GetString(3);
       this._price = reader.GetDouble(4);
       this._description = reader.GetString(5);
     }
 
-    public HardwareComponent(int id, string name, float price, bool isExchanged, string description) {
+    public HardwareComponent(int id, string name, float price, byte isExchanged, string description) {
       this._id = id;
       this._name = name;
       this._description = description;

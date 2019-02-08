@@ -101,7 +101,7 @@ namespace BKTMManager.Administration {
           temp.id = reader.GetInt32(0);
           temp.name = reader.GetString(1);
           temp.price = reader.GetFloat(2);
-          temp.isExchanged = reader.GetBoolean(3);
+          temp.isExchanged = reader.GetByte(3);
           temp.description = reader.GetString(4);
         }
       } catch (Exception ex) {

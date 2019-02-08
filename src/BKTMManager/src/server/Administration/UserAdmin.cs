@@ -5,6 +5,8 @@ using BKTMManager.Types;
 
 namespace BKTMManager.Administration {
   public class UserAdministration : RepoAdmin<User> {
-    public UserAdministration(SqlConnection cnn):base(cnn) { }
+    public UserAdministration(SqlConnection cnn):base(cnn) { 
+      tableName = "User";
+    }
   }
 }
