@@ -2,14 +2,30 @@ using System;
 using System.Data.SqlClient;
 
 namespace BKTMManager.Types {
-  public class Damaged : IGlobalType {
+  public class Damaged : TypeRepo {
     public Damaged() { }
+
     public Damaged(SqlDataReader reader) {
-      this._id = reader.GetInt32(0);
-      this._date = reader.GetDateTime(1);
-      this._description = reader.GetString(2);
-      this._deviceId = reader.GetInt32(3);
+      this._id = reader.GetInt32(reader.GetOrdinal("id"));
+      this._date = reader.GetDateTime(reader.GetOrdinal("date"));
+      this._description = reader.GetString(reader.GetOrdinal("description"));
+      this._deviceId = reader.GetInt32(reader.GetOrdinal("deviceId"));
+      this.tableNormal = String.Format(@"ID -- DATE -- DESCRIPTION --: DEVICEID
+{0}   {1}     {2}          {3}
+", this.id, this.date, this.description, this.deviceId);
     }
+
+    public Damaged(SqlDataReader reader, Device device) {
+      this._id = reader.GetInt32(reader.GetOrdinal("id"));
+      this._date = reader.GetDateTime(reader.GetOrdinal("date"));
+      this._description = reader.GetString(reader.GetOrdinal("description"));
+      this._deviceId = reader.GetInt32(reader.GetOrdinal("deviceId"));
+      this._device = device;
+      this.tablePopulated = String.Format(@"ID -- DATE -- DESCRIPTION --: DEVICE :-- PRICE --:-- DATE --:-- CATEGORY --:-- RESELLER --:-- LOCATION --
+{0}   {1}     {2}        {3}     {4}     {5}    {6}    {7}
+", this.id, this.date, this.description, this.device.price, this.device.dateBuy, this.device.category.name, this.device.reseller.name, this.device.reseller.location);
+    }
+
 
     private int _id;
     public int id {
@@ -38,10 +54,6 @@ namespace BKTMManager.Types {
     public int deviceId {
       get { return _deviceId; }
       set { _deviceId = value; }
-    }
-
-    public string WhatAmI() {
-      return String.Format("ID: {0} ; DATE: {1} ; DESC: {2}", _id, _date, _description);
     }
   }
 }

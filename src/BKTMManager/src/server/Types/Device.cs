@@ -3,17 +3,11 @@ using System.Data.SqlClient;
 using System.Collections.Generic;
 
 namespace BKTMManager.Types {
-  public class Device : IGlobalType {
+  public class Device : TypeRepo {
     private int _id;
     public int id {
       set { _id = value; }
       get { return _id; }
-    }
-
-    private string _name;
-    public string name {
-      set { _name = value; }
-      get { return _name; }
     }
 
     private DateTime _dateBuy;
@@ -28,10 +22,22 @@ namespace BKTMManager.Types {
       get { return _categoryId; }
     }
 
-    private int _inventoryId;
-    public int inventoryId {
-      set { _inventoryId = value; }
-      get { return _inventoryId; }
+    private Category _category;
+    public Category category {
+      set { _category = value; }
+      get { return _category; }
+    }
+
+    private Reseller _reseller;
+    public Reseller reseller {
+      set { _reseller = value; }
+      get { return _reseller; }
+    }
+
+    private int _inventoryNr;
+    public int inventoryNr {
+      set { _inventoryNr = value; }
+      get { return _inventoryNr; }
     }
 
     private int _resellerId;
@@ -50,21 +56,24 @@ namespace BKTMManager.Types {
     }
 
     public Device(SqlDataReader reader) {
-      this._id = reader.GetInt32(0);
-      this._dateBuy = reader.GetDateTime(1);
-      this._categoryId = reader.GetInt32(2);
-      this._inventoryId = reader.GetInt32(3);
-      this._resellerId = reader.GetInt32(4);
-      this._price = reader.GetDouble(5);
+      this._id = reader.GetInt32(reader.GetOrdinal("id"));
+      this._dateBuy = reader.GetDateTime(reader.GetOrdinal("dateBuy"));
+      this._categoryId = reader.GetInt32(reader.GetOrdinal("categoryId"));
+      this._inventoryNr = reader.GetInt32(reader.GetOrdinal("inventoryNr"));
+      this._resellerId = reader.GetInt32(reader.GetOrdinal("resellerId"));
+      this._price = reader.GetDouble(reader.GetOrdinal("price"));
+      tableNormal = String.Format("ID: {0} ; BUYDATE: {1} ; CATID: {2} ; INVID: {3} ; RESID: {4} ; PRICE: {5} ", _id, _dateBuy, _categoryId, _inventoryNr, _resellerId, _price);
     }
 
-    public Device(int id, string name) {
-      this._id = id;
-      this._name = name;
-    }
-
-    public string WhatAmI() {
-      return String.Format("ID: {0} ; BUYDATE: {1} ; CATID: {2} ; INVID: {3} ; RESID: {4} ; PRICE: {5} ", _id, _dateBuy, _categoryId, _inventoryId, _resellerId, _price);
+    public Device(SqlDataReader reader, Category category, Reseller reseller) {
+      this._id = reader.GetInt32(reader.GetOrdinal("id"));
+      this._dateBuy = reader.GetDateTime(reader.GetOrdinal("dateBuy"));
+      this._categoryId = reader.GetInt32(reader.GetOrdinal("categoryId"));
+      this._inventoryNr = reader.GetInt32(reader.GetOrdinal("inventoryNr"));
+      this._resellerId = reader.GetInt32(reader.GetOrdinal("resellerId"));
+      this._price = reader.GetDouble(reader.GetOrdinal("price"));
+      this._reseller = reseller;
+      this._category = category;
     }
   }
 }

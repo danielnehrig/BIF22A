@@ -1,5 +1,5 @@
 namespace BKTMManager.Types {
   public interface IGlobalType {
-    string WhatAmI();
+    string WhatAmI(string mode);
   }
 }

@@ -2,13 +2,14 @@ using System;
 using System.Data.SqlClient;
 
 namespace BKTMManager.Types {
-  public class Reseller : IGlobalType {
+  public class Reseller : TypeRepo {
     public Reseller() { }
 
     public Reseller(SqlDataReader reader) {
-      _id = reader.GetInt32(0);
-      _location = reader.GetString(1);
-      _name = reader.GetString(2);
+      _id = reader.GetInt32(reader.GetOrdinal("id"));
+      _location = reader.GetString(reader.GetOrdinal("location"));
+      _name = reader.GetString(reader.GetOrdinal("name"));
+      tableNormal = String.Format("ID: {0} ; LOC: {1} ; NAME: {2}", _id, _location, _name);
     }
 
     private int _id;
@@ -27,10 +28,6 @@ namespace BKTMManager.Types {
     public string name {
       get { return _name; }
       set { _name = value; }
-    }
-
-    public string WhatAmI() {
-      return String.Format("ID: {0} ; LOC: {1} ; NAME: {2}", _id, _location, _name);
     }
   }
 }

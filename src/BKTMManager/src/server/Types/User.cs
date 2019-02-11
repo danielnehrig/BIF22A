@@ -2,16 +2,17 @@ using System;
 using System.Data.SqlClient;
 
 namespace BKTMManager.Types {
-  public class User : IGlobalType {
+  public class User : TypeRepo {
     public User() { }
 
     public User(SqlDataReader reader) {
-      this._id = reader.GetInt32(0);
-      this._username = reader.GetString(1);
-      this._password = reader.GetString(2);
-      this._email = reader.GetString(3);
-      this._isAdmin = reader.GetByte(4);
-      this._teacherId = reader.GetInt32(5);
+      this._id = reader.GetInt32(reader.GetOrdinal("id"));
+      this._username = reader.GetString(reader.GetOrdinal("username"));
+      this._password = reader.GetString(reader.GetOrdinal("password"));
+      this._email = reader.GetString(reader.GetOrdinal("email"));
+      this._admin = reader.GetByte(reader.GetOrdinal("admin"));
+      this._teacherId = reader.GetInt32(reader.GetOrdinal("teacherId"));
+      tableNormal = String.Format("ID: {0} ; NAME: {1} ; EMAIL: {2} ; ISADMIN: {3}", _id, _username, _email, _admin);
     }
 
     private Teacher _teacher;
@@ -44,20 +45,16 @@ namespace BKTMManager.Types {
       set { _password = value; }
     }
 
-    private byte _isAdmin = 0;
-    public byte isAdmin {
-      get { return _isAdmin; }
-      set { _isAdmin = value; }
+    private byte _admin = 0;
+    public byte admin {
+      get { return _admin; }
+      set { _admin = value; }
     }
 
     private int _teacherId;
     public int teacherId {
       get { return _teacherId; }
       set { _teacherId = value; }
-    }
-
-    public string WhatAmI() {
-      return String.Format("ID: {0} ; NAME: {1} ; EMAIL: {2} ; ISADMIN: {3}", _id, _username, _email, _isAdmin);
     }
   }
 }

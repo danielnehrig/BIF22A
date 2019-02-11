@@ -2,15 +2,15 @@ using System;
 using System.Data.SqlClient;
 
 namespace BKTMManager.Types {
-  public class Teacher {
+  public class Teacher : TypeRepo {
     public Teacher() { }
 
     public Teacher(SqlDataReader reader) {
-      _id = reader.GetInt32(0);
-      _firstName = reader.GetString(1);
-      _lastName = reader.GetString(2);
-      _roomId = reader.GetInt32(3);
-      _roomOwner = reader.GetInt32(4);
+      _id = reader.GetInt32(reader.GetOrdinal("id"));
+      _firstName = reader.GetString(reader.GetOrdinal("firstName"));
+      _lastName = reader.GetString(reader.GetOrdinal("lastName"));
+      _roomId = reader.GetInt32(reader.GetOrdinal("roomId"));
+      _roomOwner = reader.GetInt32(reader.GetOrdinal("roomOwner"));
     }
 
     private int _id;
