@@ -6,8 +6,8 @@ namespace BKTMManager.Types {
     public Category() {}
 
     public Category(SqlDataReader reader) {
-      _id = reader.GetInt32(reader.GetOrdinal("id"));
-      _name = reader.GetString(reader.GetOrdinal("name"));
+      _id = reader.GetInt32(reader.GetOrdinal("ca_id"));
+      _name = reader.GetString(reader.GetOrdinal("caName"));
       tableNormal = String.Format("ID: {0} ; NAME: {1}", _id, _name);
     }
 

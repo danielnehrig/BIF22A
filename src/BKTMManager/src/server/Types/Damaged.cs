@@ -6,7 +6,7 @@ namespace BKTMManager.Types {
     public Damaged() { }
 
     public Damaged(SqlDataReader reader) {
-      this._id = reader.GetInt32(reader.GetOrdinal("id"));
+      this._id = reader.GetInt32(reader.GetOrdinal("da_id"));
       this._date = reader.GetDateTime(reader.GetOrdinal("date"));
       this._description = reader.GetString(reader.GetOrdinal("description"));
       this._deviceId = reader.GetInt32(reader.GetOrdinal("deviceId"));
@@ -16,7 +16,7 @@ namespace BKTMManager.Types {
     }
 
     public Damaged(SqlDataReader reader, Device device) {
-      this._id = reader.GetInt32(reader.GetOrdinal("id"));
+      this._id = reader.GetInt32(reader.GetOrdinal("da_id"));
       this._date = reader.GetDateTime(reader.GetOrdinal("date"));
       this._description = reader.GetString(reader.GetOrdinal("description"));
       this._deviceId = reader.GetInt32(reader.GetOrdinal("deviceId"));

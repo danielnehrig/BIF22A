@@ -6,6 +6,7 @@ using System.Data.SqlClient;
  * Database Tables
  *
  * Device
+ * DeviceReseller
  * Teacher
  * User
  * Hardware
@@ -49,35 +50,6 @@ namespace BKTMManager.Controller {
       }
       catch (Exception ex) {
         Console.WriteLine("Can not open connection!" + ex);
-        return false;
-      }
-    }
-    
-    /*
-     * close Connection
-     * @return bool
-     */
-    protected bool openConnection() {
-      try {
-        _cnn.Open();
-        Console.WriteLine("Connection Open!");
-        return true;
-      } catch (Exception ex) {
-        Console.WriteLine(ex);
-        return false;
-      }
-    }
-
-    /*
-     * @return bool
-     */
-    protected bool closeConnection() {
-      try {
-        _cnn.Close();
-        Console.WriteLine("Connection Closed!");
-        return true;
-      } catch (Exception ex) {
-        Console.WriteLine(ex);
         return false;
       }
     }

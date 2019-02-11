@@ -7,6 +7,7 @@ namespace BKTMManager.Administration {
   public class HardwareAdministration : RepoAdmin<HardwareComponent> {
     public HardwareAdministration(SqlConnection cnn):base(cnn) {
       tableName = "Hardware";
+      prefix = "ha_";
       columNames = this.getColumnsName();
     }
   }

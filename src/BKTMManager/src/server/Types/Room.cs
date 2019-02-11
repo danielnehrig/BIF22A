@@ -25,7 +25,7 @@ namespace BKTMManager.Types {
     }
 
     public Room(SqlDataReader reader) {
-      this._id = reader.GetInt32(reader.GetOrdinal("id"));
+      this._id = reader.GetInt32(reader.GetOrdinal("ro_id"));
       this._roomNr = reader.GetString(reader.GetOrdinal("roomNr"));
       this._description = reader.GetString(reader.GetOrdinal("description"));
       tableNormal = String.Format("ID: {0} ; NR: {1} ; DESC: {2} ", _id, _roomNr, _description);

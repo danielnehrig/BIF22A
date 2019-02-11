@@ -41,12 +41,12 @@ namespace BKTMManager.Types {
     }
 
     public HardwareComponent(SqlDataReader reader) {
-      this._id = reader.GetInt32(0);
-      this._categoryId = reader.GetInt32(1);
-      this._isExchanged = reader.GetByte(2);
-      this._name = reader.GetString(3);
-      this._price = reader.GetDouble(4);
-      this._description = reader.GetString(5);
+      this._id = reader.GetInt32(reader.GetOrdinal("ha_id"));
+      this._categoryId = reader.GetInt32(reader.GetOrdinal("categoryId"));
+      this._isExchanged = reader.GetByte(reader.GetOrdinal("isExchanged"));
+      this._name = reader.GetString(reader.GetOrdinal("haName"));
+      this._price = reader.GetDouble(reader.GetOrdinal("haPrice"));
+      this._description = reader.GetString(reader.GetOrdinal("description"));
       tableNormal = String.Format("ID: {0} ; NAME: {1} ; DESC: {2} ; isEx: {3} ; PRICE: {4}", _id, _name, _description, _isExchanged, _price);
     }
 

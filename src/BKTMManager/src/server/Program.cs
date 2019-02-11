@@ -185,7 +185,7 @@ namespace BKTMManager {
             case "6":
               Console.Clear();
               Console.WriteLine("Welcome to the Damaged Manager");
-              Console.WriteLine(options);
+              Console.WriteLine(options + "6.GetAllPopulated");
               Console.Write("Awaiting input : ");
               a = Console.ReadLine();
               switch(a) {
@@ -208,7 +208,7 @@ namespace BKTMManager {
                   manager.damaged.Update(Convert.ToInt32(id), col, change);
                   break;
                 case "5": Console.Write("Awaiting input ID: "); id = Console.ReadLine(); Console.Clear(); manager.damaged.Delete(Convert.ToInt32(id)); Console.WriteLine("ID "+id+" deleted"); break;
-                case "6": Utils.LoopPopulatedListOutput(manager.damaged.GetAllDamagedDevices()); break;
+                case "6": Console.Clear() ;Utils.LoopPopulatedListOutput(manager.damaged.GetAllPopulated()); break;
               }
               break;
           }

@@ -56,7 +56,7 @@ namespace BKTMManager.Types {
     }
 
     public Device(SqlDataReader reader) {
-      this._id = reader.GetInt32(reader.GetOrdinal("id"));
+      this._id = reader.GetInt32(reader.GetOrdinal("de_id"));
       this._dateBuy = reader.GetDateTime(reader.GetOrdinal("dateBuy"));
       this._categoryId = reader.GetInt32(reader.GetOrdinal("categoryId"));
       this._inventoryNr = reader.GetInt32(reader.GetOrdinal("inventoryNr"));
@@ -66,7 +66,7 @@ namespace BKTMManager.Types {
     }
 
     public Device(SqlDataReader reader, Category category, Reseller reseller) {
-      this._id = reader.GetInt32(reader.GetOrdinal("id"));
+      this._id = reader.GetInt32(reader.GetOrdinal("de_id"));
       this._dateBuy = reader.GetDateTime(reader.GetOrdinal("dateBuy"));
       this._categoryId = reader.GetInt32(reader.GetOrdinal("categoryId"));
       this._inventoryNr = reader.GetInt32(reader.GetOrdinal("inventoryNr"));

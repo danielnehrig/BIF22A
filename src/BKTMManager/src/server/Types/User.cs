@@ -6,7 +6,7 @@ namespace BKTMManager.Types {
     public User() { }
 
     public User(SqlDataReader reader) {
-      this._id = reader.GetInt32(reader.GetOrdinal("id"));
+      this._id = reader.GetInt32(reader.GetOrdinal("us_id"));
       this._username = reader.GetString(reader.GetOrdinal("username"));
       this._password = reader.GetString(reader.GetOrdinal("password"));
       this._email = reader.GetString(reader.GetOrdinal("email"));

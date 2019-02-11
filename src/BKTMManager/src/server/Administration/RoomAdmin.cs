@@ -7,6 +7,7 @@ namespace BKTMManager.Administration {
   public class RoomAdministration : RepoAdmin<Room> {
     public RoomAdministration(SqlConnection cnn):base(cnn) { 
       tableName = "Room";
+      prefix = "ro_";
       columNames = this.getColumnsName();
     }
   }

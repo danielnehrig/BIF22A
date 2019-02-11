@@ -7,6 +7,7 @@ namespace BKTMManager.Administration {
   public class DeviceAdministration : RepoAdmin<Device> {
     public DeviceAdministration(SqlConnection cnn):base(cnn) { 
       tableName = "Device";
+      prefix = "de_";
       columNames = this.getColumnsName();
     }
   }

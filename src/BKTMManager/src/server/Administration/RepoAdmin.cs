@@ -12,6 +12,12 @@ using BKTMManager.Controller;
  */
 namespace BKTMManager.Administration {
   public interface IRepoAdmin<TEntity> where TEntity : class, new() {
+    string tableName { get; set; }
+    string[] toPopulate { get; set; }
+    string columNames { get; set; }
+    string prefix { get; set; }
+    SqlConnection cnn { get; }
+
     List<TEntity> GetAll();
     TEntity GetById(int id);
     void Update(int id, string old, string change);
@@ -20,10 +26,22 @@ namespace BKTMManager.Administration {
   }
 
   public class RepoAdmin<TEntity> : IRepoAdmin<TEntity> where TEntity : class, new() {
+    private string[] _toPopulate;
+    public string[] toPopulate {
+      get { return _toPopulate; }
+      set { _toPopulate = value; }
+    }
+
     private string _tableName;
     public string tableName {
       get { return _tableName; }
       set { _tableName = value; }
+    }
+
+    private string _prefix;
+    public string prefix {
+      get { return _prefix; }
+      set { _prefix = value; }
     }
 
     private SqlConnection _cnn;
@@ -69,7 +87,7 @@ namespace BKTMManager.Administration {
       try {
         this._cnn.Open();
         SqlCommand command = this._cnn.CreateCommand();
-        command.CommandText = String.Format("SELECT * FROM [dbo].[{0}]", this.tableName);
+        command.CommandText = String.Format("SELECT id AS {1}id,* FROM [dbo].[{0}]", this.tableName, this.prefix);
         SqlDataReader reader = command.ExecuteReader();
         while(reader.Read()) {
           object[] args = new Object[] { reader };
@@ -91,7 +109,7 @@ namespace BKTMManager.Administration {
       try {
         this._cnn.Open();
         SqlCommand command = this._cnn.CreateCommand();
-        command.CommandText = String.Format("SELECT * FROM [dbo].[{0}] WHERE id = {1}", this.tableName, id);
+        command.CommandText = String.Format("SELECT id AS {0}id, * FROM [dbo].[{1}] WHERE id = {2}", this.prefix, this.tableName, id);
         SqlDataReader reader = command.ExecuteReader();
         reader.Read();
         object[] args = new Object[] { reader };

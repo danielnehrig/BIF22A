@@ -25,7 +25,7 @@ GO
 CREATE TABLE [dbo].[DeviceReseller](
 	[id] [int] NOT NULL IDENTITY(1,1),
 	[location] [nvarchar](255) NOT NULL,
-	[name] [nvarchar](255) NOT NULL,
+	[reName] [nvarchar](255) NOT NULL,
  CONSTRAINT [PK_DeviceReseller] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -37,9 +37,9 @@ GO
 CREATE TABLE [dbo].[Hardware](
 	[id] [int] NOT NULL IDENTITY(1,1),
 	[categoryId] [int] NOT NULL,
-	[isExchangend] [tinyint] NOT NULL,
-	[name] [nvarchar](255) NOT NULL,
-  [price] [float](53) NOT NULL,
+	[isExchanged] [tinyint] NOT NULL,
+	[haName] [nvarchar](255) NOT NULL,
+  [haPrice] [float](53) NOT NULL,
   [description] [nvarchar](255) NOT NULL,
  CONSTRAINT [PK_Hardware] PRIMARY KEY CLUSTERED 
 (
@@ -60,7 +60,7 @@ GO
 /****** Object:  Table [dbo].[Kategorie]    Script Date: 16.11.2018 12:49:14 ******/
 CREATE TABLE [dbo].[Category](
 	[id] [int] NOT NULL IDENTITY(1,1),
-	[name] [nvarchar](255) NOT NULL,
+	[caName] [nvarchar](255) NOT NULL,
  CONSTRAINT [PK_Category] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -200,7 +200,7 @@ INSERT INTO [dbo].[Room] (roomNr, description) VALUES
 ('C216', 'PC Room')
 GO
 
-INSERT INTO [dbo].[Category] (name) VALUES
+INSERT INTO [dbo].[Category] (caName) VALUES
 ('PC'),
 ('Printer'),
 ('CPU'),
@@ -214,7 +214,7 @@ INSERT INTO [dbo].[Category] (name) VALUES
 ('Switch')
 GO
 
-INSERT INTO [dbo].[DeviceReseller] (name, location) VALUES
+INSERT INTO [dbo].[DeviceReseller] (reName, location) VALUES
 ('Müller CO KG', 'OptenBurg 23 41442 Germany'),
 ('Kaktus GmbH', 'OptenBurg 22 41442 Germany'),
 ('FranzJosef KG', 'OptenBurg 21 41442 Germany')
@@ -237,7 +237,7 @@ INSERT INTO [dbo].[User] (username, password, email, admin, teacherId) VALUES
 ('root', 'root', 'root@localhost', 1, 1)
 GO
 
-INSERT INTO [dbo].[Hardware] (description, name, isExchangend, categoryId, price) VALUES
+INSERT INTO [dbo].[Hardware] (description, haName, isExchanged, categoryId, haPrice) VALUES
 ('abc', 'Intel i7 K4700', 1, 3, 10),
 ('abc', 'Intel i9 K9990', 0, 3, 10)
 GO

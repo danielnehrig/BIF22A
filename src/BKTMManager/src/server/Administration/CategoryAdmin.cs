@@ -8,6 +8,7 @@ namespace BKTMManager.Administration {
     public CategoryAdministration(SqlConnection cnn):base(cnn) { 
       tableName = "Category";
       columNames = this.getColumnsName();
+      prefix = "ca_";
     }
   }
 }

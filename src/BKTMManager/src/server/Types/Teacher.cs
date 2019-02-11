@@ -6,7 +6,7 @@ namespace BKTMManager.Types {
     public Teacher() { }
 
     public Teacher(SqlDataReader reader) {
-      _id = reader.GetInt32(reader.GetOrdinal("id"));
+      _id = reader.GetInt32(reader.GetOrdinal("te_id"));
       _firstName = reader.GetString(reader.GetOrdinal("firstName"));
       _lastName = reader.GetString(reader.GetOrdinal("lastName"));
       _roomId = reader.GetInt32(reader.GetOrdinal("roomId"));

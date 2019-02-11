@@ -6,9 +6,9 @@ namespace BKTMManager.Types {
     public Reseller() { }
 
     public Reseller(SqlDataReader reader) {
-      _id = reader.GetInt32(reader.GetOrdinal("id"));
+      _id = reader.GetInt32(reader.GetOrdinal("re_id"));
       _location = reader.GetString(reader.GetOrdinal("location"));
-      _name = reader.GetString(reader.GetOrdinal("name"));
+      _name = reader.GetString(reader.GetOrdinal("reName"));
       tableNormal = String.Format("ID: {0} ; LOC: {1} ; NAME: {2}", _id, _location, _name);
     }
 

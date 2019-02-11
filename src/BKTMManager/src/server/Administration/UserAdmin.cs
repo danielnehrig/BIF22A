@@ -11,6 +11,7 @@ namespace BKTMManager.Administration {
   public class UserAdministration : RepoAdmin<User>, IUserAdmin {
     public UserAdministration(SqlConnection cnn):base(cnn) { 
       tableName = "User";
+      prefix = "us_";
       columNames = this.getColumnsName();
     }
 
@@ -18,7 +19,7 @@ namespace BKTMManager.Administration {
       try {
         this.cnn.Open();
         SqlCommand command = this.cnn.CreateCommand();
-        command.CommandText = String.Format("SELECT * FROM [dbo].[{0}] WHERE username = '{1}'", this.tableName, username);
+        command.CommandText = String.Format("SELECT id AS {2}id, * FROM [dbo].[{0}] WHERE username = '{1}'", this.tableName, username, this.prefix);
         SqlDataReader reader = command.ExecuteReader();
         reader.Read();
         if(reader.GetString(2) == password) {
