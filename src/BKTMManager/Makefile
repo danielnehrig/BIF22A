@@ -1,8 +1,9 @@
 LIB = -r:../../dep/EntityFramework.dll
 PKG = -pkg:dotnet
 COMP = mcs
-SRCPATH = ./src/server/
-COMPILEPATH = ./dist/server/
+COMPOPTIONS = 
+SRCPATH = ./src/BKTMManager/
+COMPILEPATH = ./dist/BKTMManager/
 FILENAME = BKTMManager.exe
 
 Build:
@@ -12,8 +13,8 @@ Build:
 	cp $(SRCPATH)config.cfg $(COMPILEPATH)config.cfg
 
 Clean:
-	rm ./dist/server/*.exe
-	rm ./dist/server/config.cfg
+	rm $(COMPILEPATH)*.exe
+	rm $(COMPILEPATH)config.cfg
 
 Start:
 	cd $(COMPILEPATH); \
