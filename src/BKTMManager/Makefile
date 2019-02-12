@@ -1,9 +1,8 @@
 LIB = -r:../../dep/EntityFramework.dll
-PKG = -pkg:dotnet
+PKG = -pkg:dotnet -pkg:gtk-sharp-2.0
 COMP = mcs
-COMPOPTIONS = 
-SRCPATH = ./src/BKTMManager/
-COMPILEPATH = ./dist/BKTMManager/
+SRCPATH = ./src/server/
+COMPILEPATH = ./dist/server/
 FILENAME = BKTMManager.exe
 
 Build:
