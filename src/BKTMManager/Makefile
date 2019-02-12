@@ -1,4 +1,3 @@
-LIB = -r:../../dep/EntityFramework.dll
 PKG = -pkg:dotnet -pkg:gtk-sharp-2.0
 COMP = mcs
 SRCPATH = ./src/server/
@@ -7,7 +6,7 @@ FILENAME = BKTMManager.exe
 
 Build:
 	cd $(SRCPATH); \
-	$(COMP) -recurse:*.cs $(PKG) $(LIB) -out:$(FILENAME)
+	$(COMP) -recurse:*.cs $(PKG) -out:$(FILENAME)
 	mv $(SRCPATH)$(FILENAME) $(COMPILEPATH)$(FILENAME)
 	cp $(SRCPATH)config.cfg $(COMPILEPATH)config.cfg
 

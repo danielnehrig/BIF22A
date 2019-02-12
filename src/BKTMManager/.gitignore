@@ -2,6 +2,7 @@
 .vs
 config.cfg
 release
+packages
 dist
 dep
 req
