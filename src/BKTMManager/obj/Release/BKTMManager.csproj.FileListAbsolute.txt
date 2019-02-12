@@ -1,9 +1,0 @@
-/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/dist/server/BKTMManager.deps.json
-/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/dist/server/BKTMManager.runtimeconfig.json
-/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/dist/server/BKTMManager.runtimeconfig.dev.json
-/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/dist/server/BKTMManager.dll
-/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/obj/Release/BKTMManager.csprojAssemblyReference.cache
-/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/obj/Release/BKTMManager.csproj.CoreCompileInputs.cache
-/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/obj/Release/BKTMManager.AssemblyInfoInputs.cache
-/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/obj/Release/BKTMManager.AssemblyInfo.cs
-/Users/dnehrig/code/c#/BIF22A/src/BKTMManager/obj/Release/BKTMManager.dll
