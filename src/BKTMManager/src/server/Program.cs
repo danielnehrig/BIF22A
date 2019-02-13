@@ -10,11 +10,7 @@ namespace BKTMManager {
     public static void Main(string[] args) {
       try {
         Application.Init();
-        MainWindow win = new MainWindow();
-        win.Resize(200, 200);
-        Label myLabel = new Label();
-        myLabel.Text = "Hello World!!!";
-        win.Add(myLabel);
+        BKTMApp win = new BKTMApp();
         win.ShowAll();
         Application.Run();
       } catch (Exception ex) {
