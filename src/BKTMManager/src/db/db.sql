@@ -14,6 +14,7 @@ CREATE TABLE [dbo].[Device](
 	[inventoryNr] [int] NOT NULL,
 	[resellerId] [int] NOT NULL,
 	[price] [float] NOT NULL,
+  [roomId] [int] NOT NULL,
  CONSTRAINT [PK_Device] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -104,6 +105,7 @@ CREATE TABLE [dbo].[Damaged](
 	[date] [date] NOT NULL,
 	[description] [nvarchar](255) NOT NULL,
 	[deviceId] [int] NOT NULL,
+	[teacherId] [int] NOT NULL,
  CONSTRAINT [PK_Damaged] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -136,6 +138,11 @@ REFERENCES [dbo].[Device] ([id]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[HardwareDevice] CHECK CONSTRAINT [FK_HardwareDevice_Device]
 GO
+ALTER TABLE [dbo].[Device]  WITH CHECK ADD  CONSTRAINT [FK_Device_Room] FOREIGN KEY([roomId])
+REFERENCES [dbo].[Room] ([id]) ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Device] CHECK CONSTRAINT [FK_Device_Room]
+GO
 ALTER TABLE [dbo].[HardwareDevice]  WITH CHECK ADD  CONSTRAINT [FK_HardwareDevice_Hardware] FOREIGN KEY([hardwareId])
 REFERENCES [dbo].[Hardware] ([id]) ON DELETE CASCADE
 GO
@@ -145,6 +152,11 @@ ALTER TABLE [dbo].[Damaged]  WITH CHECK ADD  CONSTRAINT [FK_Damaged_Device] FORE
 REFERENCES [dbo].[Device] ([id]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[Damaged] CHECK CONSTRAINT [FK_Damaged_Device]
+GO
+ALTER TABLE [dbo].[Damaged]  WITH CHECK ADD  CONSTRAINT [FK_Damaged_Teacher] FOREIGN KEY([teacherId])
+REFERENCES [dbo].[Teacher] ([id]) ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Damaged] CHECK CONSTRAINT [FK_Damaged_Teacher]
 GO
 ALTER TABLE [dbo].[User]  WITH CHECK ADD  CONSTRAINT [FK_User_Teacher] FOREIGN KEY([teacherId])
 REFERENCES [dbo].[Teacher] ([id]) ON DELETE CASCADE
@@ -220,11 +232,11 @@ INSERT INTO [dbo].[DeviceReseller] (reName, location) VALUES
 ('FranzJosef KG', 'OptenBurg 21 41442 Germany')
 GO
 
-INSERT INTO [dbo].[Device] (dateBuy, inventoryNr, categoryId, resellerId, price) VALUES
-(GETDATE(), 1, 1, 1, '300.10'),
-(GETDATE(), 2, 1, 1, '290.10'),
-(GETDATE(), 3, 2, 2, '50.10'),
-(GETDATE(), 4, 2, 3, '48.10')
+INSERT INTO [dbo].[Device] (dateBuy, inventoryNr, categoryId, resellerId, roomId, price) VALUES
+(GETDATE(), 1, 1, 1, 1, '300.10'),
+(GETDATE(), 2, 1, 1, 1, '290.10'),
+(GETDATE(), 3, 2, 2, 2, '50.10'),
+(GETDATE(), 4, 2, 3, 3, '48.10')
 GO
 
 INSERT INTO [dbo].[Teacher] (firstname, lastname, email, roomId, roomOwner) VALUES
@@ -242,10 +254,10 @@ INSERT INTO [dbo].[Hardware] (description, haName, isExchanged, categoryId, haPr
 ('abc', 'Intel i9 K9990', 0, 3, 10)
 GO
 
-INSERT INTO [dbo].[Damaged] (description, date, deviceId) VALUES
-('Broken', GETDATE(), 1),
-('Broken', GETDATE(), 2),
-('Broken', GETDATE(), 3)
+INSERT INTO [dbo].[Damaged] (description, date, deviceId, teacherId) VALUES
+('Broken', GETDATE(), 1, 1),
+('Broken', GETDATE(), 2, 1),
+('Broken', GETDATE(), 3, 1)
 GO
 
 USE [master]

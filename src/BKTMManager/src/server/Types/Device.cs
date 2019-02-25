@@ -46,6 +46,12 @@ namespace BKTMManager.Types {
       get { return _resellerId; }
     }
 
+    private int _roomId;
+    public int roomId {
+      set { _roomId = value; }
+      get { return _roomId; }
+    }
+
     private double _price;
     public double price {
       set { _price = value; }
@@ -61,6 +67,7 @@ namespace BKTMManager.Types {
       this._categoryId = reader.GetInt32(reader.GetOrdinal("categoryId"));
       this._inventoryNr = reader.GetInt32(reader.GetOrdinal("inventoryNr"));
       this._resellerId = reader.GetInt32(reader.GetOrdinal("resellerId"));
+      this._roomId = reader.GetInt32(reader.GetOrdinal("roomId"));
       this._price = reader.GetDouble(reader.GetOrdinal("price"));
       tableNormal = String.Format("ID: {0} ; BUYDATE: {1} ; CATID: {2} ; INVID: {3} ; RESID: {4} ; PRICE: {5} ", _id, _dateBuy, _categoryId, _inventoryNr, _resellerId, _price);
     }
@@ -71,6 +78,7 @@ namespace BKTMManager.Types {
       this._categoryId = reader.GetInt32(reader.GetOrdinal("categoryId"));
       this._inventoryNr = reader.GetInt32(reader.GetOrdinal("inventoryNr"));
       this._resellerId = reader.GetInt32(reader.GetOrdinal("resellerId"));
+      this._roomId = reader.GetInt32(reader.GetOrdinal("roomId"));
       this._price = reader.GetDouble(reader.GetOrdinal("price"));
       this._reseller = reseller;
       this._category = category;
