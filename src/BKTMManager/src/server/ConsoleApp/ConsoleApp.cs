@@ -5,9 +5,8 @@ using BKTMManager.Helper;
 using BKTMManager.Types;
 
 namespace BKTMManager.ConsoleApp {
-  public class ConsoleApp {
-    public ConsoleApp() { }
-    public static int start(string[] args) {
+  public static class ConsoleApplication {
+    public static int Start() {
       try {
         // Read the Config which holds Database connection information
         Config config = new Config("config.cfg");
