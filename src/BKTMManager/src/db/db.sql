@@ -161,10 +161,10 @@ GO
 ALTER TABLE [dbo].[User]  WITH CHECK ADD  CONSTRAINT [FK_User_Teacher] FOREIGN KEY([teacherId])
 REFERENCES [dbo].[Teacher] ([id]) ON DELETE CASCADE
 GO
-ALTER TABLE [dbo].[Teacher]  WITH CHECK ADD  CONSTRAINT [FK_Teacher_room] FOREIGN KEY([roomId])
-REFERENCES [dbo].[Room] ([id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[Teacher]  WITH CHECK ADD  CONSTRAINT [FK_Teacher_Room] FOREIGN KEY([roomId])
+REFERENCES [dbo].[Room] ([id]) ON DELETE NO ACTION
 GO
-ALTER TABLE [dbo].[Teacher] CHECK CONSTRAINT [FK_Teacher_room]
+ALTER TABLE [dbo].[Teacher] CHECK CONSTRAINT [FK_Teacher_Room]
 GO
 ALTER TABLE [dbo].[Device]  WITH CHECK ADD  CONSTRAINT [FK_Device_Category] FOREIGN KEY([categoryId])
 REFERENCES [dbo].[Category] ([id]) ON DELETE CASCADE

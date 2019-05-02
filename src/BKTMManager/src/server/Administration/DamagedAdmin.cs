@@ -18,17 +18,19 @@ namespace BKTMManager.Administration {
       try {
         this.cnn.Open();
         SqlCommand command = this.cnn.CreateCommand();
-        command.CommandText = String.Format(@"SELECT da.id AS {0}id, de.id AS de_id, ca.id AS ca_id, re.id AS re_id, *
+        command.CommandText = String.Format(@"SELECT da.id AS {0}id, de.id AS de_id, ca.id AS ca_id, re.id AS re_id, te.id AS te_id, *
                                               FROM [dbo].[{1}] AS da
                                               INNER JOIN [dbo].[Device] AS de ON da.deviceId = de.id
                                               INNER JOIN [dbo].[Category] AS ca ON de.categoryId = ca.id
-                                              INNER JOIN [dbo].[DeviceReseller] AS re ON de.resellerId = re.id", this.prefix, this.tableName);
+                                              INNER JOIN [dbo].[DeviceReseller] AS re ON de.resellerId = re.id
+                                              INNER JOIN [dbo].[Teacher] AS te ON da.teacherId = te.id", this.prefix, this.tableName);
         SqlDataReader reader = command.ExecuteReader();
         while(reader.Read()) {
           Reseller reseller = new Reseller(reader);
           Category category = new Category(reader);
           Device device = new Device(reader, category, reseller);
-          Damaged damage = new Damaged(reader, device);
+          Teacher teacher = new Teacher(reader);
+          Damaged damage = new Damaged(reader, device, teacher);
           damaged.Add(damage);
         }
         this.cnn.Close();
