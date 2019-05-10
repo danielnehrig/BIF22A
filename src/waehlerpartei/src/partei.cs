@@ -1,8 +1,9 @@
 using System;
+using System.Data.SqlClient;
 
 namespace Politik.Type {
   public class Partei {
-    public Partei(string name, string candidate, string counter) {
+    public Partei(SqlDataReader reader) {
       _name = name;
       _candidate = candidate;
       _counter = counter;

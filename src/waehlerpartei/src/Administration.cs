@@ -31,9 +31,9 @@ namespace Politik.Admin {
       }
     }
 
-    public void ParteiErstellen(Partei partei) {
+    public void ParteiErstellen(string name, string candidate) {
       try {
-        string sql = String.Format("insert into tbl_partei (name) values ('{0}')", partei.name);
+        string sql = String.Format("insert into tbl_partei (name) values ('{0}','{1}')", name, candidate);
         SQLiteCommand command = new SQLiteCommand(sql, cnn);
         command.ExecuteNonQuery();
       } catch (Exception ex) {
@@ -41,13 +41,23 @@ namespace Politik.Admin {
       }
     }
 
-    public void WeahlerErstellen(Weahler weahler) {
+    public void WeahlerErstellen(string firstName, string lastName) {
       try {
-        string sql = String.Format("insert into tbl_weahler (name) values ('{0}', '{1}')", weahler.name, weahler.nachname);
+        string sql = String.Format("insert into tbl_weahler (name) values ('{0}', '{1}')", firstName, lastName);
         SQLiteCommand command = new SQLiteCommand(sql, cnn);
         command.ExecuteNonQuery();
       } catch (Exception ex) {
         Console.WriteLine("Error While Creating Weahler\n" + ex);
+      }
+    }
+
+    public bool Vote(Weahler weahler, Partei partei) {
+      try {
+        string sql = String.Format("", firstName, lastName);
+        SQLiteCommand command = new SQLiteCommand(sql, cnn);
+        command.ExecuteNonQuery();
+      } catch (Exception ex) {
+        Console.WriteLine("Error While Updating Waehler and incrementing count on Partei\n" + ex);
       }
     }
 
@@ -62,7 +72,7 @@ namespace Politik.Admin {
       cnn.Close();
     }
 
-    public void ParteiAnzeigen() {
+    public void ParteinAnzeigen() {
       cnn.Open();
       string sql = "select * from tbl_partei";
       SQLiteCommand command = new SQLiteCommand(sql, cnn);
