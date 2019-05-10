@@ -2,18 +2,19 @@ using System;
 
 namespace Politik.Type {
   public class Weahler {
-    public Weahler(string name, string nachname) {
-      _name = name;
-      _nachname = nachname;
+    public Weahler(string name, string nachname, bool voted) {
+      _firstName = name;
+      _secondName = nachname;
+      _voted = voted;
     }
 
-    private string _name;
-    public string name { get => _name; set => _name = value; }
+    private string _firstName;
+    public string firstName { get => _firstName; set => _firstName = value; }
 
-    private string _nachname;
-    public string nachname { get => _nachname; set => _nachname = value; }
+    private string _secondName;
+    public string _secondName { get => _secondName; set => _secondName = value; }
 
-    private bool _geweahlt;
-    public bool geweahlt { get => _geweahlt; set => _geweahlt = value; }
+    private bool _voted;
+    public bool voted { get => _voted; set => _voted = value; }
   }
 }
