@@ -6,9 +6,9 @@ namespace Program {
   public class MainProgram {
     public static void Main(string[] args) {
       Administration admin = new Administration();
-      admin.WeahlerErstellen("Kevin", "Peters");
-      admin.WeahlerErstellen("Daniel", "Nehrig");
-      admin.WeahlerErstellen("Bjarne", "Christel");
+      admin.WeahlerErstellen("Kevin", "Peters", "123242");
+      admin.WeahlerErstellen("Daniel", "Nehrig", "13371337");
+      admin.WeahlerErstellen("Bjarne", "Christel", "44448888");
       admin.ParteiErstellen("CDU", "MERKEL");
       admin.ParteiErstellen("SPD", "KLOPPERT");
       admin.ParteiErstellen("AFD", "MONGA");

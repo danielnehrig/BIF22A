@@ -41,9 +41,9 @@ namespace Politik.Admin {
       }
     }
 
-    public void WeahlerErstellen(string firstName, string lastName) {
+    public void WeahlerErstellen(string firstName, string lastName, string key) {
       try {
-        string sql = String.Format("insert into tbl_weahler (name) values ('{0}', '{1}')", firstName, lastName);
+        string sql = String.Format("insert into tbl_weahler (firstName, lastName, key) values ('{0}', '{1}', '{2}')", firstName, lastName, key);
         SQLiteCommand command = new SQLiteCommand(sql, cnn);
         command.ExecuteNonQuery();
       } catch (Exception ex) {
@@ -51,11 +51,15 @@ namespace Politik.Admin {
       }
     }
 
-    public bool Vote(Weahler weahler, Partei partei) {
+    public bool Vote(Weahler weahler, Partei partei, string key) {
       try {
-        string sql = String.Format("", firstName, lastName);
-        SQLiteCommand command = new SQLiteCommand(sql, cnn);
-        command.ExecuteNonQuery();
+        cnn.Open();
+        if (getVoteKey == key) {
+          string sql = String.Format("", firstName, lastName);
+          SQLiteCommand command = new SQLiteCommand(sql, cnn);
+          command.ExecuteNonQuery();
+          cnn.Close();
+        }
       } catch (Exception ex) {
         Console.WriteLine("Error While Updating Waehler and incrementing count on Partei\n" + ex);
       }
