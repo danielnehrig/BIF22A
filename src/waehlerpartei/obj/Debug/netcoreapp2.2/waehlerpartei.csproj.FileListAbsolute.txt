@@ -1,0 +1,4 @@
+/Users/dnehrig/code/c#/BIF22A/src/waehlerpartei/obj/Debug/netcoreapp2.2/waehlerpartei.csprojAssemblyReference.cache
+/Users/dnehrig/code/c#/BIF22A/src/waehlerpartei/obj/Debug/netcoreapp2.2/waehlerpartei.csproj.CoreCompileInputs.cache
+/Users/dnehrig/code/c#/BIF22A/src/waehlerpartei/obj/Debug/netcoreapp2.2/waehlerpartei.AssemblyInfoInputs.cache
+/Users/dnehrig/code/c#/BIF22A/src/waehlerpartei/obj/Debug/netcoreapp2.2/waehlerpartei.AssemblyInfo.cs
