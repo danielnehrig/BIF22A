@@ -2,8 +2,8 @@ using System;
 using Mono.Data.Sqlite;
 
 namespace Politik.Type {
-  public class Weahler {
-    public Weahler(SqliteDataReader reader) {
+  public class Waehler {
+    public Waehler(SqliteDataReader reader) {
       _firstName = reader.GetString(0);
       _lastName = reader.GetString(1);
       _key = reader.GetString(2);

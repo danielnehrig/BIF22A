@@ -11,7 +11,7 @@ COMPILEPATH = ./dist/
 FILENAME = Politik.exe
 
 
-BASEFILES = $(SRCPATH)Administration.cs $(SRCPATH)partei.cs $(SRCPATH)weahler.cs
+BASEFILES = $(SRCPATH)Administration.cs $(SRCPATH)partei.cs $(SRCPATH)waehler.cs
 CONSOLE = $(SRCPATH)Program.cs
 
 BuildConsole:

@@ -27,7 +27,8 @@ namespace Politik.Admin {
                                   voted tinyint );";
           command.ExecuteNonQuery();
           command.CommandText = @"CREATE TABLE IF NOT EXISTS partei
-                                ( id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name VARCHAR(100) NOT NULL, candidate VARCHAR(100) NOT NULL, votes int DEFAULT 0);";
+                                ( id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name VARCHAR(100) NOT NULL,
+                                  candidate VARCHAR(100) NOT NULL, votes int DEFAULT 0);";
           command.ExecuteNonQuery();
           cnn.Close();
         } else {
@@ -58,11 +59,12 @@ namespace Politik.Admin {
         command.ExecuteNonQuery();
         cnn.Close();
       } catch (Exception ex) {
-        Console.WriteLine("Error While Creating Weahler\n" + ex);
+        Console.WriteLine("Error While Creating Waehler\n" + ex);
       }
     }
 
-    public void GetWaehler(string firstName, string lastName) {
+    public Waehler GetWaehler(string firstName, string lastName) {
+      Waehler waehler = null;
       try {
         cnn.Open();
         string sql = String.Format("select * from waehler where firstName = '{0}'", firstName, lastName);
@@ -70,18 +72,40 @@ namespace Politik.Admin {
         SqliteDataReader reader = command.ExecuteReader();
         command.ExecuteNonQuery();
         while(reader.Read()) {
+          if (reader.GetString(reader.GetOrdinal("firstName")) == firstName &&
+              reader.GetString(reader.GetOrdinal("lastName")) == lastName) {
+                waehler = new Waehler(reader);
+              }
+        }
+        cnn.Close();
+        return waehler;
+      } catch (Exception ex) {
+        Console.WriteLine("Error While Creating Waehler\n" + ex);
+      }
+      return waehler;
+    }
 
+    public Partei GetPartei(string name) {
+      Partei partei = null;
+      try {
+        cnn.Open();
+        string sql = String.Format("select * from partei where name = '{0}'", name);
+        SqliteCommand command = new SqliteCommand(sql, cnn);
+        SqliteDataReader reader = command.ExecuteReader();
+        command.ExecuteNonQuery();
+        while(reader.Read()) {
         }
         cnn.Close();
       } catch (Exception ex) {
-        Console.WriteLine("Error While Creating Weahler\n" + ex);
+        Console.WriteLine("Error While Creating Partei\n" + ex);
       }
+      return partei;
     }
 
-    public bool Vote(Weahler weahler, Partei partei, string key) {
+    public bool Vote(Waehler waehler, Partei partei, string key) {
       try {
         cnn.Open();
-        if (weahler.key == key) {
+        if (waehler.key == key) {
           string sql = String.Format("");
           SqliteCommand command = new SqliteCommand(sql, cnn);
           command.ExecuteNonQuery();
