@@ -1,12 +1,11 @@
 using System;
 using System.IO;
-using System.Data;
-using System.Data.SQLite;
+using Mono.Data.Sqlite;
 using Politik.Type;
 
 namespace Politik.Admin {
   public class Administration {
-    SQLiteConnection cnn;
+    SqliteConnection cnn;
 
     public Administration() {
       Bootstrap();
@@ -15,16 +14,24 @@ namespace Politik.Admin {
     public void Bootstrap() {
       try {
         if(!File.Exists("db.sqlite")) {
-          SQLiteConnection.CreateFile("db.sqlite");
-          cnn = new SQLiteConnection("Data Source = db.sqlite; Version = 3;");
-          SQLiteCommand command = new SQLiteCommand(cnn);
+          SqliteConnection.CreateFile("db.sqlite");
+          cnn = new SqliteConnection("Data Source = db.sqlite; Version = 3;");
+          cnn.Open();
+          SqliteCommand command = new SqliteCommand(cnn);
            
-          command.CommandText = "CREATE TABLE IF NOT EXISTS beispiel ( id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name VARCHAR(100) NOT NULL);";
+          command.CommandText = @"CREATE TABLE IF NOT EXISTS waehler
+                                ( id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                                  firstName VARCHAR(100) NOT NULL,
+                                  lastName VARCHAR(100),
+                                  key VARCHAR(20) NOT NULL,
+                                  voted tinyint );";
           command.ExecuteNonQuery();
-          command.CommandText = "CREATE TABLE IF NOT EXISTS beispiel ( id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name VARCHAR(100) NOT NULL);";
+          command.CommandText = @"CREATE TABLE IF NOT EXISTS partei
+                                ( id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name VARCHAR(100) NOT NULL, candidate VARCHAR(100) NOT NULL, votes int DEFAULT 0);";
           command.ExecuteNonQuery();
+          cnn.Close();
         } else {
-          cnn = new SQLiteConnection("Data Source = db.sqlite; Version = 3;");
+          cnn = new SqliteConnection("Data Source = db.sqlite; Version = 3;");
         }
       } catch (Exception ex) {
         Console.WriteLine("Error While Init DB Connection\n" + ex);
@@ -33,19 +40,39 @@ namespace Politik.Admin {
 
     public void ParteiErstellen(string name, string candidate) {
       try {
+        cnn.Open();
         string sql = String.Format("insert into tbl_partei (name) values ('{0}','{1}')", name, candidate);
-        SQLiteCommand command = new SQLiteCommand(sql, cnn);
+        SqliteCommand command = new SqliteCommand(sql, cnn);
         command.ExecuteNonQuery();
+        cnn.Close();
       } catch (Exception ex) {
         Console.WriteLine("Error While Creating Partei\n" + ex);
       }
     }
 
-    public void WeahlerErstellen(string firstName, string lastName, string key) {
+    public void WaehlerErstellen(string firstName, string lastName, string key) {
       try {
+        cnn.Open();
         string sql = String.Format("insert into tbl_weahler (firstName, lastName, key) values ('{0}', '{1}', '{2}')", firstName, lastName, key);
-        SQLiteCommand command = new SQLiteCommand(sql, cnn);
+        SqliteCommand command = new SqliteCommand(sql, cnn);
         command.ExecuteNonQuery();
+        cnn.Close();
+      } catch (Exception ex) {
+        Console.WriteLine("Error While Creating Weahler\n" + ex);
+      }
+    }
+
+    public void GetWaehler(string firstName, string lastName) {
+      try {
+        cnn.Open();
+        string sql = String.Format("select * from waehler where firstName = '{0}'", firstName, lastName);
+        SqliteCommand command = new SqliteCommand(sql, cnn);
+        SqliteDataReader reader = command.ExecuteReader();
+        command.ExecuteNonQuery();
+        while(reader.Read()) {
+
+        }
+        cnn.Close();
       } catch (Exception ex) {
         Console.WriteLine("Error While Creating Weahler\n" + ex);
       }
@@ -54,22 +81,24 @@ namespace Politik.Admin {
     public bool Vote(Weahler weahler, Partei partei, string key) {
       try {
         cnn.Open();
-        if (getVoteKey == key) {
-          string sql = String.Format("", firstName, lastName);
-          SQLiteCommand command = new SQLiteCommand(sql, cnn);
+        if (weahler.key == key) {
+          string sql = String.Format("");
+          SqliteCommand command = new SqliteCommand(sql, cnn);
           command.ExecuteNonQuery();
-          cnn.Close();
         }
+        cnn.Close();
+        return true;
       } catch (Exception ex) {
         Console.WriteLine("Error While Updating Waehler and incrementing count on Partei\n" + ex);
       }
+      return false;
     }
 
     public void WeahlerAnzeigen() {
       cnn.Open();
       string sql = "select * from tbl_weahler";
-      SQLiteCommand command = new SQLiteCommand(sql, cnn);
-      SQLiteDataReader reader = command.ExecuteReader();
+      SqliteCommand command = new SqliteCommand(sql, cnn);
+      SqliteDataReader reader = command.ExecuteReader();
       while (reader.Read()) {
         Console.WriteLine("Name: " + reader["name"]);
       }
@@ -79,8 +108,8 @@ namespace Politik.Admin {
     public void ParteinAnzeigen() {
       cnn.Open();
       string sql = "select * from tbl_partei";
-      SQLiteCommand command = new SQLiteCommand(sql, cnn);
-      SQLiteDataReader reader = command.ExecuteReader();
+      SqliteCommand command = new SqliteCommand(sql, cnn);
+      SqliteDataReader reader = command.ExecuteReader();
       while (reader.Read()) {
         Console.WriteLine("Name: " + reader["name"]);
       }

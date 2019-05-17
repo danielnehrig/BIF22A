@@ -1,12 +1,12 @@
 using System;
-using System.Data.SqlClient;
+using Mono.Data.Sqlite;
 
 namespace Politik.Type {
   public class Partei {
-    public Partei(SqlDataReader reader) {
-      _name = name;
-      _candidate = candidate;
-      _counter = counter;
+    public Partei(SqliteDataReader reader) {
+      _name = reader.GetString(0);
+      _candidate = reader.GetString(1);
+      _counter = reader.GetInt32(2);
     }
 
     private string _name;
