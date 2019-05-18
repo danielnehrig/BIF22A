@@ -20,6 +20,7 @@ BuildConsole:
 
 Clean:
 	rm $(COMPILEPATH)*.exe
+	rm $(COMPILEPATH)db.sqlite
 
 Start:
 	cd $(COMPILEPATH); \

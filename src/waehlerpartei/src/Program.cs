@@ -13,9 +13,22 @@ namespace Program {
       admin.ParteiErstellen("SPD", "KLOPPERT");
       admin.ParteiErstellen("AFD", "MONGA");
       admin.ParteiErstellen("DIE PARTEI", "TONKA");
-      Waehler waehler = admin.GetWaehler("Daniel", "Nehrig");
-      Partei partei = admin.GetPartei("SPD");
-      admin.Vote(waehler, partei, "13371337");
+
+      Console.WriteLine("Login");
+      Console.WriteLine("Firstname : ");
+      string firstName = Console.ReadLine();
+      Console.WriteLine("Lastname : ");
+      string lastName = Console.ReadLine();
+      Console.WriteLine("Key : ");
+      string key = Console.ReadLine();
+      Waehler waehler = admin.GetWaehler(firstName, lastName);
+
+      Console.WriteLine("Vote for : CDU, SPD, AFD");
+      Console.WriteLine("Vote : ");
+      string parteiName = Console.ReadLine();
+      Partei partei = admin.GetPartei(parteiName);
+
+      admin.Vote(waehler, partei, key);
       admin.ParteinAnzeigen();
     }
   }

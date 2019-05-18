@@ -4,10 +4,10 @@ using Mono.Data.Sqlite;
 namespace Politik.Type {
   public class Waehler {
     public Waehler(SqliteDataReader reader) {
-      _firstName = reader.GetString(0);
-      _lastName = reader.GetString(1);
-      _key = reader.GetString(2);
-      _voted = Convert.ToBoolean(reader.GetInt32(3));
+      _firstName = reader.GetString(1);
+      _lastName = reader.GetString(2);
+      _key = reader.GetString(3);
+      _voted = Convert.ToBoolean(reader.GetInt32(4));
     }
 
     private string _firstName;

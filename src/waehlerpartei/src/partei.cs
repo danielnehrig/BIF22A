@@ -4,9 +4,9 @@ using Mono.Data.Sqlite;
 namespace Politik.Type {
   public class Partei {
     public Partei(SqliteDataReader reader) {
-      _name = reader.GetString(0);
-      _candidate = reader.GetString(1);
-      _counter = reader.GetInt32(2);
+      _name = reader.GetString(1);
+      _candidate = reader.GetString(2);
+      _counter = reader.GetInt32(3);
     }
 
     private string _name;
