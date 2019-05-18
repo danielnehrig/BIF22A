@@ -110,6 +110,8 @@ namespace Politik.Admin {
                                        UPDATE partei SET votes = votes + 1 WHERE name = '{2}';", waehler.firstName, waehler.lastName, partei.name);
           SqliteCommand command = new SqliteCommand(sql, cnn);
           command.ExecuteNonQuery();
+        } else {
+          throw new OperationCanceledException("Either wrong Key or allready voted");
         }
         cnn.Close();
         return true;
@@ -117,18 +119,6 @@ namespace Politik.Admin {
         Console.WriteLine("Error While Updating Waehler and incrementing count on Partei\n" + ex);
 				return false;
       }
-      return false;
-    }
-
-    public void WeahlerAnzeigen() {
-      cnn.Open();
-      string sql = "select * from waehler";
-      SqliteCommand command = new SqliteCommand(sql, cnn);
-      SqliteDataReader reader = command.ExecuteReader();
-      while (reader.Read()) {
-        Console.WriteLine("Name: " + reader["name"]);
-      }
-      cnn.Close();
     }
 
     public void ParteinAnzeigen() {
