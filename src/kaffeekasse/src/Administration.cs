@@ -24,10 +24,10 @@ namespace Program {
         _cnn.Open();
         User foundUser = null;
         string sqlQuery = String.Format("SELECT * FROM Users;");
-        SqlCommand command = _cnn.CreateCommand(sqlQuery);
+        SqlCommand command = _cnn.CreateCommand();
         command.CommandType = System.Data.CommandType.StoredProcedure;
         command.Parameters.Add(new SqlParameter("@firstName", username));
-        SqlDataReader reader = command.ExecuteNonQuery();
+        SqlDataReader reader = command.ExecuteReader();
 
         foreach (User item in reader) {
           if (item.password == password && item.username == username) {
@@ -38,14 +38,19 @@ namespace Program {
         return foundUser;
       } catch (Exception ex) {
         Console.WriteLine(String.Format("Error logging in {0}", ex));
+        return null;
       }
     }
 
     public List<ItemLog> GetAllItemsFromUser(User user) {
       try {
-        List<Items> items = new List<Items>();
+        List<Item> items = new List<Item>();
+        List<User> users = new List<User>();
+        List<ItemLog> itemlog = new List<ItemLog>();
+        return itemlog;
       } catch (Exception ex) {
         Console.WriteLine(String.Format("Error Retriving log from items from Table {0}", ex));
+        return null;
       }
     }
 
@@ -66,7 +71,6 @@ namespace Program {
     public void Logout(User user) {
       try {
         user = null;
-        return user;
       } catch (Exception ex) {
         Console.WriteLine(String.Format("Error Updateing User Table (accAmount)", ex));
       }

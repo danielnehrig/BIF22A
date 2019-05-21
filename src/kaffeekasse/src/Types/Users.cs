@@ -1,5 +1,12 @@
+using System.Data.SqlClient;
+
 namespace Program {
   public class User {
+    public User(SqlDataReader reader) {
+      _username = reader.GetString(2);
+      _password = reader.GetString(3);
+    }
+
     private string _username;
     public string username {
       set => _username = value;

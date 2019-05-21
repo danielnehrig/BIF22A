@@ -3,13 +3,11 @@ using System.Data.SqlClient;
 
 namespace Program {
   public class Teacher : User {
-    public Teacher(SqlDataReader reader) {
+    public Teacher(SqlDataReader reader): base (reader) {
       _firstName = reader.GetString(0);
       _lastName = reader.GetString(1);
-      username = reader.GetString(2);
-      password = reader.GetString(3);
       _accAmount = reader.GetDouble(4);
-      _isActive = Convert.ToBool(reader.GetInt32(5));
+      _isActive = Convert.ToBoolean(reader.GetInt32(5));
     }
 
     private string _firstName;

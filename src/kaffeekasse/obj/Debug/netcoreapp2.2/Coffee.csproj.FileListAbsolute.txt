@@ -2,3 +2,10 @@
 /Users/dnehrig/code/c#/BIF22A/src/kaffeekasse/obj/Debug/netcoreapp2.2/Coffee.csproj.CoreCompileInputs.cache
 /Users/dnehrig/code/c#/BIF22A/src/kaffeekasse/obj/Debug/netcoreapp2.2/Coffee.AssemblyInfoInputs.cache
 /Users/dnehrig/code/c#/BIF22A/src/kaffeekasse/obj/Debug/netcoreapp2.2/Coffee.AssemblyInfo.cs
+/Users/dnehrig/code/c#/BIF22A/src/kaffeekasse/bin/Debug/netcoreapp2.2/Coffee.deps.json
+/Users/dnehrig/code/c#/BIF22A/src/kaffeekasse/bin/Debug/netcoreapp2.2/Coffee.runtimeconfig.json
+/Users/dnehrig/code/c#/BIF22A/src/kaffeekasse/bin/Debug/netcoreapp2.2/Coffee.runtimeconfig.dev.json
+/Users/dnehrig/code/c#/BIF22A/src/kaffeekasse/bin/Debug/netcoreapp2.2/Coffee.dll
+/Users/dnehrig/code/c#/BIF22A/src/kaffeekasse/bin/Debug/netcoreapp2.2/Coffee.pdb
+/Users/dnehrig/code/c#/BIF22A/src/kaffeekasse/obj/Debug/netcoreapp2.2/Coffee.dll
+/Users/dnehrig/code/c#/BIF22A/src/kaffeekasse/obj/Debug/netcoreapp2.2/Coffee.pdb

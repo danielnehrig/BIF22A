@@ -1,0 +1,46 @@
+﻿<Properties StartupConfiguration="{D5C2FBD3-106C-43CA-8BB6-0D3A65878270}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/Views/MainWindow.xaml">
+    <Files>
+      <File FileName="src/Administration.cs" Line="41" Column="7" />
+      <File FileName="src/Types/Item.cs" Line="5" Column="16" />
+      <File FileName="src/Types/Users.cs" Line="7" Column="36" />
+      <File FileName="src/Types/Teacher.cs" Line="8" Column="38" />
+      <File FileName="src/Views/App.xaml.cs" Line="10" Column="1" />
+      <File FileName="src/Views/App.xaml" Line="3" Column="29" />
+      <File FileName="src/Views/MainWindow.xaml.cs" Line="1" Column="1" />
+      <File FileName="src/Views/MainWindow.xaml" Line="6" Column="24" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Coffee" expanded="True">
+            <Node name="Coffee" expanded="True">
+              <Node name="src" expanded="True">
+                <Node name="Types" expanded="True" />
+                <Node name="Views" expanded="True">
+                  <Node name="App.xaml" expanded="True" />
+                  <Node name="MainWindow.xaml" expanded="True" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State name="__root__">
+          <Node name="Coffee" expanded="True" selected="True" />
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Coffee PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

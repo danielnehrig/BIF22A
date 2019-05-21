@@ -2,17 +2,13 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace Coffee
-{
-    public class MainWindow : Window
-    {
-        public MainWindow()
-        {
+namespace Program {
+    public class MainWindow : Window {
+        public MainWindow() {
             InitializeComponent();
         }
 
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             AvaloniaXamlLoader.Load(this);
         }
     }
