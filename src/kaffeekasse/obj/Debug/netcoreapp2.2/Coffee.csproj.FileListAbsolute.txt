@@ -1,0 +1,4 @@
+/Users/dnehrig/code/c#/BIF22A/src/kaffeekasse/obj/Debug/netcoreapp2.2/Coffee.csprojAssemblyReference.cache
+/Users/dnehrig/code/c#/BIF22A/src/kaffeekasse/obj/Debug/netcoreapp2.2/Coffee.csproj.CoreCompileInputs.cache
+/Users/dnehrig/code/c#/BIF22A/src/kaffeekasse/obj/Debug/netcoreapp2.2/Coffee.AssemblyInfoInputs.cache
+/Users/dnehrig/code/c#/BIF22A/src/kaffeekasse/obj/Debug/netcoreapp2.2/Coffee.AssemblyInfo.cs

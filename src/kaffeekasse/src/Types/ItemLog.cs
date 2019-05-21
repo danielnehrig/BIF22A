@@ -3,9 +3,9 @@ using System.Data.SqlClient;
 
 namespace Program {
   public class ItemLog {
-    public ItemLog(SqlDataReader reader) {
-      _user = reader.GetDouble(0);
-      _item = reader.GetString(1);
+    public ItemLog(Item item, User user) {
+      _user = user;
+      _item = item;
     }
 
     private Item _item;

@@ -1,3 +1,4 @@
+using System;
 using System.Data.SqlClient;
 
 namespace Program {
@@ -5,10 +6,10 @@ namespace Program {
     public Teacher(SqlDataReader reader) {
       _firstName = reader.GetString(0);
       _lastName = reader.GetString(1);
-      _username = reader.GetString(2);
-      _password = reader.GetString(3);
+      username = reader.GetString(2);
+      password = reader.GetString(3);
       _accAmount = reader.GetDouble(4);
-      _isActive = Convert.ToBool(reader.GetInt(5));
+      _isActive = Convert.ToBool(reader.GetInt32(5));
     }
 
     private string _firstName;

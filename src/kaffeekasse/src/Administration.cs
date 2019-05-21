@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace Program {
@@ -23,9 +24,9 @@ namespace Program {
         _cnn.Open();
         User foundUser = null;
         string sqlQuery = String.Format("SELECT * FROM Users;");
-        SqlCommand command = cnn.CreateCommand(sqlQuery);
+        SqlCommand command = _cnn.CreateCommand(sqlQuery);
         command.CommandType = System.Data.CommandType.StoredProcedure;
-        command.Parameters.Add(new SqlParameter("@firstName", name));
+        command.Parameters.Add(new SqlParameter("@firstName", username));
         SqlDataReader reader = command.ExecuteNonQuery();
 
         foreach (User item in reader) {
