@@ -12,7 +12,6 @@
     </AvaloniaResource>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Mono.Data.Sqlite" Version="1.0.61" />
     <PackageReference Include="Avalonia" Version="0.8.0" />
     <PackageReference Include="Avalonia.Desktop" Version="0.8.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.6.1" />

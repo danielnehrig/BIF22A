@@ -15,11 +15,16 @@
         <State name="__root__">
           <Node name="Coffee" expanded="True">
             <Node name="Coffee" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True">
+                  <Node name="Mono.Data.Sqlite" selected="True" />
+                </Node>
+              </Node>
               <Node name="src" expanded="True">
                 <Node name="Types" expanded="True" />
                 <Node name="Views" expanded="True">
                   <Node name="App.xaml" expanded="True" />
-                  <Node name="MainWindow.xaml" expanded="True" selected="True" />
+                  <Node name="MainWindow.xaml" expanded="True" />
                 </Node>
               </Node>
             </Node>
