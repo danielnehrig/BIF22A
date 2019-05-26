@@ -1,0 +1,297 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ActionGroups	src/server/gtk-gui/generated.cs	/^	internal class ActionGroups$/;"	c	namespace:Stetic
+BKTMApp	src/server/BKTMApp.cs	/^    public BKTMApp() : base(Gtk.WindowType.Toplevel) {$/;"	m	class:BKTMManager.BKTMApp
+BKTMApp	src/server/BKTMApp.cs	/^  public partial class BKTMApp : Gtk.Window {$/;"	c	namespace:BKTMManager
+BKTMApp	src/server/gtk-gui/BKTMManager.BKTMApp.cs	/^	public partial class BKTMApp$/;"	c	namespace:BKTMManager
+BKTMManager	src/server/BKTMApp.cs	/^namespace BKTMManager {$/;"	n
+BKTMManager	src/server/Login.cs	/^namespace BKTMManager {$/;"	n
+BKTMManager	src/server/Program_Console.cs	/^namespace BKTMManager {$/;"	n
+BKTMManager	src/server/Program_gtk.cs	/^namespace BKTMManager {$/;"	n
+BKTMManager	src/server/gtk-gui/BKTMManager.BKTMApp.cs	/^namespace BKTMManager$/;"	n
+BKTMManager	src/server/gtk-gui/BKTMManager.Login.cs	/^namespace BKTMManager$/;"	n
+BKTMManager.Administration	src/server/Administration/CategoryAdmin.cs	/^namespace BKTMManager.Administration {$/;"	n
+BKTMManager.Administration	src/server/Administration/DamagedAdmin.cs	/^namespace BKTMManager.Administration {$/;"	n
+BKTMManager.Administration	src/server/Administration/DeviceAdmin.cs	/^namespace BKTMManager.Administration {$/;"	n
+BKTMManager.Administration	src/server/Administration/HardwareAdmin.cs	/^namespace BKTMManager.Administration {$/;"	n
+BKTMManager.Administration	src/server/Administration/InterAdmin.cs	/^namespace BKTMManager.Administration {$/;"	n
+BKTMManager.Administration	src/server/Administration/Manager.cs	/^namespace BKTMManager.Administration {$/;"	n
+BKTMManager.Administration	src/server/Administration/RepoAdmin.cs	/^namespace BKTMManager.Administration {$/;"	n
+BKTMManager.Administration	src/server/Administration/RoomAdmin.cs	/^namespace BKTMManager.Administration {$/;"	n
+BKTMManager.Administration	src/server/Administration/UserAdmin.cs	/^namespace BKTMManager.Administration {$/;"	n
+BKTMManager.ConsoleApp	src/server/ConsoleApp/ConsoleApp.cs	/^namespace BKTMManager.ConsoleApp {$/;"	n
+BKTMManager.Controller	src/server/Controller/IOController.cs	/^namespace BKTMManager.Controller {$/;"	n
+BKTMManager.Helper	src/server/Helper/ReadConfig.cs	/^namespace BKTMManager.Helper {$/;"	n
+BKTMManager.Helper	src/server/Helper/Utils.cs	/^namespace BKTMManager.Helper {$/;"	n
+BKTMManager.Types	src/server/Types/Category.cs	/^namespace BKTMManager.Types {$/;"	n
+BKTMManager.Types	src/server/Types/ComponentDevice.cs	/^namespace BKTMManager.Types {$/;"	n
+BKTMManager.Types	src/server/Types/Damaged.cs	/^namespace BKTMManager.Types {$/;"	n
+BKTMManager.Types	src/server/Types/Device.cs	/^namespace BKTMManager.Types {$/;"	n
+BKTMManager.Types	src/server/Types/GlobalInterface.cs	/^namespace BKTMManager.Types {$/;"	n
+BKTMManager.Types	src/server/Types/HardwareComponent.cs	/^namespace BKTMManager.Types {$/;"	n
+BKTMManager.Types	src/server/Types/Reseller.cs	/^namespace BKTMManager.Types {$/;"	n
+BKTMManager.Types	src/server/Types/Room.cs	/^namespace BKTMManager.Types {$/;"	n
+BKTMManager.Types	src/server/Types/RoomTeacher.cs	/^namespace BKTMManager.Types {$/;"	n
+BKTMManager.Types	src/server/Types/Teacher.cs	/^namespace BKTMManager.Types {$/;"	n
+BKTMManager.Types	src/server/Types/TypeRepo.cs	/^namespace BKTMManager.Types {$/;"	n
+BKTMManager.Types	src/server/Types/User.cs	/^namespace BKTMManager.Types {$/;"	n
+Build	src/server/gtk-gui/BKTMManager.BKTMApp.cs	/^		protected virtual void Build()$/;"	m	class:BKTMManager.BKTMApp
+Build	src/server/gtk-gui/BKTMManager.Login.cs	/^		protected virtual void Build()$/;"	m	class:BKTMManager.Login
+COMP	Makefile	/^COMP = mcs$/;"	m
+COMPILEPATH	Makefile	/^COMPILEPATH = .\/dist\/server\/$/;"	m
+CONSOLE	Makefile	/^CONSOLE = $(MAINSRC) $(SRCPATH)ConsoleApp\/ConsoleApp.cs $(SRCPATH)Program_Console.cs$/;"	m
+Category	src/db/db.sql	/^CREATE TABLE [dbo].[Category]($/;"	t
+Category	src/server/Types/Category.cs	/^    public Category() {}$/;"	m	class:BKTMManager.Types.Category
+Category	src/server/Types/Category.cs	/^    public Category(SqlDataReader reader) {$/;"	m	class:BKTMManager.Types.Category
+Category	src/server/Types/Category.cs	/^  public class Category : TypeRepo {$/;"	c	namespace:BKTMManager.Types
+CategoryAdministration	src/server/Administration/CategoryAdmin.cs	/^    public CategoryAdministration(SqlConnection cnn):base(cnn) { $/;"	m	class:BKTMManager.Administration.CategoryAdministration
+CategoryAdministration	src/server/Administration/CategoryAdmin.cs	/^  public class CategoryAdministration : RepoAdmin<Category> {$/;"	c	namespace:BKTMManager.Administration
+ComponentDevice	src/server/Types/ComponentDevice.cs	/^  public class ComponentDevice {$/;"	c	namespace:BKTMManager.Types
+ComponentsAction	src/server/gtk-gui/BKTMManager.BKTMApp.cs	/^		private global::Gtk.Action ComponentsAction;$/;"	f	class:BKTMManager.BKTMApp	file:
+Config	src/server/Helper/ReadConfig.cs	/^    public Config(string config) {$/;"	m	class:BKTMManager.Helper.Config
+Config	src/server/Helper/ReadConfig.cs	/^  class Config {$/;"	c	namespace:BKTMManager.Helper
+ConsoleApplication	src/server/ConsoleApp/ConsoleApp.cs	/^  public static class ConsoleApplication {$/;"	c	namespace:BKTMManager.ConsoleApp
+Create	src/server/Administration/RepoAdmin.cs	/^    public void Create(string values) {$/;"	m	class:BKTMManager.Administration.RepoAdmin
+Create	src/server/Administration/RepoAdmin.cs	/^    void Create(string values);$/;"	m	interface:BKTMManager.Administration.TEntity
+Damaged	src/db/db.sql	/^CREATE TABLE [dbo].[Damaged]($/;"	t
+Damaged	src/server/Types/Damaged.cs	/^    public Damaged() { }$/;"	m	class:BKTMManager.Types.Damaged
+Damaged	src/server/Types/Damaged.cs	/^    public Damaged(SqlDataReader reader) {$/;"	m	class:BKTMManager.Types.Damaged
+Damaged	src/server/Types/Damaged.cs	/^    public Damaged(SqlDataReader reader, Device device, Teacher teacher) {$/;"	m	class:BKTMManager.Types.Damaged
+Damaged	src/server/Types/Damaged.cs	/^  public class Damaged : TypeRepo {$/;"	c	namespace:BKTMManager.Types
+DamagedAdministration	src/server/Administration/DamagedAdmin.cs	/^    public DamagedAdministration(SqlConnection cnn):base(cnn) { $/;"	m	class:BKTMManager.Administration.DamagedAdministration
+DamagedAdministration	src/server/Administration/DamagedAdmin.cs	/^  public class DamagedAdministration : RepoAdmin<Damaged> {$/;"	c	namespace:BKTMManager.Administration
+Delete	src/server/Administration/RepoAdmin.cs	/^    public void Delete(int id) {$/;"	m	class:BKTMManager.Administration.RepoAdmin
+Delete	src/server/Administration/RepoAdmin.cs	/^    void Delete(int id);$/;"	m	interface:BKTMManager.Administration.TEntity
+Device	src/db/db.sql	/^CREATE TABLE [dbo].[Device]($/;"	t
+Device	src/server/Types/Device.cs	/^    public Device() {$/;"	m	class:BKTMManager.Types.Device
+Device	src/server/Types/Device.cs	/^    public Device(SqlDataReader reader) {$/;"	m	class:BKTMManager.Types.Device
+Device	src/server/Types/Device.cs	/^    public Device(SqlDataReader reader, Category category, Reseller reseller) {$/;"	m	class:BKTMManager.Types.Device
+Device	src/server/Types/Device.cs	/^  public class Device : TypeRepo {$/;"	c	namespace:BKTMManager.Types
+DeviceAdministration	src/server/Administration/DeviceAdmin.cs	/^    public DeviceAdministration(SqlConnection cnn):base(cnn) { $/;"	m	class:BKTMManager.Administration.DeviceAdministration
+DeviceAdministration	src/server/Administration/DeviceAdmin.cs	/^  public class DeviceAdministration : RepoAdmin<Device> {$/;"	c	namespace:BKTMManager.Administration
+DeviceReseller	src/db/db.sql	/^CREATE TABLE [dbo].[DeviceReseller]($/;"	t
+DevicesAction	src/server/gtk-gui/BKTMManager.BKTMApp.cs	/^		private global::Gtk.Action DevicesAction;$/;"	f	class:BKTMManager.BKTMApp	file:
+FILENAME	Makefile	/^FILENAME = BKTMManager.exe$/;"	m
+GTK	Makefile	/^GTK = $(MAINSRC) $(GTKSRC) $(SRCPATH)Program_gtk.cs$/;"	m
+GTKSRC	Makefile	/^GTKSRC = $(SRCPATH)gtk-gui\/generated.cs \\$/;"	m
+GetActionGroup	src/server/gtk-gui/generated.cs	/^		public static Gtk.ActionGroup GetActionGroup(System.Type type)$/;"	m	class:Stetic.ActionGroups
+GetActionGroup	src/server/gtk-gui/generated.cs	/^		public static Gtk.ActionGroup GetActionGroup(string name)$/;"	m	class:Stetic.ActionGroups
+GetAll	src/server/Administration/RepoAdmin.cs	/^    List<TEntity> GetAll();$/;"	m	interface:BKTMManager.Administration.TEntity
+GetAll	src/server/Administration/RepoAdmin.cs	/^    public List<TEntity> GetAll() {$/;"	m	class:BKTMManager.Administration.RepoAdmin
+GetAllPopulated	src/server/Administration/DamagedAdmin.cs	/^    public List<Damaged> GetAllPopulated() {$/;"	m	class:BKTMManager.Administration.DamagedAdministration
+GetById	src/server/Administration/RepoAdmin.cs	/^    TEntity GetById(int id);$/;"	m	interface:BKTMManager.Administration.TEntity
+GetById	src/server/Administration/RepoAdmin.cs	/^    public TEntity GetById(int id){$/;"	m	class:BKTMManager.Administration.RepoAdmin
+GtkScrolledWindow	src/server/gtk-gui/BKTMManager.BKTMApp.cs	/^		private global::Gtk.ScrolledWindow GtkScrolledWindow;$/;"	f	class:BKTMManager.BKTMApp	file:
+Gui	src/server/gtk-gui/generated.cs	/^	internal class Gui$/;"	c	namespace:Stetic
+Hardware	src/db/db.sql	/^CREATE TABLE [dbo].[Hardware]($/;"	t
+HardwareAdministration	src/server/Administration/HardwareAdmin.cs	/^    public HardwareAdministration(SqlConnection cnn):base(cnn) {$/;"	m	class:BKTMManager.Administration.HardwareAdministration
+HardwareAdministration	src/server/Administration/HardwareAdmin.cs	/^  public class HardwareAdministration : RepoAdmin<HardwareComponent> {$/;"	c	namespace:BKTMManager.Administration
+HardwareComponent	src/server/Types/HardwareComponent.cs	/^    public HardwareComponent() {$/;"	m	class:BKTMManager.Types.HardwareComponent
+HardwareComponent	src/server/Types/HardwareComponent.cs	/^    public HardwareComponent(SqlDataReader reader) {$/;"	m	class:BKTMManager.Types.HardwareComponent
+HardwareComponent	src/server/Types/HardwareComponent.cs	/^  public class HardwareComponent : TypeRepo {$/;"	c	namespace:BKTMManager.Types
+HardwareDevice	src/db/db.sql	/^CREATE TABLE [dbo].[HardwareDevice]($/;"	t
+HelpAction	src/server/gtk-gui/BKTMManager.BKTMApp.cs	/^		private global::Gtk.Action HelpAction;$/;"	f	class:BKTMManager.BKTMApp	file:
+IGlobalType	src/server/Helper/Utils.cs	/^    public static void LoopListOutput<T>(List<T> items) where T : IGlobalType {$/;"	p	class:BKTMManager.Helper.Utils
+IGlobalType	src/server/Helper/Utils.cs	/^    public static void LoopPopulatedListOutput<T>(List<T> items) where T : IGlobalType {$/;"	p	class:BKTMManager.Helper.Utils
+IGlobalType	src/server/Helper/Utils.cs	/^    public static void Output<T>(T item) where T : IGlobalType {$/;"	p	class:BKTMManager.Helper.Utils
+IGlobalType	src/server/Types/GlobalInterface.cs	/^  public interface IGlobalType {$/;"	i	namespace:BKTMManager.Types
+IOController	src/server/Controller/IOController.cs	/^    public IOController(string ip, string db, string user, string pw) {$/;"	m	class:BKTMManager.Controller.IOController
+IOController	src/server/Controller/IOController.cs	/^  public abstract class IOController {$/;"	c	namespace:BKTMManager.Controller
+IUserAdmin	src/server/Administration/UserAdmin.cs	/^  public interface IUserAdmin {$/;"	i	namespace:BKTMManager.Administration
+Initialize	src/server/gtk-gui/generated.cs	/^		internal static void Initialize(Gtk.Widget iconRenderer)$/;"	m	class:Stetic.Gui	file:
+InterAdmin	src/server/Administration/InterAdmin.cs	/^  public class InterAdmin {$/;"	c	namespace:BKTMManager.Administration
+Login	src/server/Administration/UserAdmin.cs	/^    User Login(string username, string password);$/;"	m	interface:BKTMManager.Administration.IUserAdmin
+Login	src/server/Administration/UserAdmin.cs	/^    public User Login(string username, string password) {$/;"	m	class:BKTMManager.Administration.UserAdministration
+Login	src/server/Login.cs	/^    public Login() {$/;"	m	class:BKTMManager.Login
+Login	src/server/Login.cs	/^    public Login(UserAdministration user) {$/;"	m	class:BKTMManager.Login
+Login	src/server/Login.cs	/^  public partial class Login : Gtk.Dialog {$/;"	c	namespace:BKTMManager
+Login	src/server/gtk-gui/BKTMManager.Login.cs	/^	public partial class Login$/;"	c	namespace:BKTMManager
+MAINSRC	Makefile	/^MAINSRC = $(SRCPATH)Controller\/IOController.cs \\$/;"	m
+Main	src/server/Program_Console.cs	/^    public static void Main(string[] args) {$/;"	m	class:BKTMManager.Program
+Main	src/server/Program_gtk.cs	/^    public static void Main(string[] args) {$/;"	m	class:BKTMManager.MainClass
+MainClass	src/server/Program_gtk.cs	/^  class MainClass {$/;"	c	namespace:BKTMManager
+Manager	src/server/Administration/Manager.cs	/^    public Manager(Dictionary<string, string> cnnInfo):base(cnnInfo["ip"], cnnInfo["db"], cnnInfo["user"], cnnInfo["pw"]) {$/;"	m	class:BKTMManager.Administration.Manager
+Manager	src/server/Administration/Manager.cs	/^  public class Manager : IOController {$/;"	c	namespace:BKTMManager.Administration
+OnDeleteEvent	src/server/BKTMApp.cs	/^    protected void OnDeleteEvent(object sender, DeleteEventArgs a) {$/;"	m	class:BKTMManager.BKTMApp
+OnDeleteEvent	src/server/Login.cs	/^    protected void OnDeleteEvent(object sender, DeleteEventArgs a) {$/;"	m	class:BKTMManager.Login
+PACKAGEPATH	Makefile	/^PACKAGEPATH = .\/src\/server\/packages\/$/;"	m
+PKG	Makefile	/^PKG = -pkg:dotnet$/;"	m
+Program	src/server/Program_Console.cs	/^  public class Program {$/;"	c	namespace:BKTMManager
+RepoAdmin	src/server/Administration/RepoAdmin.cs	/^    public RepoAdmin(SqlConnection cnn) { $/;"	m	class:BKTMManager.Administration.RepoAdmin
+RepoAdmin	src/server/Administration/RepoAdmin.cs	/^  public class RepoAdmin<TEntity> : IRepoAdmin<TEntity> where TEntity : class, new() {$/;"	c	namespace:BKTMManager.Administration
+Reseller	src/server/Types/Reseller.cs	/^    public Reseller() { }$/;"	m	class:BKTMManager.Types.Reseller
+Reseller	src/server/Types/Reseller.cs	/^    public Reseller(SqlDataReader reader) {$/;"	m	class:BKTMManager.Types.Reseller
+Reseller	src/server/Types/Reseller.cs	/^  public class Reseller : TypeRepo {$/;"	c	namespace:BKTMManager.Types
+ResellersAction	src/server/gtk-gui/BKTMManager.BKTMApp.cs	/^		private global::Gtk.Action ResellersAction;$/;"	f	class:BKTMManager.BKTMApp	file:
+Room	src/db/db.sql	/^CREATE TABLE [dbo].[Room]($/;"	t
+Room	src/server/Types/Room.cs	/^    public Room() {$/;"	m	class:BKTMManager.Types.Room
+Room	src/server/Types/Room.cs	/^    public Room(SqlDataReader reader) {$/;"	m	class:BKTMManager.Types.Room
+Room	src/server/Types/Room.cs	/^  public class Room : TypeRepo {$/;"	c	namespace:BKTMManager.Types
+RoomAdministration	src/server/Administration/RoomAdmin.cs	/^    public RoomAdministration(SqlConnection cnn):base(cnn) { $/;"	m	class:BKTMManager.Administration.RoomAdministration
+RoomAdministration	src/server/Administration/RoomAdmin.cs	/^  public class RoomAdministration : RepoAdmin<Room> {$/;"	c	namespace:BKTMManager.Administration
+RoomTeacher	src/db/db.sql	/^CREATE TABLE [dbo].[RoomTeacher]($/;"	t
+RoomTeacher	src/server/Types/RoomTeacher.cs	/^  public class RoomTeacher {$/;"	c	namespace:BKTMManager.Types
+RoomsAction	src/server/gtk-gui/BKTMManager.BKTMApp.cs	/^		private global::Gtk.Action RoomsAction;$/;"	f	class:BKTMManager.BKTMApp	file:
+SRCPATH	Makefile	/^SRCPATH = .\/src\/server\/$/;"	m
+Start	src/server/ConsoleApp/ConsoleApp.cs	/^    public static int Start() {$/;"	m	class:BKTMManager.ConsoleApp.ConsoleApplication
+Startup	src/server/BKTMApp.cs	/^    protected void Startup() {$/;"	m	class:BKTMManager.BKTMApp
+Stetic	src/server/gtk-gui/generated.cs	/^namespace Stetic$/;"	n
+TEntity	src/server/Administration/RepoAdmin.cs	/^  public interface IRepoAdmin<TEntity> where TEntity : class, new() {$/;"	i	namespace:BKTMManager.Administration
+Teacher	src/db/db.sql	/^CREATE TABLE [dbo].[Teacher]($/;"	t
+Teacher	src/server/Types/Teacher.cs	/^    public Teacher() { }$/;"	m	class:BKTMManager.Types.Teacher
+Teacher	src/server/Types/Teacher.cs	/^    public Teacher(SqlDataReader reader) {$/;"	m	class:BKTMManager.Types.Teacher
+Teacher	src/server/Types/Teacher.cs	/^  public class Teacher : TypeRepo {$/;"	c	namespace:BKTMManager.Types
+TypeRepo	src/server/Types/TypeRepo.cs	/^  public class TypeRepo : IGlobalType {$/;"	c	namespace:BKTMManager.Types
+UIManager	src/server/gtk-gui/BKTMManager.BKTMApp.cs	/^		private global::Gtk.UIManager UIManager;$/;"	f	class:BKTMManager.BKTMApp	file:
+Update	src/server/Administration/RepoAdmin.cs	/^    public void Update(int id, string col, string change) {$/;"	m	class:BKTMManager.Administration.RepoAdmin
+Update	src/server/Administration/RepoAdmin.cs	/^    void Update(int id, string old, string change);$/;"	m	interface:BKTMManager.Administration.TEntity
+User	src/db/db.sql	/^CREATE TABLE [dbo].[User]($/;"	t
+User	src/server/Types/User.cs	/^    public User() { }$/;"	m	class:BKTMManager.Types.User
+User	src/server/Types/User.cs	/^    public User(SqlDataReader reader) {$/;"	m	class:BKTMManager.Types.User
+User	src/server/Types/User.cs	/^  public class User : TypeRepo {$/;"	c	namespace:BKTMManager.Types
+UserAdministration	src/server/Administration/UserAdmin.cs	/^    public UserAdministration(SqlConnection cnn):base(cnn) { $/;"	m	class:BKTMManager.Administration.UserAdministration
+UserAdministration	src/server/Administration/UserAdmin.cs	/^  public class UserAdministration : RepoAdmin<User>, IUserAdmin {$/;"	c	namespace:BKTMManager.Administration
+Utils	src/server/Helper/Utils.cs	/^  public static class Utils {$/;"	c	namespace:BKTMManager.Helper
+WPF	Makefile	/^WPF = $(MAINSRC) $(WPFSRC) $(SRCPATH)Program_wpf.cs$/;"	m
+WPFSRC	Makefile	/^WPFSRC = $(SRCPATH)$/;"	m
+WhatAmI	src/server/Types/GlobalInterface.cs	/^    string WhatAmI(string mode);$/;"	m	interface:BKTMManager.Types.IGlobalType
+WhatAmI	src/server/Types/TypeRepo.cs	/^    public string WhatAmI(string mode) {$/;"	m	class:BKTMManager.Types.TypeRepo
+_admin	src/server/Types/User.cs	/^    private byte _admin = 0;$/;"	f	class:BKTMManager.Types.User	file:
+_category	src/server/Types/Device.cs	/^    private Category _category;$/;"	f	class:BKTMManager.Types.Device	file:
+_categoryId	src/server/Types/Device.cs	/^    private int _categoryId;$/;"	f	class:BKTMManager.Types.Device	file:
+_categoryId	src/server/Types/HardwareComponent.cs	/^    private int _categoryId;$/;"	f	class:BKTMManager.Types.HardwareComponent	file:
+_cnn	src/server/Administration/RepoAdmin.cs	/^    private SqlConnection _cnn;$/;"	f	class:BKTMManager.Administration.RepoAdmin	file:
+_cnn	src/server/Controller/IOController.cs	/^    protected SqlConnection _cnn = null;$/;"	f	class:BKTMManager.Controller.IOController
+_columNames	src/server/Administration/RepoAdmin.cs	/^    private string _columNames;$/;"	f	class:BKTMManager.Administration.RepoAdmin	file:
+_date	src/server/Types/Damaged.cs	/^    private DateTime _date;$/;"	f	class:BKTMManager.Types.Damaged	file:
+_dateBuy	src/server/Types/Device.cs	/^    private DateTime _dateBuy;$/;"	f	class:BKTMManager.Types.Device	file:
+_db	src/server/Controller/IOController.cs	/^    protected string _db;$/;"	f	class:BKTMManager.Controller.IOController
+_description	src/server/Types/Damaged.cs	/^    private string _description;$/;"	f	class:BKTMManager.Types.Damaged	file:
+_description	src/server/Types/HardwareComponent.cs	/^    private string _description;$/;"	f	class:BKTMManager.Types.HardwareComponent	file:
+_description	src/server/Types/Room.cs	/^    private string _description;$/;"	f	class:BKTMManager.Types.Room	file:
+_device	src/server/Types/Damaged.cs	/^    private Device _device;$/;"	f	class:BKTMManager.Types.Damaged	file:
+_deviceId	src/server/Types/Damaged.cs	/^    private int _deviceId;$/;"	f	class:BKTMManager.Types.Damaged	file:
+_email	src/server/Types/User.cs	/^    private string _email;$/;"	f	class:BKTMManager.Types.User	file:
+_firstName	src/server/Types/Teacher.cs	/^    private string _firstName;$/;"	f	class:BKTMManager.Types.Teacher	file:
+_id	src/server/Types/Category.cs	/^    private int _id;$/;"	f	class:BKTMManager.Types.Category	file:
+_id	src/server/Types/Damaged.cs	/^    private int _id;$/;"	f	class:BKTMManager.Types.Damaged	file:
+_id	src/server/Types/Device.cs	/^    private int _id;$/;"	f	class:BKTMManager.Types.Device	file:
+_id	src/server/Types/HardwareComponent.cs	/^    private int _id;$/;"	f	class:BKTMManager.Types.HardwareComponent	file:
+_id	src/server/Types/Reseller.cs	/^    private int _id;$/;"	f	class:BKTMManager.Types.Reseller	file:
+_id	src/server/Types/Room.cs	/^    private int _id;$/;"	f	class:BKTMManager.Types.Room	file:
+_id	src/server/Types/Teacher.cs	/^    private int _id;$/;"	f	class:BKTMManager.Types.Teacher	file:
+_id	src/server/Types/User.cs	/^    private int _id;$/;"	f	class:BKTMManager.Types.User	file:
+_inventoryNr	src/server/Types/Device.cs	/^    private int _inventoryNr;$/;"	f	class:BKTMManager.Types.Device	file:
+_ip	src/server/Controller/IOController.cs	/^    protected string _ip;$/;"	f	class:BKTMManager.Controller.IOController
+_isExchanged	src/server/Types/HardwareComponent.cs	/^    private byte _isExchanged = 0;$/;"	f	class:BKTMManager.Types.HardwareComponent	file:
+_lastName	src/server/Types/Teacher.cs	/^    private string _lastName;$/;"	f	class:BKTMManager.Types.Teacher	file:
+_location	src/server/Types/Reseller.cs	/^    private string _location;$/;"	f	class:BKTMManager.Types.Reseller	file:
+_name	src/server/Types/Category.cs	/^    private string _name;$/;"	f	class:BKTMManager.Types.Category	file:
+_name	src/server/Types/HardwareComponent.cs	/^    private string _name;$/;"	f	class:BKTMManager.Types.HardwareComponent	file:
+_name	src/server/Types/Reseller.cs	/^    private string _name;$/;"	f	class:BKTMManager.Types.Reseller	file:
+_password	src/server/Types/User.cs	/^    private string _password;$/;"	f	class:BKTMManager.Types.User	file:
+_prefix	src/server/Administration/RepoAdmin.cs	/^    private string _prefix;$/;"	f	class:BKTMManager.Administration.RepoAdmin	file:
+_price	src/server/Types/Device.cs	/^    private double _price;$/;"	f	class:BKTMManager.Types.Device	file:
+_price	src/server/Types/HardwareComponent.cs	/^    private double _price;$/;"	f	class:BKTMManager.Types.HardwareComponent	file:
+_pw	src/server/Controller/IOController.cs	/^    protected string _pw;$/;"	f	class:BKTMManager.Controller.IOController
+_reseller	src/server/Types/Device.cs	/^    private Reseller _reseller;$/;"	f	class:BKTMManager.Types.Device	file:
+_resellerId	src/server/Types/Device.cs	/^    private int _resellerId;$/;"	f	class:BKTMManager.Types.Device	file:
+_roomId	src/server/Types/Device.cs	/^    private int _roomId;$/;"	f	class:BKTMManager.Types.Device	file:
+_roomId	src/server/Types/Teacher.cs	/^    private int _roomId;$/;"	f	class:BKTMManager.Types.Teacher	file:
+_roomNr	src/server/Types/Room.cs	/^    private string _roomNr;$/;"	f	class:BKTMManager.Types.Room	file:
+_roomOwner	src/server/Types/Teacher.cs	/^    private int _roomOwner;$/;"	f	class:BKTMManager.Types.Teacher	file:
+_tableName	src/server/Administration/RepoAdmin.cs	/^    private string _tableName;$/;"	f	class:BKTMManager.Administration.RepoAdmin	file:
+_teacher	src/server/Types/Damaged.cs	/^    private Teacher _teacher;$/;"	f	class:BKTMManager.Types.Damaged	file:
+_teacher	src/server/Types/User.cs	/^    private Teacher _teacher;$/;"	f	class:BKTMManager.Types.User	file:
+_teacherId	src/server/Types/Damaged.cs	/^    private int _teacherId;$/;"	f	class:BKTMManager.Types.Damaged	file:
+_teacherId	src/server/Types/User.cs	/^    private int _teacherId;$/;"	f	class:BKTMManager.Types.User	file:
+_toPopulate	src/server/Administration/RepoAdmin.cs	/^    private string[] _toPopulate;$/;"	f	class:BKTMManager.Administration.RepoAdmin	file:
+_user	src/server/Controller/IOController.cs	/^    protected string _user;$/;"	f	class:BKTMManager.Controller.IOController
+_username	src/server/Types/User.cs	/^    private string _username;$/;"	f	class:BKTMManager.Types.User	file:
+admin	src/server/Types/User.cs	/^    public byte admin {$/;"	p	class:BKTMManager.Types.User
+applyAction	src/server/gtk-gui/BKTMManager.BKTMApp.cs	/^		private global::Gtk.Action applyAction;$/;"	f	class:BKTMManager.BKTMApp	file:
+buttonAbort	src/server/gtk-gui/BKTMManager.Login.cs	/^		private global::Gtk.Button buttonAbort;$/;"	f	class:BKTMManager.Login	file:
+buttonLogin	src/server/gtk-gui/BKTMManager.Login.cs	/^		private global::Gtk.Button buttonLogin;$/;"	f	class:BKTMManager.Login	file:
+category	src/server/Administration/Manager.cs	/^    public CategoryAdministration category;$/;"	f	class:BKTMManager.Administration.Manager
+category	src/server/Types/Device.cs	/^    public Category category {$/;"	p	class:BKTMManager.Types.Device
+categoryId	src/server/Types/Device.cs	/^    public int categoryId {$/;"	p	class:BKTMManager.Types.Device
+categoryId	src/server/Types/HardwareComponent.cs	/^    public int categoryId {$/;"	p	class:BKTMManager.Types.HardwareComponent
+cnn	src/server/Administration/RepoAdmin.cs	/^    SqlConnection cnn { get; }$/;"	p	interface:BKTMManager.Administration.TEntity
+cnn	src/server/Administration/RepoAdmin.cs	/^    public SqlConnection cnn {$/;"	p	class:BKTMManager.Administration.RepoAdmin
+cnn	src/server/Controller/IOController.cs	/^    public SqlConnection cnn {$/;"	p	class:BKTMManager.Controller.IOController
+cnnInfo	src/server/Helper/ReadConfig.cs	/^    public Dictionary<string, string> cnnInfo = new Dictionary<string, string>();$/;"	f	class:BKTMManager.Helper.Config
+columNames	src/server/Administration/RepoAdmin.cs	/^    public string columNames {$/;"	p	class:BKTMManager.Administration.RepoAdmin
+columNames	src/server/Administration/RepoAdmin.cs	/^    string columNames { get; set; }$/;"	p	interface:BKTMManager.Administration.TEntity
+damaged	src/server/Administration/Manager.cs	/^    public DamagedAdministration damaged;$/;"	f	class:BKTMManager.Administration.Manager
+date	src/server/Types/Damaged.cs	/^    public DateTime date {$/;"	p	class:BKTMManager.Types.Damaged
+dateBuy	src/server/Types/Device.cs	/^    public DateTime dateBuy {$/;"	p	class:BKTMManager.Types.Device
+description	src/server/Types/Damaged.cs	/^    public string description {$/;"	p	class:BKTMManager.Types.Damaged
+description	src/server/Types/HardwareComponent.cs	/^    public string description {$/;"	p	class:BKTMManager.Types.HardwareComponent
+description	src/server/Types/Room.cs	/^    public string description {$/;"	p	class:BKTMManager.Types.Room
+device	src/server/Administration/Manager.cs	/^    public DeviceAdministration device;$/;"	f	class:BKTMManager.Administration.Manager
+device	src/server/Types/Damaged.cs	/^    public Device device {$/;"	p	class:BKTMManager.Types.Damaged
+deviceId	src/server/Types/Damaged.cs	/^    public int deviceId {$/;"	p	class:BKTMManager.Types.Damaged
+email	src/server/Types/User.cs	/^    public string email {$/;"	p	class:BKTMManager.Types.User
+entry10	src/server/gtk-gui/BKTMManager.Login.cs	/^		private global::Gtk.Entry entry10;$/;"	f	class:BKTMManager.Login	file:
+entry8	src/server/gtk-gui/BKTMManager.Login.cs	/^		private global::Gtk.Entry entry8;$/;"	f	class:BKTMManager.Login	file:
+firstName	src/server/Types/Teacher.cs	/^    public string firstName {$/;"	p	class:BKTMManager.Types.Teacher
+getColumnsName	src/server/Administration/RepoAdmin.cs	/^    public string getColumnsName() {$/;"	m	class:BKTMManager.Administration.RepoAdmin
+hardware	src/server/Administration/Manager.cs	/^    public HardwareAdministration hardware;$/;"	f	class:BKTMManager.Administration.Manager
+id	src/server/Types/Category.cs	/^    public int id {$/;"	p	class:BKTMManager.Types.Category
+id	src/server/Types/Damaged.cs	/^    public int id {$/;"	p	class:BKTMManager.Types.Damaged
+id	src/server/Types/Device.cs	/^    public int id {$/;"	p	class:BKTMManager.Types.Device
+id	src/server/Types/HardwareComponent.cs	/^    public int id {$/;"	p	class:BKTMManager.Types.HardwareComponent
+id	src/server/Types/Reseller.cs	/^    public int id {$/;"	p	class:BKTMManager.Types.Reseller
+id	src/server/Types/Room.cs	/^    public int id {$/;"	p	class:BKTMManager.Types.Room
+id	src/server/Types/Teacher.cs	/^    public int id {$/;"	p	class:BKTMManager.Types.Teacher
+id	src/server/Types/User.cs	/^    public int id {$/;"	p	class:BKTMManager.Types.User
+initConnection	src/server/Controller/IOController.cs	/^    protected bool initConnection() {$/;"	m	class:BKTMManager.Controller.IOController
+initialized	src/server/gtk-gui/generated.cs	/^		private static bool initialized;$/;"	f	class:Stetic.Gui	file:
+inventoryNr	src/server/Types/Device.cs	/^    public int inventoryNr {$/;"	p	class:BKTMManager.Types.Device
+isExchanged	src/server/Types/HardwareComponent.cs	/^    public byte isExchanged {$/;"	p	class:BKTMManager.Types.HardwareComponent
+label1	src/server/gtk-gui/BKTMManager.Login.cs	/^		private global::Gtk.Label label1;$/;"	f	class:BKTMManager.Login	file:
+lastName	src/server/Types/Teacher.cs	/^    public string lastName {$/;"	p	class:BKTMManager.Types.Teacher
+location	src/server/Types/Reseller.cs	/^    public string location {$/;"	p	class:BKTMManager.Types.Reseller
+login	src/server/BKTMApp.cs	/^    protected Login login;$/;"	f	class:BKTMManager.BKTMApp
+manager	src/server/BKTMApp.cs	/^    protected Manager manager;$/;"	f	class:BKTMManager.BKTMApp
+menubar1	src/server/gtk-gui/BKTMManager.BKTMApp.cs	/^		private global::Gtk.MenuBar menubar1;$/;"	f	class:BKTMManager.BKTMApp	file:
+name	src/server/Types/Category.cs	/^    public string name {$/;"	p	class:BKTMManager.Types.Category
+name	src/server/Types/HardwareComponent.cs	/^    public string name {$/;"	p	class:BKTMManager.Types.HardwareComponent
+name	src/server/Types/Reseller.cs	/^    public string name {$/;"	p	class:BKTMManager.Types.Reseller
+password	src/server/Types/User.cs	/^    public string password {$/;"	p	class:BKTMManager.Types.User
+password	src/server/gtk-gui/BKTMManager.Login.cs	/^		private global::Gtk.Label password;$/;"	f	class:BKTMManager.Login	file:
+prefix	src/server/Administration/RepoAdmin.cs	/^    public string prefix {$/;"	p	class:BKTMManager.Administration.RepoAdmin
+prefix	src/server/Administration/RepoAdmin.cs	/^    string prefix { get; set; }$/;"	p	interface:BKTMManager.Administration.TEntity
+price	src/server/Types/Device.cs	/^    public double price {$/;"	p	class:BKTMManager.Types.Device
+price	src/server/Types/HardwareComponent.cs	/^    public double price {$/;"	p	class:BKTMManager.Types.HardwareComponent
+read	src/server/Helper/ReadConfig.cs	/^    public bool read(string config) {$/;"	m	class:BKTMManager.Helper.Config
+reseller	src/server/Types/Device.cs	/^    public Reseller reseller {$/;"	p	class:BKTMManager.Types.Device
+resellerId	src/server/Types/Device.cs	/^    public int resellerId {$/;"	p	class:BKTMManager.Types.Device
+room	src/server/Administration/Manager.cs	/^    public RoomAdministration room;$/;"	f	class:BKTMManager.Administration.Manager
+roomId	src/server/Types/Device.cs	/^    public int roomId {$/;"	p	class:BKTMManager.Types.Device
+roomId	src/server/Types/Teacher.cs	/^    public int roomId {$/;"	p	class:BKTMManager.Types.Teacher
+roomNr	src/server/Types/Room.cs	/^    public string roomNr {$/;"	p	class:BKTMManager.Types.Room
+roomOwner	src/server/Types/Teacher.cs	/^    public int roomOwner {$/;"	p	class:BKTMManager.Types.Teacher
+statusbar1	src/server/gtk-gui/BKTMManager.BKTMApp.cs	/^		private global::Gtk.Statusbar statusbar1;$/;"	f	class:BKTMManager.BKTMApp	file:
+tableName	src/server/Administration/RepoAdmin.cs	/^    public string tableName {$/;"	p	class:BKTMManager.Administration.RepoAdmin
+tableName	src/server/Administration/RepoAdmin.cs	/^    string tableName { get; set; }$/;"	p	interface:BKTMManager.Administration.TEntity
+tableNormal	src/server/Types/TypeRepo.cs	/^    public string tableNormal;$/;"	f	class:BKTMManager.Types.TypeRepo
+tablePopulated	src/server/Types/TypeRepo.cs	/^    public string tablePopulated;$/;"	f	class:BKTMManager.Types.TypeRepo
+teacher	src/server/Types/Damaged.cs	/^    public Teacher teacher {$/;"	p	class:BKTMManager.Types.Damaged
+teacher	src/server/Types/User.cs	/^    public Teacher teacher {$/;"	p	class:BKTMManager.Types.User
+teacherId	src/server/Types/Damaged.cs	/^    public int teacherId {$/;"	p	class:BKTMManager.Types.Damaged
+teacherId	src/server/Types/User.cs	/^    public int teacherId {$/;"	p	class:BKTMManager.Types.User
+toPopulate	src/server/Administration/RepoAdmin.cs	/^    public string[] toPopulate {$/;"	p	class:BKTMManager.Administration.RepoAdmin
+toPopulate	src/server/Administration/RepoAdmin.cs	/^    string[] toPopulate { get; set; }$/;"	p	interface:BKTMManager.Administration.TEntity
+toolbar1	src/server/gtk-gui/BKTMManager.BKTMApp.cs	/^		private global::Gtk.Toolbar toolbar1;$/;"	f	class:BKTMManager.BKTMApp	file:
+treeview1	src/server/gtk-gui/BKTMManager.BKTMApp.cs	/^		private global::Gtk.TreeView treeview1;$/;"	f	class:BKTMManager.BKTMApp	file:
+user	src/server/Administration/Manager.cs	/^    public UserAdministration user;$/;"	f	class:BKTMManager.Administration.Manager
+user	src/server/Login.cs	/^    UserAdministration user;$/;"	f	class:BKTMManager.Login	file:
+username	src/server/Types/User.cs	/^    public string username {$/;"	p	class:BKTMManager.Types.User
+username	src/server/gtk-gui/BKTMManager.Login.cs	/^		private global::Gtk.Label username;$/;"	f	class:BKTMManager.Login	file:
+vbox1	src/server/gtk-gui/BKTMManager.BKTMApp.cs	/^		private global::Gtk.VBox vbox1;$/;"	f	class:BKTMManager.BKTMApp	file:
+vbox5	src/server/gtk-gui/BKTMManager.Login.cs	/^		private global::Gtk.VBox vbox5;$/;"	f	class:BKTMManager.Login	file:
