@@ -1,6 +1,6 @@
 using System.Data.SqlClient;
 
-namespace Program {
+namespace Coffee.Types {
   public class User {
     public User(SqlDataReader reader) {
       _username = reader.GetString(2);

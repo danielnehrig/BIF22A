@@ -1,7 +1,7 @@
 using System;
 using System.Data.SqlClient;
 
-namespace Program {
+namespace Coffee.Types {
   public class Item {
     public Item(SqlDataReader reader) {
       _price = reader.GetDouble(0);

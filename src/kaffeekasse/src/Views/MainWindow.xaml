@@ -5,7 +5,8 @@
   xmlns:views="clr-namespace:Coffee.Views"
   mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
   x:Class="Coffee.Views.MainWindow"
-  Width="200" Height="300"
-  Title="Coffee"
-  Content="{Binding Content}">
+  SizeToContent="3"
+  Title="{Binding Content.Title}"
+  Content="{Binding Content}"
+  >
 </Window>

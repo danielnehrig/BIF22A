@@ -1,7 +1,7 @@
 using System;
 using System.Data.SqlClient;
 
-namespace Program {
+namespace Coffee.Types {
   public class ItemLog {
     public ItemLog(Item item, User user) {
       _user = user;

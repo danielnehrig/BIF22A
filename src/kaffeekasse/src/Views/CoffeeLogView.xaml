@@ -4,4 +4,17 @@
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="300"
   x:Class="Coffee.Views.CoffeeLogView">
+  <DockPanel>
+    <DockPanel DockPanel.Dock="Left">
+        <Border Background="Red" DockPanel.Dock="Top"/>
+        <Border Background="Blue" DockPanel.Dock="Bottom"/>
+    </DockPanel>
+    <DockPanel DockPanel.Dock="Right">
+        <Border Background="Green" DockPanel.Dock="Top"/>
+        <Border Background="Orange" DockPanel.Dock="Bottom"/>
+    </DockPanel>
+    <Grid>
+      <Border Background="Gray" Width="300" Height="300"/>
+    </Grid>
+  </DockPanel>
 </UserControl>

@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using Coffee.Types;
 
-namespace Program {
+namespace Coffee {
   public class Administration {
     private SqlConnection _cnn;
 

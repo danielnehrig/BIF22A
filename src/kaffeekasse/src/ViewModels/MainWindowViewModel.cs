@@ -3,13 +3,17 @@ using System.Reactive.Linq;
 using ReactiveUI;
 using Coffee.Models;
 using Coffee.Services;
+using Coffee.Types;
+using Coffee;
 
 namespace Coffee.ViewModels {
   class MainWindowViewModel : ViewModelBase {
 		ViewModelBase content;
 
-    public MainWindowViewModel(Database db) {
-      Content = List = new TodoListViewModel(db.GetItems());
+    public MainWindowViewModel(Administration admin) {
+      // Content = List = new TodoListViewModel(db.GetItems());
+      // Content = Login = new LoginViewModel(admin);
+      Content = CoffeeLog = new CoffeeLogViewModel(admin);
     }
 
     public ViewModelBase Content {
@@ -17,6 +21,8 @@ namespace Coffee.ViewModels {
       private set => this.RaiseAndSetIfChanged(ref content, value);
     }
 
+    public LoginViewModel Login { get; }
+    public CoffeeLogViewModel CoffeeLog { get; }
     public TodoListViewModel List { get; }
 
     public void AddItem() {

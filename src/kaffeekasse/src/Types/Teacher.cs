@@ -1,7 +1,7 @@
 using System;
 using System.Data.SqlClient;
 
-namespace Program {
+namespace Coffee.Types {
   public class Teacher : User {
     public Teacher(SqlDataReader reader): base (reader) {
       _firstName = reader.GetString(0);

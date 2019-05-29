@@ -22,9 +22,9 @@ namespace Coffee {
     // Your application's entry point. Here you can initialize your MVVM framework, DI
     // container, etc.
     private static void AppMain(Application app, string[] args) {
-      var db = new Database();
+      var admin = new Administration();
       var window = new MainWindow {
-        DataContext = new MainWindowViewModel(db),
+        DataContext = new MainWindowViewModel(admin),
       };
 
       app.Run(window);
