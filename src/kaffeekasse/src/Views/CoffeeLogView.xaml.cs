@@ -3,9 +3,9 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
 namespace Coffee.Views {
-  public class MainWindow : Window {
-    public MainWindow() {
-      InitializeComponent();
+  public class CoffeeLogView : UserControl {
+    public CoffeeLogView() {
+      this.InitializeComponent();
     }
 
     private void InitializeComponent() {
