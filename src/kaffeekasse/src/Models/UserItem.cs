@@ -7,7 +7,6 @@ namespace Coffee.Models {
 
     public UserItem(User user) {
       Username = user.username;
-      Loggedin = user.loggedIn;
     }
   }
 }

@@ -3,9 +3,9 @@ using System.Data.SqlClient;
 
 namespace Coffee.Types {
   public class ItemLog {
-    public ItemLog(Item item, User user) {
-      _user = user;
-      _item = item;
+    public ItemLog(SqlDataReader reader) {
+      _item = new Item(reader);
+      _user = new User(reader);
     }
 
     private Item _item;

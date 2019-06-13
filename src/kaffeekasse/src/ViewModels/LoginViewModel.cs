@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Reactive;
+using Avalonia;
+using System;
 using ReactiveUI;
 using Coffee.Models;
+using Coffee.Types;
 using Coffee;
 
 namespace Coffee.ViewModels {
@@ -27,7 +30,7 @@ namespace Coffee.ViewModels {
       set => this.RaiseAndSetIfChanged(ref password, value);
     }
 
-    public ReactiveCommand<Unit, UserItem> Login { get; }
+    public ReactiveCommand<Unit, User> Login { get; }
     public ReactiveCommand<Unit, Unit> Cancel { get; }
 
     public LoginViewModel(Administration admin) {
@@ -37,9 +40,10 @@ namespace Coffee.ViewModels {
           x => x.Username,
           x => !string.IsNullOrWhiteSpace(x));
 
-      Login = ReactiveCommand.Create(
-          () => new UserItem(this.Admin.Login(Username, Password)),
-          loginEnabled);
+        Login = ReactiveCommand.Create(() => {
+          User user = admin.Login(this.Username, this.Password);
+          return user;
+      }, loginEnabled);
 
       Cancel = ReactiveCommand.Create(() => {  });
     }

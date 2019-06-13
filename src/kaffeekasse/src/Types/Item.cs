@@ -4,15 +4,15 @@ using System.Data.SqlClient;
 namespace Coffee.Types {
   public class Item {
     public Item(SqlDataReader reader) {
-      _price = reader.GetDouble(0);
-      _name = reader.GetString(1);
-      _description = reader.GetString(2);
+      _amount = reader.GetDouble(reader.GetOrdinal("amount"));
+      _name = reader.GetString(reader.GetOrdinal("name"));
+      _description = reader.GetString(reader.GetOrdinal("description"));
     }
 
-    private double _price;
-    public double price {
-      set => _price = value;
-      get => _price;
+    private double _amount;
+    public double amount {
+      set => _amount = value;
+      get => _amount;
     }
 
     private string _name;

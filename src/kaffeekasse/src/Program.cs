@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using Avalonia;
 using Avalonia.Logging.Serilog;
+using Coffee.Helper;
 using Coffee.Views;
 using Coffee.Services;
 using Coffee.ViewModels;
@@ -22,9 +24,13 @@ namespace Coffee {
     // Your application's entry point. Here you can initialize your MVVM framework, DI
     // container, etc.
     private static void AppMain(Application app, string[] args) {
-      var admin = new Administration();
+      var db = new Database();
+      Config config = new Config("config.cfg");
+      Dictionary<string, string> cnnInfo = config.cnnInfo;
+
+      Administration admin = new Administration(cnnInfo["ip"], cnnInfo["port"], cnnInfo["db"], cnnInfo["user"], cnnInfo["pw"]);
       var window = new MainWindow {
-        DataContext = new MainWindowViewModel(admin),
+        DataContext = new MainWindowViewModel(admin, db),
       };
 
       app.Run(window);

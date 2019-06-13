@@ -10,10 +10,10 @@ namespace Coffee.ViewModels {
   class MainWindowViewModel : ViewModelBase {
 		ViewModelBase content;
 
-    public MainWindowViewModel(Administration admin) {
+    public MainWindowViewModel(Administration admin, Database db) {
       // Content = List = new TodoListViewModel(db.GetItems());
-      // Content = Login = new LoginViewModel(admin);
-      Content = CoffeeLog = new CoffeeLogViewModel(admin);
+      Content = Login = new LoginViewModel(admin);
+      // Content = CoffeeLog = new CoffeeLogViewModel(admin);
     }
 
     public ViewModelBase Content {

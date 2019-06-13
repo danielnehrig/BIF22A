@@ -1,41 +1,56 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using Coffee.Types;
 
 namespace Coffee {
   public class Administration {
-    private SqlConnection _cnn;
+    protected SqlConnection _cnn;
+    public SqlConnection cnn {
+      get { return _cnn; }
+    }
+    private string _ip;
+    private string _port;
+    private string _db;
+    private string _user;
+    private string _pw;
 
-    public Administration() { 
-      bootstrap();
+    public Administration(string ip, string port, string db, string user, string pw) { 
+      _ip = ip;
+      _port = port;
+      _db = db;
+      _user = user;
+      _pw = pw;
+      this.bootstrap();
     }
 
     private void bootstrap() {
       try {
-        string connString = String.Format("Data Source=127.0.0.1;Initial Catalog=Coffe;User ID=SA;Password=Hallo1234!");
-        _cnn = new SqlConnection(connString);
+        string connString = String.Format("Data Source={0};Initial Catalog={1};User ID={2};Password={3}", this._ip, this._db, this._user, this._pw);
+        this._cnn = new SqlConnection(connString);
+        Console.WriteLine("Connection Established");
       } catch (Exception ex) {
-        Console.WriteLine("Sql Error", ex);
+        Console.WriteLine("Sql Error " + ex);
       }
     }
 
     public User Login(string username, string password) {
       try {
-        _cnn.Open();
+        this.cnn.Open();
         User foundUser = null;
-        string sqlQuery = String.Format("SELECT * FROM Users;");
-        SqlCommand command = _cnn.CreateCommand();
+        string sqlQuery = String.Format("GetUser");
+        SqlCommand command = this.cnn.CreateCommand();
+        command.CommandText = sqlQuery;
         command.CommandType = System.Data.CommandType.StoredProcedure;
-        command.Parameters.Add(new SqlParameter("@firstName", username));
+        command.Parameters.Add(new SqlParameter("@UserName", username));
         SqlDataReader reader = command.ExecuteReader();
+        reader.Read();
 
-        foreach (User item in reader) {
-          if (item.password == password && item.username == username) {
-            foundUser = new User(reader);
-          }
+        if (reader.GetString(reader.GetOrdinal("password")) == password) {
+          foundUser = new User(reader);
         }
-        _cnn.Close();
+        cnn.Close();
         return foundUser;
       } catch (Exception ex) {
         Console.WriteLine(String.Format("Error logging in {0}", ex));
