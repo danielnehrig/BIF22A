@@ -42,6 +42,7 @@ namespace Coffee.ViewModels {
 
         Login = ReactiveCommand.Create(() => {
           User user = admin.Login(this.Username, this.Password);
+          Console.WriteLine(String.Format("{0} {1}", user.username, user.accAmount, user.isActive));
           return user;
       }, loginEnabled);
 

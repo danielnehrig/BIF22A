@@ -4,17 +4,24 @@
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="300"
   x:Class="Coffee.Views.CoffeeLogView">
-  <DockPanel>
-    <DockPanel DockPanel.Dock="Left">
-        <Border Background="Red" DockPanel.Dock="Top"/>
-        <Border Background="Blue" DockPanel.Dock="Bottom"/>
-    </DockPanel>
-    <DockPanel DockPanel.Dock="Right">
-        <Border Background="Green" DockPanel.Dock="Top"/>
-        <Border Background="Orange" DockPanel.Dock="Bottom"/>
-    </DockPanel>
-    <Grid>
-      <Border Background="Gray" Width="300" Height="300"/>
+  <Border Padding="12" MinHeight="20" Background="DodgerBlue">
+    <Grid ColumnDefinitions="100,100*">
+      <Border Background="Blue" DockPanel.Dock="Top">
+        <DockPanel Grid.Column="1">
+          <TextBlock DockPanel.Dock="Top" Text="{Binding User.username}"/>
+          <TextBlock DockPanel.Dock="Top" Text="{Binding User.accAmount}"/>
+          <TextBlock DockPanel.Dock="Top" Text="{Binding User.isActive}"/>
+        </DockPanel>
+      </Border>
+      <DockPanel Grid.Column="2">
+        <Border Background="Orange" DockPanel.Dock="Bottom">
+          <!-- <DataGrid Name="dataGrid1">
+            <DataGrid.Columns>
+              <DataGridTextColumn Header="Username" Binding="{Binding User}" Width="6*" />
+            </DataGrid.Columns>
+          </DataGrid> -->
+        </Border>
+      </DockPanel>
     </Grid>
-  </DockPanel>
+  </Border>
 </UserControl>

@@ -106,5 +106,49 @@ AS
     WHERE [User].[username] = @UserName
 GO
 
+CREATE PROCEDURE UpdateUserAmount
+    @UserName nvarchar(50),
+    @Amount float(50),
+AS
+  UPDATE [dbo].[User]
+  SET amount = @Amount
+  WHERE username = @UserName
+GO
+
+CREATE PROCEDURE SetUserStatus
+    @UserName nvarchar(50),
+    @Active tinyint,
+AS
+  UPDATE [dbo].[User]
+  SET isActive = @Active
+  WHERE username = @UserName
+GO
+
+CREATE TRIGGER checkAccAmount
+ON User
+BEFORE UPDATE  
+AS  
+IF (ROWCOUNT_BIG() = 0)
+RETURN
+IF EXISTS (
+  SELECT User.accAmount  
+  FROM Insert)
+BEGIN  
+ROLLBACK TRANSACTION;
+RETURN
+END
+GO 
+
+CREATE TRIGGER accUpdate
+ON User
+AFTER UPDATE
+AS
+EXEC msdb.dbo.sp_send_dbmail
+@profile_name = 'Coffee Log Administrator',
+@recipients = 'danw@Adventure-Works.com',
+@body = 'Account Amount Updated',
+@subject = 'Account Amount Update'
+GO  
+
 USE [test]
 GO

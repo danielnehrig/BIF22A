@@ -6,6 +6,8 @@ namespace Coffee.Views {
   public class CoffeeLogView : UserControl {
     public CoffeeLogView() {
       this.InitializeComponent();
+
+      // var dg = this.FindControl<DataGrid>("dataGrid1");
     }
 
     private void InitializeComponent() {
