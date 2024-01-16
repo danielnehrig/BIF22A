@@ -17,6 +17,6 @@
     <PackageReference Include="Avalonia.ReactiveUI" Version="0.8.0" />
     <PackageReference Include="ReactiveUI" Version="9.16.4" />
     <PackageReference Include="ReactiveUI.Testing" Version="9.16.4" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.6.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
   </ItemGroup>
 </Project>
